@@ -52,7 +52,37 @@ describe.only('test div flattener', () => {
       </div>`
       ;
 
-    test.only("removes an inner layer div element", () => {
+    test("removes an inner layer div element", () => {
         expect(reformatHtml(flatten(div3))).toBe(reformatHtml(res3));
+    });
+
+    const div4 = `
+    <div>
+    <div>
+    <div style="background-color: #FFFFFF;">
+      Hello
+    </div>
+    </div>
+    </div>
+    <div>
+    <div>
+    <div style="background-color: #FFFFFF;">
+      Hello
+    </div>
+    </div>
+    </div>`
+      ;
+
+    const res4 = `
+    <div style="background-color: #FFFFFF;">
+        Hello
+    </div>
+      <div style="background-color: #FFFFFF;">
+        Hello
+      </div>`
+      ;
+
+    test("removes an inner layer div element", () => {
+        expect(reformatHtml(flatten(div4))).toBe(reformatHtml(res4));
     });
 });
