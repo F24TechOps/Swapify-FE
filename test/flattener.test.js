@@ -1,7 +1,7 @@
 import {flatten} from '../src/flattener';
 import { reformatHtml } from './helpers/testfunctions';
  
-describe.only('test div flattener', () => {
+describe('test div flattener', () => {
     const div1 = `
       <div style="background-color: #FFFFFF;">
         Hello
