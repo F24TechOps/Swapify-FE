@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/ellaycodes/onboarding-automation#readme",
   "dependencies": {
-    "jest": "^29.7.0"
+    "dompurify": "^3.0.9",
+    "jest": "^29.7.0",
+    "jsdom": "^24.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",
