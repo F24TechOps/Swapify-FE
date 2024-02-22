@@ -52,7 +52,7 @@ describe('test div flattener', () => {
       </div>`
       ;
 
-    test("removes an inner layer div element", () => {
+    test("removes an multiple nested divs", () => {
         expect(reformatHtml(flatten(div3))).toBe(reformatHtml(res3));
     });
 
@@ -82,7 +82,52 @@ describe('test div flattener', () => {
       </div>`
       ;
 
-    test("removes an inner layer div element", () => {
+    test("removes multiple snippets of nested divs", () => {
         expect(reformatHtml(flatten(div4))).toBe(reformatHtml(res4));
+    });
+
+    const div5 = `
+    <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Unnecessary Nested Divs Example</title>
+        </head>
+        <body>
+
+        <div>
+            <div>
+                <div>
+                    <p>Hello</p>
+                </div>
+            </div>
+        </div>
+
+        </body>
+        </html>`
+      ;
+
+    const res5 = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Unnecessary Nested Divs Example</title>
+        </head>
+        <body>
+
+        <div>
+            <p>Hello</p>
+        </div>
+
+        </body>
+        </html>`
+    ;
+
+
+    test("removes nested divs for whole document", () => {
+        expect(reformatHtml(flatten(div5))).toBe(reformatHtml(res5));
     });
 });
