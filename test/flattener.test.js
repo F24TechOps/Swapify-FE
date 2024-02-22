@@ -14,7 +14,7 @@ describe.only('test div flattener', () => {
       </div>`
       ;
 
-    test("changes background from white to red", () => {
+    test("makes no changes if all divs are useful", () => {
         expect(reformatHtml(flatten(div1))).toBe(reformatHtml(res1));
     });
 
@@ -32,7 +32,27 @@ describe.only('test div flattener', () => {
       </div>`
       ;
 
-    test("changes background from white to red", () => {
+    test("removes an outer layer div element", () => {
         expect(reformatHtml(flatten(div2))).toBe(reformatHtml(res2));
+    });
+
+    const div3 = `
+    <div>
+    <div>
+    <div style="background-color: #FFFFFF;">
+      Hello
+    </div>
+    </div>
+    </div>`
+      ;
+
+    const res3 = `
+      <div style="background-color: #FFFFFF;">
+        Hello
+      </div>`
+      ;
+
+    test.only("removes an inner layer div element", () => {
+        expect(reformatHtml(flatten(div3))).toBe(reformatHtml(res3));
     });
 });
