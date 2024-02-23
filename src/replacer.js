@@ -1,5 +1,5 @@
 import { extractId } from "./extractor";
-const { JSDOM } = require('jsdom');
+import { JSDOM } from 'jsdom';
 import { v4 as uuidv4 } from 'uuid';
 import { isFullHtml } from "./checkHtml";
 
