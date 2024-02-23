@@ -130,4 +130,52 @@ describe('test div flattener', () => {
     test("removes nested divs for whole document", () => {
         expect(reformatHtml(flatten(div5))).toBe(reformatHtml(res5));
     });
+
+    const div6 = `
+        <div>
+            <div>
+            <p>Hello</p>
+            <div><span>World</span></div>
+            </div>
+        </div>
+    `;
+
+    const res6 = `
+        <div>
+            <p>Hello</p>
+            <div><span>World</span></div>
+        </div>
+    `;
+
+    test("removes nested divs for multiple elements in div", () => {
+        expect(reformatHtml(flatten(div6))).toBe(reformatHtml(res6));
+    });
+
+    const div7 = `
+        <div>
+            <div>
+            <div>
+                <p>Hello</p>
+            </div>
+            <div>
+                <span>World</span>
+            </div>
+            </div>
+        </div>
+        `;
+
+    const res7 = `
+        <div>
+        <div>
+            <p>Hello</p>
+            </div>
+            <div>
+            <span>World</span>
+            </div>
+        </div>
+        `;
+
+    test("removes nested divs for multiple elements in div", () => {
+        expect(reformatHtml(flatten(div7))).toBe(reformatHtml(res7));
+    });
 });
