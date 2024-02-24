@@ -34,6 +34,6 @@ describe('test id extractor', () => {
       `;
 
     test('extracts both ids from html with empty types', () => {
-      expect(extractId(div2)).toEqual(res1);
+      expect(extractId(div3)).toEqual(res1);
     });
 });
