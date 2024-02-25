@@ -109,9 +109,7 @@ describe('test div flattener', () => {
       ;
 
     const res5 = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
+        <!DOCTYPE html><html lang="en"><head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Unnecessary Nested Divs Example</title>
@@ -122,8 +120,7 @@ describe('test div flattener', () => {
             <p>Hello</p>
         </div>
 
-        </body>
-        </html>`
+        </body></html>`
     ;
 
 

@@ -1,9 +1,14 @@
 const { JSDOM } = require('jsdom');
+import { isFullHtml } from "./checkHtml";
+
+let full;
 
 export function flatten(html) {
 
     let loop = true;
     let bodyLen = null;
+
+    full = isFullHtml(html);
 
     do {
         html = flattenLayer(html);
@@ -30,5 +35,7 @@ function flattenLayer(html) {
         }
     });
 
-    return body.innerHTML;
+    console.log(full);
+
+    return full ? dom.serialize() : body.innerHTML;
 }
