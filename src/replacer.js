@@ -1,17 +1,21 @@
 import { extractId } from "./extractor";
 const { JSDOM } = require('jsdom');
 import { v4 as uuidv4 } from 'uuid';
+import { isFullHtml } from "./checkHtml";
+
+let full;
 
 export function replaceId(html) {
+    full = isFullHtml(html);
     const ids = new Set(...[extractId(html)]);
     return Array.from(ids).reduce(replaceIdsWithValues, html);
 }
 
 function replaceIdsWithValues (html, id) {
     const dom = new JSDOM(html);
-    const document = dom.window.document;
+    const body = dom.window.document.body;
 
-    const f24IdElements = Array.from(document.querySelectorAll('[data-f24-id]'))
+    const f24IdElements = Array.from(body.querySelectorAll('[data-f24-id]'))
         .filter((element) => element.getAttribute('data-f24-id') === id);
 
     if (f24IdElements.length <= 1)
@@ -22,5 +26,5 @@ function replaceIdsWithValues (html, id) {
             element.setAttribute('data-f24-id', uuidv4())
     });
 
-    return dom.serialize();
+    return full ? dom.serialize() : body.innerHTML;
 }
