@@ -35,7 +35,5 @@ function flattenLayer(html) {
         }
     });
 
-    console.log(full);
-
     return full ? dom.serialize() : body.innerHTML;
 }
