@@ -31,7 +31,19 @@ function flattenLayer(html) {
     divElements.forEach((div) => {
         if (div.childElementCount === 1 && div.children[0].tagName === 'DIV' && div.attributes.length === 0) {
             const child = div.children[0].cloneNode(true);
-            div.parentNode.replaceChild(child, div);
+
+            if (div.attributes.length === 0)
+                div.parentNode.replaceChild(child, div);
+            else if (child.attributes.length === 0) {
+                const parentAttributes = div.getAttributeNames();
+
+                parentAttributes.forEach(attr => {
+                    child.setAttribute(attr, div.getAttribute(attr));
+                });
+
+                div.parentNode.replaceChild(child, div);
+            }
+                
         }
     });
 
