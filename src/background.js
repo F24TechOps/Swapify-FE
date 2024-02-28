@@ -4,11 +4,10 @@ const { JSDOM } = jsdom
 
 // const filepath = `src/microsite.html`
 
-function updateHtmlContent(filepath, updates) {
-  const data = fs.readFileSync(filepath, "utf8");
+function updateHtmlContent(oldFilepath, updates, newFilepath) {
+  const data = fs.readFileSync(oldFilepath, "utf8");
   const dom = new JSDOM(data);
   const document = dom.window.document;
-//   console.log(data.includes(updates.colors.background), '<-- STYLE')
 
   // Update colors
   if (updates.colors) {
@@ -35,6 +34,13 @@ function updateHtmlContent(filepath, updates) {
   }
 
   const updatedHtml = document.body.innerHTML;
+
+  try {
+  fs.writeFileSync(newFilepath, updatedHtml)
+  } catch (err) {
+    console.log(err)
+  }
+
   console.log(updatedHtml, '<-- UPDATED HTML')
   return updatedHtml;
 }

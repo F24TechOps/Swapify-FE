@@ -20,7 +20,7 @@ describe("test snippet change", () => {
   };
 
   test("changes background from blue to red", () => {
-    const updatedHtmlContent = updateHtmlContent(`src/microsite.html`, updates);
+    const updatedHtmlContent = updateHtmlContent(`src/microsite.html`, updates, `src/${Date.now()}-updated-microsite.html`);
     const dom = new JSDOM(updatedHtmlContent);
     const document = dom.window.document;
     const updatedElement = document.querySelector(".clearfix");
@@ -28,7 +28,7 @@ describe("test snippet change", () => {
     expect(updatedElement.style.backgroundColor).toBe("rgb(224, 70, 59)");
   });
   test("changes font from open sans to fantasy", () => {
-    const updatedHtmlContent = updateHtmlContent(`src/microsite.html`, updates);
+    const updatedHtmlContent = updateHtmlContent(`src/microsite.html`, updates, `src/${Date.now()}-updated-microsite`);
     const dom = new JSDOM(updatedHtmlContent);
     const document = dom.window.document;
     const updatedElement = document.getElementsByTagName("p");
@@ -40,7 +40,7 @@ describe("test snippet change", () => {
     }
   });
   test("changes logo src", () => {
-    const updatedHtmlContent = updateHtmlContent(`src/microsite.html`, updates);
+    const updatedHtmlContent = updateHtmlContent(`src/microsite.html`, updates, `src/${Date.now()}-updated-microsite`);
     const dom = new JSDOM(updatedHtmlContent);
     const document = dom.window.document;
     const updatedElement = document.querySelectorAll(".logo");

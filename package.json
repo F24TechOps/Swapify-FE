@@ -16,14 +16,6 @@
     "url": "https://github.com/ellaycodes/onboarding-automation/issues"
   },
   "homepage": "https://github.com/ellaycodes/onboarding-automation#readme",
-<<<<<<< HEAD
-=======
-  "dependencies": {
-    "dompurify": "^3.0.9",
-    "jest": "^29.7.0",
-    "jsdom": "^24.0.0"
-  },
->>>>>>> 9e3663413893e948018e38258f308ae88ba572de
   "devDependencies": {
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.23.9",
@@ -33,6 +25,8 @@
   },
   "dependencies": {
     "jsdom": "^24.0.0",
-    "punycode": "^2.3.1"
+    "punycode": "^2.3.1",
+    "dompurify": "^3.0.9",
+    "jest": "^29.7.0"
   }
 }
