@@ -2,7 +2,7 @@ import { runAll } from '../../src/runAll';
 import { reformatHtml } from '.././helpers/testfunctions';
  
 describe('test div flattener works with id replacer', () => {
-    const div3 = `
+    const div1 = `
     <div style="text-align: center;">&nbsp;</div>
     <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
     <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e12"></div>
@@ -14,6 +14,40 @@ describe('test div flattener works with id replacer', () => {
       `;
 
     test('should not edit html with no duplicate id or layers', () => {
-        expect(reformatHtml(runAll(div3, {flatten: true, replaceId: true}))).toBe(reformatHtml(div3))
+        expect(reformatHtml(runAll(div1, {flatten: true, replaceId: true}))).toBe(reformatHtml(div1))
+    })
+
+    const div2 = `
+    <div style="text-align: center;">&nbsp;</div>
+    <div>
+    <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+    </div>
+    <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+    <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+    <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e44"></div>
+    <div>
+    <div>
+    <div>
+    <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+    </div>
+    </div>
+    </div>
+    <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+    <div>&nbsp;</div>
+      `;
+
+    const div3 = `
+      <div style="text-align: center;">&nbsp;</div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e44"></div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e41"></div>
+      <div>&nbsp;</div>
+        `;
+
+    test('should only flatten the html', () => {
+        expect(reformatHtml(runAll(div2, {flatten: true, replaceId: false}))).toBe(reformatHtml(div3))
     })
 });
