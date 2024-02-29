@@ -57,7 +57,15 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeFontFamily(allUpdatesObj);
 
-  // Update images
+  // Update logos
+  // if (allUpdatesObj.logos) {
+  //   const logoElement = document.querySelectorAll(allUpdatesObj.logos.selector);
+  //   logoElement.forEach((logo) => {
+  //     logo.src = allUpdatesObj.logos.newLogoUrl;
+  //     console.log(logo.src, "<< LOGO");
+  //   });
+  // }
+
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
 
@@ -151,7 +159,7 @@ export function updateHtmlContent(html, allUpdatesObj) {
 //       },
 //   },
   
-// };
+// // };
 
 // updateHtmlContent(
 //   `src/microsite.html`,
@@ -159,4 +167,4 @@ export function updateHtmlContent(html, allUpdatesObj) {
 //   `src/${Date.now()}-updated-microsite.html`
 // );
 
-// module.exports = { updateHtmlContent };
+// module.exports = { updateHtmlContent }
