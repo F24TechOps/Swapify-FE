@@ -1,5 +1,6 @@
 import { runAll } from '../../src/runAll';
 import { reformatHtml } from '.././helpers/testfunctions';
+import { extractId } from '../../src/extractor';
  
 describe('test div flattener works with id replacer', () => {
     const div1 = `
@@ -49,5 +50,20 @@ describe('test div flattener works with id replacer', () => {
 
     test('should only flatten the html', () => {
         expect(reformatHtml(runAll(div2, {flatten: true, replaceId: false}))).toBe(reformatHtml(div3))
+    })
+
+    test('should only flatten and replace ids the html', () => {
+
+        const newDiv = reformatHtml(runAll(div2, {flatten: true, replaceId: true}));
+
+        expect(newDiv).toHaveLength(reformatHtml(div1).length);
+
+        const ids = extractId(newDiv);
+
+        expect(ids).toHaveLength(6);
+
+        const uniqueIds = Array.from(new Set(...[ids]));
+
+        expect(uniqueIds).toHaveLength(6);
     })
 });
