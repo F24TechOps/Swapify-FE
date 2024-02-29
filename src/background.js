@@ -2,8 +2,6 @@ const fs = require("fs");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-// const filepath = `src/microsite.html`
-
 function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
   const data = fs.readFileSync(oldFilepath, "utf8");
   const dom = new JSDOM(data);
@@ -16,12 +14,18 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
     for (const colorType in allUpdatesObj.backgroundColors) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
+
+        if (element.getAttribute("data-background-updated") === "true") {
+          continue;
+      }
   
         if (
           dom.window.getComputedStyle(element, null).backgroundColor ===
           allUpdatesObj.backgroundColors[colorType].oldBackground
         ) {
+          
           element.style.backgroundColor = allUpdatesObj.backgroundColors[colorType].newBackground;
+          element.setAttribute("data-background-updated", "true");
         }
       }
     }
@@ -33,23 +37,6 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
   );
 
   // Update fonts
-  // function applyFontRecursively(element, fontFamily) {
-  //   element.style.fontFamily = fontFamily;
-  //   element.childNodes.forEach((child) => {
-  //     if (child.nodeType === Node.ELEMENT_NODE) {
-  //       applyFontRecursively(child, fontFamily);
-  //     }
-  //   });
-  // }
-  // if (allUpdatesObj.fonts && data.includes(allUpdatesObj.fonts.selector)) {
-  //   document
-  //     .querySelectorAll(allUpdatesObj.fonts.selector)
-  //     .forEach((element) => {
-  //       applyFontRecursively(element, allUpdatesObj.fonts.fontFamily);
-  //       console.log(element.style.fontFamily, "<< FONTS");
-  //     });
-  // }
-
   function changeFontFamily(allUpdatesObj) {
     const allElements = document.getElementsByTagName("p");
 
@@ -73,14 +60,6 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
   );
 
   // Update logos
-  // if (allUpdatesObj.logos) {
-  //   const logoElement = document.querySelectorAll(allUpdatesObj.logos.selector);
-  //   logoElement.forEach((logo) => {
-  //     logo.src = allUpdatesObj.logos.newLogoUrl;
-  //     console.log(logo.src, "<< LOGO");
-  //   });
-  // }
-
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
 
@@ -113,22 +92,6 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
   return updatedHtml;
 }
 
-const updatesObj = {
-  colors: {
-    background: ".clearfix",
-    color: "rgb(224, 70, 59)",
-  },
-  fonts: {
-    selector: "p",
-    fontFamily: "Garamond, sans-serif",
-  },
-  logos: {
-    selector: "a img",
-    newLogoUrl:
-      "https://cdn.freebiesupply.com/logos/large/2x/nike-4-logo-png-transparent.png",
-  },
-};
-
 const allUpdatesObj = {
   backgroundColors: {
     color1: {
@@ -136,8 +99,8 @@ const allUpdatesObj = {
       newBackground: "rgb(224, 70, 59)",
     },
     color2: {
-      oldBackground: "rgb(41, 105, 176)",
-      newBackground: "#cc9a05",
+      oldBackground: "rgb(224, 70, 59)",
+      newBackground: "rgb(25, 4, 199)",
     },
     color3: {
       oldBackground: "rgb(0, 167, 192)",
