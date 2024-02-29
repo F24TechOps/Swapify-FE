@@ -14,12 +14,18 @@ export function updateHtmlContent(html, allUpdatesObj) {
     for (const colorType in allUpdatesObj.backgroundColors) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
+
+        if (element.getAttribute("data-background-updated") === "true") {
+          continue;
+      }
   
         if (
           dom.window.getComputedStyle(element, null).backgroundColor ===
           allUpdatesObj.backgroundColors[colorType].oldBackground
         ) {
+          
           element.style.backgroundColor = allUpdatesObj.backgroundColors[colorType].newBackground;
+          element.setAttribute("data-background-updated", "true");
         }
       }
     }
@@ -31,23 +37,6 @@ export function updateHtmlContent(html, allUpdatesObj) {
   );
 
   // Update fonts
-  // function applyFontRecursively(element, fontFamily) {
-  //   element.style.fontFamily = fontFamily;
-  //   element.childNodes.forEach((child) => {
-  //     if (child.nodeType === Node.ELEMENT_NODE) {
-  //       applyFontRecursively(child, fontFamily);
-  //     }
-  //   });
-  // }
-  // if (allUpdatesObj.fonts && data.includes(allUpdatesObj.fonts.selector)) {
-  //   document
-  //     .querySelectorAll(allUpdatesObj.fonts.selector)
-  //     .forEach((element) => {
-  //       applyFontRecursively(element, allUpdatesObj.fonts.fontFamily);
-  //       console.log(element.style.fontFamily, "<< FONTS");
-  //     });
-  // }
-
   function changeFontFamily(allUpdatesObj) {
     const allElements = document.getElementsByTagName("p");
 
@@ -71,14 +60,6 @@ export function updateHtmlContent(html, allUpdatesObj) {
   );
 
   // Update logos
-  // if (allUpdatesObj.logos) {
-  //   const logoElement = document.querySelectorAll(allUpdatesObj.logos.selector);
-  //   logoElement.forEach((logo) => {
-  //     logo.src = allUpdatesObj.logos.newLogoUrl;
-  //     console.log(logo.src, "<< LOGO");
-  //   });
-  // }
-
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
 
@@ -173,7 +154,7 @@ export function updateHtmlContent(html, allUpdatesObj) {
 //       },
 //   },
   
-// };
+// // };
 
 // updateHtmlContent(
 //   `src/microsite.html`,
@@ -181,4 +162,4 @@ export function updateHtmlContent(html, allUpdatesObj) {
 //   `src/${Date.now()}-updated-microsite.html`
 // );
 
-// module.exports = { updateHtmlContent };
+// module.exports = { updateHtmlContent }
