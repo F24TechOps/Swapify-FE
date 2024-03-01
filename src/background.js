@@ -17,24 +17,21 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
 
         if (element.getAttribute("data-background-updated") === "true") {
           continue;
-      }
-  
+        }
+
         if (
           dom.window.getComputedStyle(element, null).backgroundColor ===
           allUpdatesObj.backgroundColors[colorType].oldBackground
         ) {
-          
-          element.style.backgroundColor = allUpdatesObj.backgroundColors[colorType].newBackground;
+          element.style.backgroundColor =
+            allUpdatesObj.backgroundColors[colorType].newBackground;
           element.setAttribute("data-background-updated", "true");
         }
       }
     }
-
   }
 
-  changeBackgroundColour(
-    allUpdatesObj
-  );
+  changeBackgroundColour(allUpdatesObj);
 
   // Update fonts
   function changeFontFamily(allUpdatesObj) {
@@ -43,43 +40,46 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
     for (const fontType in allUpdatesObj.fontFamily) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
-  
+
         if (
-          dom.window.getComputedStyle(element, null).fontFamily.includes(
-          allUpdatesObj.fontFamily[fontType].oldFontFamily)
+          dom.window
+            .getComputedStyle(element, null)
+            .fontFamily.includes(
+              allUpdatesObj.fontFamily[fontType].oldFontFamily
+            )
         ) {
-          element.style.fontFamily = allUpdatesObj.fontFamily[fontType].newFontFamily;
+          element.style.fontFamily =
+            allUpdatesObj.fontFamily[fontType].newFontFamily;
         }
       }
     }
-
   }
 
-  changeFontFamily(
-    allUpdatesObj
-  );
+  changeFontFamily(allUpdatesObj);
 
-  // Update logos
+  // Update images
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
 
     for (const imgType in allUpdatesObj.images) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
-  
-        if (
-          element.src === allUpdatesObj.images[imgType].oldImageSrc)
-         {
+
+        if (element.src === allUpdatesObj.images[imgType].oldImageSrc) {
           element.src = allUpdatesObj.images[imgType].newImageSrc;
         }
+        element.style.objectFit = "cover";
+
+        let adjacentDivHeight =
+          element.closest(".col-md-100pc").nextElementSibling.offsetHeight;
+        element.style.height = `${adjacentDivHeight}px`;
+        // Maintain the full width of the image container
+        element.style.width = "100%";
       }
     }
-
   }
 
-  changeImgSrc(
-    allUpdatesObj
-  );
+  changeImgSrc(allUpdatesObj);
 
   const updatedHtml = document.body.innerHTML;
 
@@ -126,20 +126,25 @@ const allUpdatesObj = {
     },
   },
   images: {
-      img1: {
-        oldImageSrc: "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16748/images/grey4.jpg",
-        newImageSrc: "https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg",
-      },
-      img2: {
-        oldImageSrc: "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16748/images/textured_dark_grey_dg_foil_27.png",
-        newImageSrc: "https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg",
-      },
-      img3: {
-        oldImageSrc: "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16748/images/f24-l.png",
-        newImageSrc: "https://cdn.freebiesupply.com/logos/large/2x/nike-4-logo-png-transparent.png",
-      },
+    img1: {
+      oldImageSrc:
+        "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16748/images/grey4.jpg",
+      newImageSrc:
+        "https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg",
+    },
+    img2: {
+      oldImageSrc:
+        "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16748/images/textured_dark_grey_dg_foil_27.png",
+      newImageSrc:
+        "https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg",
+    },
+    img3: {
+      oldImageSrc:
+        "https://s3.eu-west-2.amazonaws.com/force24-assets/Microsites/ab1ab55c-de0b-4171-ae5e-0161fe7ef607/16748/images/f24-l.png",
+      newImageSrc:
+        "https://cdn.freebiesupply.com/logos/large/2x/nike-4-logo-png-transparent.png",
+    },
   },
-  
 };
 
 updateHtmlContent(
