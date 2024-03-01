@@ -31,4 +31,19 @@ describe('read and write tests', () => {
 
         expect(uniqueIds).toHaveLength(6);
     });
+
+    test("full html edits", () => {
+        readAndRun('./test/testHtmls/loremInput.html', tempFilePath, {flatten: true, replaceId: true});
+        const outputHtml = readFile(tempFilePath);
+
+        expect(outputHtml).toMatch(new RegExp(`^<!DOCTYPE html>?`))
+
+        const ids = extractId(outputHtml);
+
+        expect(ids).toHaveLength(36);
+
+        const uniqueIds = Array.from(new Set(...[ids]));
+
+        expect(uniqueIds).toHaveLength(36);
+    });
 });
