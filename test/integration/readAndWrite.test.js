@@ -31,6 +31,7 @@ describe('read and write tests', () => {
 
         expect(uniqueIds).toHaveLength(6);
     });
+    
     test("full html edits", () => {
         readAndRun('./test/testHtmls/loremInput.html', tempFilePath, {flatten: true, replaceId: true});
         const outputHtml = readFile(tempFilePath);
