@@ -109,9 +109,7 @@ describe('test div flattener', () => {
       ;
 
     const res5 = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
+        <!DOCTYPE html><html lang="en"><head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Unnecessary Nested Divs Example</title>
@@ -122,8 +120,7 @@ describe('test div flattener', () => {
             <p>Hello</p>
         </div>
 
-        </body>
-        </html>`
+        </body></html>`
     ;
 
 
@@ -131,7 +128,7 @@ describe('test div flattener', () => {
         expect(reformatHtml(flatten(div5))).toBe(reformatHtml(res5));
     });
 
-    const div6 = `
+    const div8 = `
         <div>
             <div>
             <p>Hello</p>
@@ -140,7 +137,7 @@ describe('test div flattener', () => {
         </div>
     `;
 
-    const res6 = `
+    const res8 = `
         <div>
             <p>Hello</p>
             <div><span>World</span></div>
@@ -148,7 +145,7 @@ describe('test div flattener', () => {
     `;
 
     test("removes nested divs for multiple elements in div", () => {
-        expect(reformatHtml(flatten(div6))).toBe(reformatHtml(res6));
+        expect(reformatHtml(flatten(div8))).toBe(reformatHtml(res8));
     });
 
     const div7 = `
@@ -177,5 +174,23 @@ describe('test div flattener', () => {
 
     test("removes nested divs for multiple elements in div", () => {
         expect(reformatHtml(flatten(div7))).toBe(reformatHtml(res7));
+    });
+
+    const div6 = `
+      <div style="background-color: #FFFFFF;">
+      <div>
+        Hello
+      </div>
+      </div>`
+      ;
+
+    const res6 = `
+      <div style="background-color: #FFFFFF;">
+        Hello
+      </div>`
+      ;
+
+    test("tests div where attributes are on outer div", () => {
+        expect(reformatHtml(flatten(div6))).toBe(reformatHtml(res6));
     });
 });

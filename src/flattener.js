@@ -1,9 +1,14 @@
 const { JSDOM } = require('jsdom');
+import { isFullHtml } from "./checkHtml";
+
+let full;
 
 export function flatten(html) {
 
     let loop = true;
     let bodyLen = null;
+
+    full = isFullHtml(html);
 
     do {
         html = flattenLayer(html);
@@ -26,9 +31,21 @@ function flattenLayer(html) {
     divElements.forEach((div) => {
         if (div.childElementCount === 1 && div.children[0].tagName === 'DIV') {
             const child = div.children[0].cloneNode(true);
-            div.parentNode.replaceChild(child, div);
+
+            if (div.attributes.length === 0)
+                div.parentNode.replaceChild(child, div);
+            else if (child.attributes.length === 0) {
+                const parentAttributes = div.getAttributeNames();
+
+                parentAttributes.forEach(attr => {
+                    child.setAttribute(attr, div.getAttribute(attr));
+                });
+
+                div.parentNode.replaceChild(child, div);
+            }
+                
         }
     });
 
-    return body.innerHTML;
+    return full ? dom.serialize() : body.innerHTML;
 }
