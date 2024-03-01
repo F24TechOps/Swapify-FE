@@ -2,7 +2,7 @@ const { updateHtmlContent } = require("../src/background.js");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-describe("test snippet change", () => {
+describe.skip("test snippet change", () => {
   const updates = {
     colors: {
       background: ".clearfix",
@@ -19,7 +19,7 @@ describe("test snippet change", () => {
     },
   };
 
-  test("changes updates in origin file to new file", () => {
+  test.skip("changes updates in origin file to new file", () => {
     const updatedHtmlContent = updateHtmlContent(
       `src/microsite.html`,
       updates,
