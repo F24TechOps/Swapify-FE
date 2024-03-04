@@ -1,5 +1,5 @@
-const { JSDOM } = require('jsdom');
-import { isFullHtml } from "./checkHtml";
+import { JSDOM } from 'jsdom';
+import { isFullHtml } from "./checkHtml.js";
 
 let full;
 
@@ -29,21 +29,9 @@ function flattenLayer(html) {
     const divElements = body.querySelectorAll('div');
 
     divElements.forEach((div) => {
-        if (div.childElementCount === 1 && div.children[0].tagName === 'DIV') {
+        if (div.childElementCount === 1 && div.children[0].tagName === 'DIV' && div.attributes.length === 0) {
             const child = div.children[0].cloneNode(true);
-
-            if (div.attributes.length === 0)
-                div.parentNode.replaceChild(child, div);
-            else if (child.attributes.length === 0) {
-                const parentAttributes = div.getAttributeNames();
-
-                parentAttributes.forEach(attr => {
-                    child.setAttribute(attr, div.getAttribute(attr));
-                });
-
-                div.parentNode.replaceChild(child, div);
-            }
-                
+            div.parentNode.replaceChild(child, div);
         }
     });
 

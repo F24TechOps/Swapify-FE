@@ -1,6 +1,5 @@
-const { updateHtmlContent } = require("../src/background.js");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+import { updateHtmlContent } from "../src/background.js";
+import { JSDOM } from "jsdom";
 
 describe.skip("test snippet change", () => {
   const updates = {

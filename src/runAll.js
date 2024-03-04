@@ -1,6 +1,7 @@
-import { flatten } from "./flattener";
-import { replaceId } from "./replacer";
-const fs = require('fs');
+import { flatten } from "./flattener.js";
+import { replaceId } from "./replacer.js";
+import { updateHtmlContent } from "./background.js";
+import fs from 'fs';
 
 export function runAll (html, selections) {
     if (selections.flatten)
@@ -8,6 +9,9 @@ export function runAll (html, selections) {
 
     if (selections.replaceId)
         html = replaceId(html);
+
+    if (selections.update)
+        html = updateHtmlContent(html, selections.update)
 
     return html;
 }

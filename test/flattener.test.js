@@ -175,22 +175,4 @@ describe('test div flattener', () => {
     test("removes nested divs for multiple elements in div", () => {
         expect(reformatHtml(flatten(div7))).toBe(reformatHtml(res7));
     });
-
-    const div6 = `
-      <div style="background-color: #FFFFFF;">
-      <div>
-        Hello
-      </div>
-      </div>`
-      ;
-
-    const res6 = `
-      <div style="background-color: #FFFFFF;">
-        Hello
-      </div>`
-      ;
-
-    test("tests div where attributes are on outer div", () => {
-        expect(reformatHtml(flatten(div6))).toBe(reformatHtml(res6));
-    });
 });
