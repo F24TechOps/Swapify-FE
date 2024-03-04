@@ -1,4 +1,4 @@
-const { JSDOM } = require('jsdom');
+import { JSDOM } from 'jsdom';
 
 export function extractId(html) {
     const dom = new JSDOM(html);

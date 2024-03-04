@@ -1,7 +1,7 @@
-import { extractId } from "./extractor";
+import { extractId } from "./extractor.js";
 import { JSDOM } from 'jsdom';
 import { v4 as uuidv4 } from 'uuid';
-import { isFullHtml } from "./checkHtml";
+import { isFullHtml } from "./checkHtml.js";
 
 let full;
 

@@ -1,6 +1,6 @@
-const tmp = require('tmp');
-const { readAndRun, readFile } = require('../../src/runAll');
-const { reformatHtml } = require('../helpers/testfunctions');
+import tmp from 'tmp';
+import { readAndRun, readFile } from '../../src/runAll';
+import { reformatHtml } from '../helpers/testfunctions';
 import { extractId } from '../../src/extractor';
 
 describe('read and write tests', () => {
