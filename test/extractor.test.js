@@ -46,7 +46,29 @@ describe("test background extractor", () => {
       <div>&nbsp;</div>
         `;
 
-      test('extracts yellow background', () => {
-        expect(extractBackgrounds(div1)).toEqual(['rgb(255, 255, 0)']);
-      });
+    test('extracts yellow background', () => {
+      expect(extractBackgrounds(div1)).toEqual(['rgb(255, 255, 0)']);
+    });
+
+    const div2 = `
+      <div style="background-color: yellow; text-align: center;">&nbsp;</div>
+      <div style="background-color: #123456;" align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e4c"></div>
+      <div align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facaddd11111"></div>
+      <div>&nbsp;</div>
+        `;
+
+    test('extracts 2 colours', () => {
+      expect(extractBackgrounds(div2)).toEqual(['rgb(255, 255, 0)', 'rgb(18, 52, 86)']);
+    });
+
+    const div3 = `
+      <div style="background-color: yellow; text-align: center;">&nbsp;</div>
+      <div style="background-color: #123456;" align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e4c"></div>
+      <div style="background-color: rgb(255, 255, 0);" align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facaddd11111"></div>
+      <div>&nbsp;</div>
+        `;
+
+    test('duplicates are removed', () => {
+      expect(extractBackgrounds(div3)).toEqual(['rgb(255, 255, 0)', 'rgb(18, 52, 86)']);
+    });
 })

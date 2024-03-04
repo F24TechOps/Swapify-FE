@@ -19,5 +19,5 @@ export function extractBackgrounds(html) {
         return dom.window.getComputedStyle(element, null).backgroundColor;
     })
     
-    return allBackgrounds.filter(colour => colour !== 'rgba(0, 0, 0, 0)');
+    return Array.from(new Set(...[allBackgrounds.filter(colour => colour !== 'rgba(0, 0, 0, 0)')]));
 }
