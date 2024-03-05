@@ -9,15 +9,19 @@ export function extractId(html) {
     return Array.from(f24IdElements).map((element) => element.getAttribute('data-f24-id'));
 }
 
-export function extractBackgrounds(html) {
+export const extractBackgrounds = (html) => extractFeature(html, 'backgroundColor', 'rgba(0, 0, 0, 0)');
+
+export const extractFonts = (html) => extractFeature(html, 'fontFamily', '');
+
+function extractFeature(html, feature, nonExistent) {
     const dom = new JSDOM(html);
     const document = dom.window.document;
 
     const allElements = Array.from(document.getElementsByTagName("div"));
 
     const allBackgrounds = allElements.map((element) => {
-        return dom.window.getComputedStyle(element, null).backgroundColor;
+        return dom.window.getComputedStyle(element, null)[feature];
     })
     
-    return Array.from(new Set(...[allBackgrounds.filter(colour => colour !== 'rgba(0, 0, 0, 0)')]));
+    return Array.from(new Set(...[allBackgrounds])).filter(a => a !== nonExistent);
 }

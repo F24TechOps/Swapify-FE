@@ -3,8 +3,8 @@ import { readAndRun } from "./runAll.js";
 const update = {
   backgroundColors: {
     color1: {
-      oldBackground: "rgb(25, 4, 199)",
-      newBackground: "rgb(224, 70, 59)",
+      oldBackground: "rgb(81, 142, 206)",
+      newBackground: "rgb(255, 0, 0)",
     },
     color2: {
       oldBackground: "rgb(41, 105, 176)",
@@ -25,12 +25,8 @@ const update = {
   },
   fontFamily: {
     font1: {
-      oldFontFamily: "Arial",
+      oldFontFamily: "arial, helvetica, sans-serif",
       newFontFamily: "Garamond",
-    },
-    font2: {
-      oldFontFamily: "sans-serif",
-      newFontFamily: "Courier New",
     },
   },
   images: {
@@ -51,4 +47,4 @@ const update = {
 
 const selections = {replaceId: true, flatten: true, update};
 
-readAndRun('./.env/microsite.html', './.env/output.html', selections);
+readAndRun('./.env/email.html', './.env/outputemail.html', selections);

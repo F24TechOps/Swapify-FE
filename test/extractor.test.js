@@ -1,4 +1,4 @@
-import { extractBackgrounds, extractId } from '../src/extractor';
+import { extractBackgrounds, extractId, extractFonts } from '../src/extractor';
  
 describe('test id extractor', () => {
     const div1 = `
@@ -72,3 +72,16 @@ describe("test background extractor", () => {
       expect(extractBackgrounds(div3)).toEqual(['rgb(255, 255, 0)', 'rgb(18, 52, 86)']);
     });
 })
+
+describe("test font extractor", () => {
+  const div1 = `
+    <div style="font-family: arial, helvetica, sans-serif; text-align: center;">&nbsp;</div>
+    <div style="font-family:comic sans ms;" align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facadddc3e4c"></div>
+    <div style="font-family:arial, helvetica, sans-serif;" align="center"><img src="" alt="Image" name="Image1" border="0" data-f24-editable="" data-f24-display-name="ImageName" data-f24-src-source-type="file" data-f24-id="fc76a7bd-0640-4690-a57b-facaddd11111"></div>
+    <div>&nbsp;</div>
+      `;
+
+  test('extracts yellow background', () => {
+    expect(extractFonts(div1)).toEqual(['arial, helvetica, sans-serif', 'comic sans ms']);
+  });
+});
