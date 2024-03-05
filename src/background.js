@@ -67,14 +67,19 @@ function updateHtmlContent(oldFilepath, allUpdatesObj, newFilepath) {
 
         if (element.src === allUpdatesObj.images[imgType].oldImageSrc) {
           element.src = allUpdatesObj.images[imgType].newImageSrc;
-        }
-        element.style.objectFit = "cover";
+          element.style.objectFit = "cover";
+          element.style.width = "100%";
 
-        let adjacentDivHeight =
-          element.closest(".col-md-100pc").nextElementSibling.offsetHeight;
-        element.style.height = `${adjacentDivHeight}px`;
-        // Maintain the full width of the image container
-        element.style.width = "100%";
+          let commonAncestor = element.closest(".container");
+          if (commonAncestor) {
+            let targetDiv = commonAncestor.querySelector(
+              "col-lg-displayblock"
+            );
+            if (targetDiv) {
+              element.style.height = `${targetDiv.offsetHeight}px`; // Set the image height to match the div
+            }
+          }
+        }
       }
     }
   }
