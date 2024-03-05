@@ -47,4 +47,4 @@ const update = {
 
 const selections = {replaceId: true, flatten: true, update};
 
-readAndRun('./.env/email.html', './.env/outputemail.html', selections);
+readAndRun('./src/html/microsite.html', `src/html/updatedmicrosite${Date.now()}.html`, selections);
