@@ -1,4 +1,5 @@
-import { extractBackgrounds, extractId, extractFonts } from '../src/extractor';
+import { extractBackgrounds, extractId, extractFonts, extractImage } from '../src/extractor';
+import { readFile } from '../src/runAll';
  
 describe('test id extractor', () => {
     const div1 = `
@@ -81,7 +82,16 @@ describe("test font extractor", () => {
     <div>&nbsp;</div>
       `;
 
-  test('extracts yellow background', () => {
+  test('extracts fonts', () => {
     expect(extractFonts(div1)).toEqual(['arial, helvetica, sans-serif', 'comic sans ms']);
+  });
+});
+
+describe("test image extractor", () => {
+  const div1 = readFile('./test/testHtmls/logos.html')
+
+  test('extracts logos', () => {
+    expect(extractImage(div1)).toEqual(['https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/6dcc13a2/images/1708348658-9fe8c477.png?v=133541266545545835',
+      'https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/6dcc13a2/images/1708348617-133b1367.png?v=133541266545545835']);
   });
 });
