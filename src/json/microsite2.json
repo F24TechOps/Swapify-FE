@@ -10,7 +10,7 @@
     },
     "Background2": {
       "oldBackground": "rgb(224, 224, 224)",
-      "newBackground": "pink"
+      "newBackground": "yellow"
     }
   },
   "fontFamily": {},
@@ -32,24 +32,16 @@
         "white-space": "normal"
       },
       "newButton": {
-        "background": "orange",
-        "border-color": "orange",
-        "border-radius": "5px",
-        "border-style": "solid",
-        "border-width": "1px",
-        "color": "rgb(255, 255, 255)",
-        "font-family": "Arial",
-        "font-size": "23px",
-        "font-weight": "bold",
-        "padding": "15px 45px",
-        "width": "auto",
-        "white-space": "normal"
+        "background": "rgb(255, 0, 255)",
+        "border-color": "rgb(255, 0, 255)",
+        "border-radius": "10px",
+        "font-family": "comic sans ms"
       }
     },
-    "Button3": {
+    "Button1": {
       "oldButton": {
-        "background": "#00a7c0",
-        "border-color": "rgb(25, 4, 199)",
+        "background": "rgb(0, 167, 192)",
+        "border-color": "rgb(0, 167, 192)",
         "border-radius": "0px",
         "border-style": "solid",
         "border-width": "1px",
@@ -57,23 +49,14 @@
         "font-family": "Arial",
         "font-size": "14px",
         "font-weight": "bold",
-        "padding": "18px 46px",
+        "padding": "10px 35px",
         "width": "auto",
         "white-space": "normal"
       },
       "newButton": {
-        "background": "yellow",
-        "border-color": "rgb(25, 4, 199)",
-        "border-radius": "0px",
-        "border-style": "solid",
-        "border-width": "1px",
-        "color": "rgb(255, 255, 255)",
-        "font-family": "Arial",
-        "font-size": "14px",
-        "font-weight": "bold",
-        "padding": "18px 46px",
-        "width": "auto",
-        "white-space": "normal"
+        "background": "rgb(255, 255, 255)",
+        "border-color": "rgb(255, 255, 255)",
+        "border-radius": "1px"
       }
     }
   }
