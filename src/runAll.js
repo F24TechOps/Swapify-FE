@@ -1,6 +1,6 @@
 import { flatten } from "./flattener.js";
 import { replaceId } from "./replacer.js";
-import { updateHtmlContent } from "./background.js";
+import { updateHtmlContent } from "./templateChange.js";
 import { cleanHtml } from "./cleanup.js";
 import fs from 'fs';
 
