@@ -1,5 +1,5 @@
 import { askQuestion } from "./ui/console.js";
-import { extractBackgrounds, extractFonts, extractImage } from "./extractor.js";
+import { extractBackgrounds, extractButton, extractFonts, extractImage } from "./extractor.js";
 
 const mapFeature = async (feature, idx, featureMapper, type) => {
     const newFeat = await askQuestion(`What do you want to replace ${feature} with?`, feature, type === 'Background');
@@ -10,14 +10,46 @@ const mapFeature = async (feature, idx, featureMapper, type) => {
     }
 }
 
+const mapButton = async (button, idx, buttonMapper) => {
+    console.log('Button Information:')
+    console.log(button);
+
+    const edit = await askQuestion(`Do you want to edit this button? (Press Y or y)`);
+
+    if (edit.toLowerCase() === "y") {
+        const oldButton = JSON.parse(button);
+
+        console.log(oldButton);
+
+        const oldKeys = Object.keys(oldButton)
+
+        console.log(oldKeys);
+
+        const newButton = {};
+
+        for (let i = 0; i < oldKeys.length; i++) {
+            const key = oldKeys[i];
+            console.log(key);
+            const newFeat = await askQuestion(`What do you want to replace the ${key} with? (currently ${oldButton[key]})`, oldButton[key], key === 'background');
+            newButton[key] = newFeat || oldButton[key];
+        }
+
+        buttonMapper[`Button${idx}`] = {};
+        buttonMapper[`Button${idx}`][`oldButton`] = oldButton;
+        buttonMapper[`Button${idx}`][`newButton`] = newButton;
+    }
+}
+
 export async function createMapping(html) {
     const backgrounds = extractBackgrounds(html);
     const fonts = extractFonts(html);
     const images = extractImage(html);
+    const buttons = extractButton(html);
 
     const backgroundMapper = {};
     const fontMapper = {};
     const imageMapper = {};
+    const buttonMapper = {};
 
     for (let idx = 0; idx < backgrounds.length; idx++) {
         await mapFeature(backgrounds[idx], idx, backgroundMapper, 'Background');
@@ -31,5 +63,9 @@ export async function createMapping(html) {
         await mapFeature(images[idx], idx, imageMapper, 'ImageSrc');
     }
 
-    return {backgroundColors: backgroundMapper, fontFamily: fontMapper, images: imageMapper};
+    for (let idx = 0; idx < buttons.length; idx++) {
+        await mapButton(buttons[idx], idx, buttonMapper);
+    }
+
+    return {backgroundColors: backgroundMapper, fontFamily: fontMapper, images: imageMapper, buttons: buttonMapper};
 }
