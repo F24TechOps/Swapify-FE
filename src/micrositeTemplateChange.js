@@ -1,5 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { isFullHtml } from "./checkHtml.js";
+import { getButtonInfo } from './extractor.js';
 // const filepath = `src/microsite.html`
 
 export function updateHtmlContent(html, allUpdatesObj) {
@@ -86,6 +87,26 @@ export function updateHtmlContent(html, allUpdatesObj) {
   // }
 
   // updateAllButtons(allUpdatesObj)
+  // Update Button
+  function changeButton(allUpdatesObj) {
+    const allButtons = document.getElementsByClassName("btn");
+
+    for (const buttonType in allUpdatesObj.buttons) {
+      for (let i = 0; i < allButtons.length; i++) {
+        const element = allButtons[i];
+
+        const info = getButtonInfo(element);
+
+        if (info === JSON.stringify(allUpdatesObj.buttons[buttonType].oldButton, null, 2)) {
+          for (const attribute in allUpdatesObj.buttons[buttonType].newButton) {
+            element.style[attribute] = allUpdatesObj.buttons[buttonType].newButton[attribute];
+          }
+        }
+      }
+    }
+  }
+
+  changeButton(allUpdatesObj);
 
   return full ? dom.serialize() : document.body.innerHTML;
 }
