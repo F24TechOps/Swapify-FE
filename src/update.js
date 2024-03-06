@@ -1,4 +1,5 @@
-import { readAndRun } from "./runAll.js";
+import { extractBackgrounds } from "./extractor.js";
+import { readAndRun, readFile } from "./runAll.js";
 
 const update = {
   backgroundColors: {

@@ -9,11 +9,11 @@ export function extractId(html) {
     return Array.from(f24IdElements).map((element) => element.getAttribute('data-f24-id'));
 }
 
-export const extractBackgrounds = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).backgroundColor, 'rgba(0, 0, 0, 0)', "div");
+export const extractBackgrounds = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).backgroundColor, ['rgba(0, 0, 0, 0)', 'inherit'], "div");
 
-export const extractFonts = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).fontFamily, '', "div");
+export const extractFonts = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).fontFamily, [''], "div");
 
-export const extractImage = (html) => extractFeature(html, (element) => element.src, null, "img");
+export const extractImage = (html) => extractFeature(html, (element) => element.src, [null], "img");
 
 function extractFeature(html, getFeature, nonExistent, tagName) {
     const dom = new JSDOM(html);
@@ -23,5 +23,5 @@ function extractFeature(html, getFeature, nonExistent, tagName) {
 
     const allBackgrounds = allElements.map((element) => getFeature(element, dom))
     
-    return Array.from(new Set(...[allBackgrounds])).filter(a => a !== nonExistent);
+    return Array.from(new Set(...[allBackgrounds])).filter(a => !nonExistent.includes(a));
 }
