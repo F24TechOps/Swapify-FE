@@ -25,3 +25,24 @@ function extractFeature(html, getFeature, nonExistent, tagName) {
     
     return Array.from(new Set(...[allBackgrounds])).filter(a => !nonExistent.includes(a));
 }
+
+export function extractButton(html) {
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
+
+    const allElements = Array.from(document.getElementsByClassName("btn"));
+
+    const allStyles = allElements.map((element) => {
+        const styles = element.getAttribute('style').split(';').filter(str => str.includes(':')).sort();
+        const styleObject = {};
+
+        styles.forEach((style) => {
+            const [key, value] = style.split(':').map(prop => prop.trim());
+            styleObject[key] = value;
+        });
+
+        return JSON.stringify(styleObject, null, 2);
+    })
+
+    return Array.from(new Set(...[allStyles]));
+}
