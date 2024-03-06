@@ -29,6 +29,6 @@ export function readFile (filePath) {
     return fs.readFileSync(filePath, 'utf8');
 };
   
-function writeFile (filePath, data) {
+export function writeFile (filePath, data) {
     fs.writeFileSync(filePath, data, 'utf8');
 };
