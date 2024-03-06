@@ -3,24 +3,36 @@ import { readAndRun } from "./runAll.js";
 const update = {
   backgroundColors: {
     color1: {
-      oldBackground: "rgb(81, 142, 206)",
-      newBackground: "rgb(255, 0, 0)",
+      oldBackground: "rgb(25, 4, 199)",
+      newBackground: "rgb(230, 251, 56)",
     },
     color2: {
-      oldBackground: "rgb(41, 105, 176)",
-      newBackground: "#cc9a05",
+      oldBackground: "rgb(255, 255, 255)",
+      newBackground: "rgb(0, 0, 0)",
     },
     color3: {
-      oldBackground: "rgb(0, 167, 192)",
-      newBackground: "purple",
+      oldBackground: "rgb(33, 32, 32)",
+      newBackground: "rgb(222, 223, 223)",
     },
     color4: {
-      oldBackground: "rgb(50, 72, 152)",
-      newBackground: "green",
+      oldBackground: "rgb(0, 167, 192)",
+      newBackground: "rgb(255, 88, 63)",
     },
     color5: {
+      oldBackground: "rgb(41, 105, 176)",
+      newBackground: "rgb(214, 150, 79)",
+    },
+    color6: {
+      oldBackground: "rgb(21, 50, 150)",
+      newBackground: "rgb(234, 205, 105)",
+    },
+    color7: {
       oldBackground: "rgb(224, 224, 224)",
-      newBackground: "orange",
+      newBackground: "rgb(31, 31, 31)",
+    },
+    color8: {
+      oldBackground: "rgb(50, 72, 152)",
+      newBackground: "rgb(205, 183, 103)",
     },
   },
   fontFamily: {
