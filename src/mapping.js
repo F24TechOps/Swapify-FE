@@ -31,7 +31,8 @@ const mapButton = async (button, idx, buttonMapper) => {
             const key = oldKeys[i];
             console.log(key);
             const newFeat = await askQuestion(`What do you want to replace the ${key} with? (currently ${oldButton[key]})`, oldButton[key], key === 'background');
-            newButton[key] = newFeat || oldButton[key];
+            if (newFeat)
+                newButton[key] = newFeat;
         }
 
         buttonMapper[`Button${idx}`] = {};
