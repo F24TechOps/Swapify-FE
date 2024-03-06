@@ -57,6 +57,7 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeFontFamily(allUpdatesObj);
 
+  // Update Images
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
 
