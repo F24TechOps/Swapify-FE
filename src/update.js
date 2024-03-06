@@ -1,21 +1,22 @@
-import { readAndRun } from "./runAll.js";
+import { extractBackgrounds } from "./extractor.js";
+import { readAndRun, readFile } from "./runAll.js";
 
 const update = {
   backgroundColors: {
     color1: {
-      oldBackground: "rgb(81, 142, 206)",
+      oldBackground: "rgb(25, 4, 199)",
       newBackground: "rgb(255, 0, 0)",
     },
     color2: {
-      oldBackground: "rgb(41, 105, 176)",
+      oldBackground: "rgb(255, 255, 255)",
       newBackground: "#cc9a05",
     },
     color3: {
-      oldBackground: "rgb(0, 167, 192)",
+      oldBackground: "rgb(41, 105, 176)",
       newBackground: "purple",
     },
     color4: {
-      oldBackground: "rgb(50, 72, 152)",
+      oldBackground: "rgb(0, 167, 192)",
       newBackground: "green",
     },
     color5: {
