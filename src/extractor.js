@@ -11,9 +11,9 @@ export function extractId(html) {
 
 export const extractBackgrounds = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).backgroundColor, ['rgba(0, 0, 0, 0)', 'inherit'], "div");
 
-export const extractFonts = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).fontFamily, [''], "div");
+export const extractFonts = (html) => extractFeature(html, (element, dom) => dom.window.getComputedStyle(element, null).fontFamily, [], "div");
 
-export const extractImage = (html) => extractFeature(html, (element) => element.src, [null], "img");
+export const extractImage = (html) => extractFeature(html, (element) => element.src, [], "img");
 
 function extractFeature(html, getFeature, nonExistent, tagName) {
     const dom = new JSDOM(html);
