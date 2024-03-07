@@ -14,23 +14,18 @@ const mapButton = async (button, idx, buttonMapper) => {
     console.log('Button Information:')
     console.log(button);
 
+    const colouredVariables = ['background', 'border-color', 'color'];
+
     const edit = await askQuestion(`Do you want to edit this button? (Press Y or y)`);
 
     if (edit.toLowerCase() === "y") {
         const oldButton = JSON.parse(button);
-
-        console.log(oldButton);
-
         const oldKeys = Object.keys(oldButton)
-
-        console.log(oldKeys);
-
         const newButton = {};
 
         for (let i = 0; i < oldKeys.length; i++) {
             const key = oldKeys[i];
-            console.log(key);
-            const newFeat = await askQuestion(`What do you want to replace the ${key} with? (currently ${oldButton[key]})`, oldButton[key], key === 'background');
+            const newFeat = await askQuestion(`What do you want to replace the ${key} with? (currently ${oldButton[key]})`, oldButton[key], colouredVariables.includes(key));
             if (newFeat)
                 newButton[key] = newFeat;
         }
