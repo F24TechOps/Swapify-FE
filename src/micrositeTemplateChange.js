@@ -1,6 +1,5 @@
 import { JSDOM } from 'jsdom';
 import { isFullHtml } from "./checkHtml.js";
-import { getButtonInfo } from './extractor.js';
 // const filepath = `src/microsite.html`
 
 export function updateHtmlContent(html, allUpdatesObj) {
