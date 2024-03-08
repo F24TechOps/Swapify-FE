@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { isFullHtml } from "./checkHtml.js";
-// const filepath = `src/microsite.html`
+import { normalizeUrl } from './normalizeURL.js';
 
 export function updateHtmlContent(html, allUpdatesObj) {
   const full = isFullHtml(html);
@@ -9,13 +9,19 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   //   Update colors
   function changeBackgroundColour(allUpdatesObj) {
-    const allElements = document.getElementsByTagName("div");
+    const allElements = document.querySelectorAll(`[align="center"]`);
+    // allElements.forEach((element) => console.log(element))
+    // console.log(allElements.length);
 
     for (const colorType in allUpdatesObj.backgroundColors) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
 
         if (element.getAttribute("data-background-updated") === "true") {
+          continue;
+        }
+
+        if (element.hasAttribute("data-f24-editor-cta-button-td")) {
           continue;
         }
 
@@ -33,9 +39,9 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeBackgroundColour(allUpdatesObj);
 
-  // Update fonts
+  // // Update fonts
   function changeFontFamily(allUpdatesObj) {
-    const allElements = document.getElementsByTagName("p");
+    const allElements = document.querySelectorAll("div.width90pc");
 
     for (const fontType in allUpdatesObj.fontFamily) {
       for (let i = 0; i < allElements.length; i++) {
@@ -44,8 +50,8 @@ export function updateHtmlContent(html, allUpdatesObj) {
         if (
           dom.window
             .getComputedStyle(element, null)
-            .fontFamily.includes(
-              allUpdatesObj.fontFamily[fontType].oldFontFamily
+            .fontFamily.toLowerCase().includes(
+              allUpdatesObj.fontFamily[fontType].oldFontFamily.toLowerCase()
             )
         ) {
           element.style.fontFamily =
@@ -57,19 +63,23 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeFontFamily(allUpdatesObj);
 
-  // Update Images
+// Update Images
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
+
 
     for (const imgType in allUpdatesObj.images) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
 
-        if (element.src === allUpdatesObj.images[imgType].oldImageSrc) {
+        let normalURL = normalizeUrl(element.src)
+        let oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageSrc)
+
+        if (normalURL === oldURL) {
           element.src = allUpdatesObj.images[imgType].newImageSrc;
-          if (element.closest('.col-md-displayblock')) {
-            element.closest('.col-md-displayblock').style.alignItems = 'center';
-            console.log(element.closest('.col-md-displayblock').outerHTML)
+          if (element.closest('[data-f24-layout-column-reorder]')) {
+            element.closest('[data-f24-layout-column-reorder]').style.display = 'flex';
+            element.closest('[data-f24-layout-column-reorder]').style.alignItems = 'center'
           }
         }
       }
@@ -77,6 +87,16 @@ export function updateHtmlContent(html, allUpdatesObj) {
   }
 
   changeImgSrc(allUpdatesObj);
+
+  // Update All Buttons
+  // function updateAllButtons(allUpdatesObj) {
+  //   const allElements = document.querySelectorAll('.btn')
+  //   allElements.forEach((element) => {
+  //     element.style = allUpdatesObj.allButtons
+  //   })
+  // }
+
+  // updateAllButtons(allUpdatesObj)
 
   return full ? dom.serialize() : document.body.innerHTML;
 }
