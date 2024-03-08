@@ -1,6 +1,6 @@
 import { flatten } from "./flattener.js";
 import { replaceId } from "./replacer.js";
-import { updateHtmlContent } from "./templateChange.js";
+import { updateHtmlContent } from "./micrositeTemplateChange.js";
 import { cleanHtml } from "./cleanup.js";
 import fs from 'fs';
 
@@ -13,6 +13,7 @@ export function runAll (html, selections) {
 
     if (selections.update)
         html = cleanHtml(updateHtmlContent(html, selections.update));
+    
 
     return html;
 }
