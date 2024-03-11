@@ -38,45 +38,45 @@
   "fontSize": {
     "fontSize1": {
       "oldFontSize": "30px",
-      "newFontSize": "80px"
+      "newFontSize": "30px"
     },
     "fontSize2": {
       "oldFontSize": "18px",
-      "newFontSize": "38px"
+      "newFontSize": "18px"
     },
     "fontSize3": {
       "oldFontSize": "20px",
-      "newFontSize": "40px"
+      "newFontSize": "20px"
     },
     "fontSize4": {
       "oldFontSize": "16px",
-      "newFontSize": "8px"
+      "newFontSize": "16px"
     },
     "fontSize5": {
       "oldFontSize": "14px",
-      "newFontSize": "6px"
+      "newFontSize": "14px"
     },
     "fontSize6": {
       "oldFontSize": "24px",
-      "newFontSize": "44px"
+      "newFontSize": "24px"
     }
   },
   "fontColor": {
     "fontColor1": {
       "oldFontColor": "rgb(23, 18, 212)",
-      "newFontColor": "RGB(232, 237, 43)"
+      "newFontColor": "rgb(232, 237, 43)"
     },
-    "fontSize2": {
-      "oldFontColor": "RGB(28, 28, 28)",
-      "newFontColor": "RGB(227, 227, 227)"
+    "fontColor2": {
+      "oldFontColor": "rgb(28, 28, 28)",
+      "newFontColor": "rgb(227, 227, 227)"
     },
-    "fontSize3": {
-      "oldFontColor": "RGB(164, 164, 164)",
-      "newFontColor": "RGB(91, 91, 91)"
+    "fontColor3": {
+      "oldFontColor": "rgb(164, 164, 164)",
+      "newFontColor": "rgb(91, 91, 91)"
     },
-    "fontSize4": {
-      "oldFontColor": "RGB(255, 255, 255)",
-      "newFontColor": "RGB(0, 0, 0)"
+    "fontColor4": {
+      "oldFontColor": "rgb(255, 255, 255)",
+      "newFontColor": "rgb(0, 0, 0)"
     }
   },
   "images": {
