@@ -58,11 +58,11 @@ export function updateHtmlContent(html, allUpdatesObj) {
       }
     }
 
-    const allFontSize = document.querySelectorAll("div > span");
+    const allText = document.querySelectorAll("div > span, div > span > strong"); 
 
     for (const fontType in allUpdatesObj.fontSize) {
-      for (let i = 0; i < allFontSize.length; i++) {
-        let element = allFontSize[i];
+      for (let i = 0; i < allText.length; i++) {
+        let element = allText[i];
 
         if (
           dom.window
@@ -78,18 +78,19 @@ export function updateHtmlContent(html, allUpdatesObj) {
     }
 
     for (const fontType in allUpdatesObj.fontColor) {
-      for (let i = 0; i < allFontSize.length; i++) {
-        let element = allFontSize[i];
+      for (let i = 0; i < allText.length; i++) {
+        let element = allText[i];
+
+        console.log(allUpdatesObj.fontColor[fontType].newFontColor)
 
         if (
           dom.window
             .getComputedStyle(element, null)
-            .fontColor ===
+            .color ===
               allUpdatesObj.fontColor[fontType].oldFontColor
-            
         ) {
-          element.style.fontColor =
-            allUpdatesObj.fontColor[fontType].newfontColor;
+          element.style.color =
+            allUpdatesObj.fontColor[fontType].newFontColor;
         }
       }
     }
