@@ -35,6 +35,50 @@
       "newFontFamily": "Fantasy"
     }
   },
+  "fontSize": {
+    "fontSize1": {
+      "oldFontSize": "30px",
+      "newFontSize": "80px"
+    },
+    "fontSize2": {
+      "oldFontSize": "18px",
+      "newFontSize": "38px"
+    },
+    "fontSize3": {
+      "oldFontSize": "20px",
+      "newFontSize": "40px"
+    },
+    "fontSize4": {
+      "oldFontSize": "16px",
+      "newFontSize": "8px"
+    },
+    "fontSize5": {
+      "oldFontSize": "14px",
+      "newFontSize": "6px"
+    },
+    "fontSize6": {
+      "oldFontSize": "24px",
+      "newFontSize": "44px"
+    }
+  },
+  "fontColor": {
+    "fontColor1": {
+      "oldFontColor": "rgb(23, 18, 212)",
+      "newFontColor": "RGB(232, 237, 43)"
+    },
+    "fontSize2": {
+      "oldFontColor": "RGB(28, 28, 28)",
+      "newFontColor": "RGB(227, 227, 227)"
+    },
+    "fontSize3": {
+      "oldFontColor": "RGB(164, 164, 164)",
+      "newFontColor": "RGB(91, 91, 91)"
+    },
+    "fontSize4": {
+      "oldFontColor": "RGB(255, 255, 255)",
+      "newFontColor": "RGB(0, 0, 0)"
+    }
+  },
   "images": {
       "img1": {
         "oldImageSrc": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/647105a1/images/1705503263-4b2bfb30.png?v=133543233718165621",
@@ -48,36 +92,5 @@
         "oldImageSrc": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/647105a1/images/1706008177-803bc945.png?v=133543233718165621",
         "newImageSrc": "https://cdn.freebiesupply.com/logos/large/2x/nike-4-logo-png-transparent.png"
       }
-  }, 
-  "allButtons": {
-    "white-space": "normal",
-    "width": "auto",
-    "padding": "20px 50px",
-    "padding-top": "20px",
-    "padding-right": "50px",
-    "padding-bottom": "20px",
-    "padding-left": "50px",
-    "border-width": "1px",
-    "border-top-width": "1px",
-    "border-right-width": "1px",
-    "border-bottom-width": "1px",
-    "border-left-width": "1px",
-    "border-color": "#4b8ed1",
-    "border-top-color": "#4b8ed1",
-    "border-right-color": "#4b8ed1",
-    "border-bottom-color": "#4b8ed1",
-    "border-left-color": "#4b8ed1",
-    "border-style": "solid",
-    "border-top-style": "solid",
-    "border-right-style": "solid",
-    "border-bottom-style": "solid",
-    "border-left-style": "solid",
-    "border-radius": "0px",
-    "font-size": "14px",
-    "font-family": "Arial",
-    "color": "rgb(255, 255, 255)",
-    "background-color": "rgb(75, 142, 209)",
-    "background": "rgb(75, 142, 209)",
-    "font-weight": "bold"
   }
 }

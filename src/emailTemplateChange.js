@@ -10,8 +10,6 @@ export function updateHtmlContent(html, allUpdatesObj) {
   //   Update colors
   function changeBackgroundColour(allUpdatesObj) {
     const allElements = document.querySelectorAll(`[align="center"]`);
-    // allElements.forEach((element) => console.log(element))
-    // console.log(allElements.length);
 
     for (const colorType in allUpdatesObj.backgroundColors) {
       for (let i = 0; i < allElements.length; i++) {
@@ -39,8 +37,8 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeBackgroundColour(allUpdatesObj);
 
-  // // Update fonts
-  function changeFontFamily(allUpdatesObj) {
+// Update fonts
+  function changeFont(allUpdatesObj) {
     const allElements = document.querySelectorAll("div.width90pc");
 
     for (const fontType in allUpdatesObj.fontFamily) {
@@ -59,9 +57,47 @@ export function updateHtmlContent(html, allUpdatesObj) {
         }
       }
     }
+
+    const allFontSize = document.querySelectorAll("div > span");
+
+    for (const fontType in allUpdatesObj.fontSize) {
+      for (let i = 0; i < allFontSize.length; i++) {
+        let element = allFontSize[i];
+
+        if (
+          dom.window
+            .getComputedStyle(element, null)
+            .fontSize ===
+              allUpdatesObj.fontSize[fontType].oldFontSize
+            
+        ) {
+          element.style.fontSize =
+            allUpdatesObj.fontSize[fontType].newFontSize;
+        }
+      }
+    }
+
+    for (const fontType in allUpdatesObj.fontColor) {
+      for (let i = 0; i < allFontSize.length; i++) {
+        let element = allFontSize[i];
+
+        if (
+          dom.window
+            .getComputedStyle(element, null)
+            .fontColor ===
+              allUpdatesObj.fontColor[fontType].oldFontColor
+            
+        ) {
+          element.style.fontColor =
+            allUpdatesObj.fontColor[fontType].newfontColor;
+        }
+      }
+    }
   }
 
-  changeFontFamily(allUpdatesObj);
+  changeFont(allUpdatesObj);
+
+
 
 // Update Images
   function changeImgSrc(allUpdatesObj) {
@@ -78,7 +114,7 @@ export function updateHtmlContent(html, allUpdatesObj) {
         if (normalURL === oldURL) {
           element.src = allUpdatesObj.images[imgType].newImageSrc;
           if (element.closest('[data-f24-layout-column-reorder]')) {
-            element.closest('[data-f24-layout-column-reorder]').style.display = 'flex';
+            element.closest('[data-f24-layout-column-reorder]').style.display = 'flex' ;
             element.closest('[data-f24-layout-column-reorder]').style.alignItems = 'center'
           }
         }
