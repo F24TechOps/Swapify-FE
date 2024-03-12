@@ -1,5 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { isFullHtml } from "./checkHtml.js";
+import { getButtonInfo } from './extractor.js';
 // const filepath = `src/microsite.html`
 
 export function updateHtmlContent(html, allUpdatesObj) {
@@ -100,6 +101,15 @@ export function updateHtmlContent(html, allUpdatesObj) {
           for (const attribute in allUpdatesObj.buttons[buttonType].newButton) {
             element.style[attribute] = allUpdatesObj.buttons[buttonType].newButton[attribute];
           }
+        }
+      }
+    }
+
+    if (allUpdatesObj.allButtons) {
+      for (let i = 0; i < allButtons.length; i++) {
+        const element = allButtons[i];
+        for (const attribute in allUpdatesObj.allButtons) {
+          element.style[attribute] = allUpdatesObj.allButtons[attribute];
         }
       }
     }
