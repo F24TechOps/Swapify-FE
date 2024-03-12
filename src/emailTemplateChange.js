@@ -121,14 +121,6 @@ export function updateHtmlContent(html, allUpdatesObj) {
   changeImgSrc(allUpdatesObj);
 
   // Update All Buttons
-  // function updateAllButtons(allUpdatesObj) {
-  //   const allElements = document.querySelectorAll('.btn')
-  //   allElements.forEach((element) => {
-  //     element.style = allUpdatesObj.allButtons
-  //   })
-  // }
-
-  // updateAllButtons(allUpdatesObj)
   function changeButton(allUpdatesObj) {
     const allButtonContainers = document.querySelectorAll("td.mceNonEditable");
 
