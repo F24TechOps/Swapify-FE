@@ -1,6 +1,7 @@
-import { JSDOM } from 'jsdom';
+import { JSDOM } from "jsdom";
 import { isFullHtml } from "./checkHtml.js";
-import { normalizeUrl } from './normalizeURL.js';
+import { normalizeUrl } from "./normalizeURL.js";
+import { getButtonInfo } from "./extractor.js";
 
 export function updateHtmlContent(html, allUpdatesObj) {
   const full = isFullHtml(html);
@@ -37,7 +38,7 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeBackgroundColour(allUpdatesObj);
 
-// Update fonts
+  // Update fonts
   function changeFont(allUpdatesObj) {
     const allElements = document.querySelectorAll("div.width90pc");
 
@@ -48,7 +49,8 @@ export function updateHtmlContent(html, allUpdatesObj) {
         if (
           dom.window
             .getComputedStyle(element, null)
-            .fontFamily.toLowerCase().includes(
+            .fontFamily.toLowerCase()
+            .includes(
               allUpdatesObj.fontFamily[fontType].oldFontFamily.toLowerCase()
             )
         ) {
@@ -58,21 +60,19 @@ export function updateHtmlContent(html, allUpdatesObj) {
       }
     }
 
-    const allText = document.querySelectorAll("div > span, div > span > strong"); 
+    const allText = document.querySelectorAll(
+      "div > span, div > span > strong"
+    );
 
     for (const fontType in allUpdatesObj.fontSize) {
       for (let i = 0; i < allText.length; i++) {
         let element = allText[i];
 
         if (
-          dom.window
-            .getComputedStyle(element, null)
-            .fontSize ===
-              allUpdatesObj.fontSize[fontType].oldFontSize
-            
+          dom.window.getComputedStyle(element, null).fontSize ===
+          allUpdatesObj.fontSize[fontType].oldFontSize
         ) {
-          element.style.fontSize =
-            allUpdatesObj.fontSize[fontType].newFontSize;
+          element.style.fontSize = allUpdatesObj.fontSize[fontType].newFontSize;
         }
       }
     }
@@ -81,16 +81,11 @@ export function updateHtmlContent(html, allUpdatesObj) {
       for (let i = 0; i < allText.length; i++) {
         let element = allText[i];
 
-        console.log(allUpdatesObj.fontColor[fontType].newFontColor)
-
         if (
-          dom.window
-            .getComputedStyle(element, null)
-            .color ===
-              allUpdatesObj.fontColor[fontType].oldFontColor
+          dom.window.getComputedStyle(element, null).color ===
+          allUpdatesObj.fontColor[fontType].oldFontColor
         ) {
-          element.style.color =
-            allUpdatesObj.fontColor[fontType].newFontColor;
+          element.style.color = allUpdatesObj.fontColor[fontType].newFontColor;
         }
       }
     }
@@ -98,25 +93,25 @@ export function updateHtmlContent(html, allUpdatesObj) {
 
   changeFont(allUpdatesObj);
 
-
-
-// Update Images
+  // Update Images
   function changeImgSrc(allUpdatesObj) {
     const allElements = document.getElementsByTagName("img");
-
 
     for (const imgType in allUpdatesObj.images) {
       for (let i = 0; i < allElements.length; i++) {
         let element = allElements[i];
 
-        let normalURL = normalizeUrl(element.src)
-        let oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageSrc)
+        let normalURL = normalizeUrl(element.src);
+        let oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageSrc);
 
         if (normalURL === oldURL) {
           element.src = allUpdatesObj.images[imgType].newImageSrc;
-          if (element.closest('[data-f24-layout-column-reorder]')) {
-            element.closest('[data-f24-layout-column-reorder]').style.display = 'flex' ;
-            element.closest('[data-f24-layout-column-reorder]').style.alignItems = 'center'
+          if (element.closest("[data-f24-layout-column-reorder]")) {
+            element.closest("[data-f24-layout-column-reorder]").style.display =
+              "flex";
+            element.closest(
+              "[data-f24-layout-column-reorder]"
+            ).style.alignItems = "center";
           }
         }
       }
@@ -134,6 +129,40 @@ export function updateHtmlContent(html, allUpdatesObj) {
   // }
 
   // updateAllButtons(allUpdatesObj)
+  function changeButton(allUpdatesObj) {
+    const allButtonContainers = document.querySelectorAll("td.mceNonEditable");
+
+    allButtonContainers.forEach((container) => {
+      const innerButton = container.querySelector("a");
+      if (!innerButton) return;
+
+      const outerButtonInfo = getButtonInfo(container);
+      const innerButtonInfo = getButtonInfo(innerButton);
+
+      for (const buttonType in allUpdatesObj.buttons) {
+        const buttonData = allUpdatesObj.buttons[buttonType];
+        const outerMatch =
+          outerButtonInfo === JSON.stringify(buttonData.outerButton, null, 2);
+        const innerMatch =
+          innerButtonInfo === JSON.stringify(buttonData.innerButton, null, 2);
+
+        if (outerMatch && innerMatch) {
+          Object.entries(buttonData.newOuterButton).forEach(
+            ([attribute, value]) => {
+              container.style[attribute] = value;
+            }
+          );
+          Object.entries(buttonData.newInnerButton).forEach(
+            ([attribute, value]) => {
+              innerButton.style[attribute] = value;
+            }
+          );
+        }
+      }
+    });
+  }
+
+  changeButton(allUpdatesObj);
 
   return full ? dom.serialize() : document.body.innerHTML;
 }
