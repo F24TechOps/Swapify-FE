@@ -161,14 +161,30 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
         if (outerMatch && innerMatch) {
           Object.entries(buttonData.newOuterButton).forEach(
             ([attribute, value]) => {
-              container.style[attribute] = value;
+              if (value !== null)
+                container.style[attribute] = value;
             }
           );
           Object.entries(buttonData.newInnerButton).forEach(
             ([attribute, value]) => {
-              innerButton.style[attribute] = value;
+              if (value !== null)
+                innerButton.style[attribute] = value;
             }
           );
+        }
+
+        if (allUpdatesObj.allButtons) {
+          for (const attribute in allUpdatesObj.allButtons.innerButton) {
+            const newVal = allUpdatesObj.allButtons.innerButton[attribute]
+            if (newVal !== null) 
+              innerButton.style[attribute] = newVal;
+          }
+
+          for (const attribute in allUpdatesObj.allButtons.outerButton) {
+            const newVal = allUpdatesObj.allButtons.outerButton[attribute]
+            if (newVal !== null)
+              container.style[attribute] = newVal;
+          }
         }
       }
     });
@@ -201,7 +217,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
         const element = allButtons[i];
         for (const attribute in allUpdatesObj.allButtons) {
           const newVal = allUpdatesObj.allButtons[attribute]
-          if (newVal)
+          if (newVal !== null)
             element.style[attribute] = newVal;
         }
       }

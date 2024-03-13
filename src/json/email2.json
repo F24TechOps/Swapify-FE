@@ -1061,18 +1061,35 @@
     }
   },
   "allButtons": {
-    "background": null,
-    "background-color": null,
-    "border-radius": null,
-    "color": null,
-    "display": null,
-    "font-family": null,
-    "font-size": null,
-    "font-style": null,
-    "font-weight": null,
-    "line-height": null,
-    "text-align": null,
-    "text-decoration": null,
-    "text-transform": null
+    "innerButton": {
+      "background": null,
+      "background-color": null,
+      "border-radius": "50px",
+      "color": null,
+      "display": null,
+      "font-family": null,
+      "font-size": null,
+      "font-style": null,
+      "font-weight": null,
+      "line-height": null,
+      "text-align": null,
+      "text-decoration": null,
+      "text-transform": null
+    },
+    "outerButton": {
+      "background": null,
+      "background-color": null,
+      "border-radius": "50px",
+      "color": null,
+      "display": null,
+      "font-family": null,
+      "font-size": null,
+      "font-style": null,
+      "font-weight": null,
+      "line-height": null,
+      "text-align": null,
+      "text-decoration": null,
+      "text-transform": null
+    }
   }
 }

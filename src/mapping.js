@@ -16,6 +16,11 @@ const buttonKeys = [
     'text-transform'
 ];
 
+const emptyButton = buttonKeys.reduce((mapper, key) => {
+    mapper[key] = null;
+    return mapper;
+}, {})
+
 const mapFeature = (featureMapper, feature, idx, type) => {
     featureMapper[`${type}${idx}`] = {};
     featureMapper[`${type}${idx}`][`old${type}`] = feature;
@@ -28,10 +33,7 @@ const mapButton = (buttonMapper, button, idx, type) => {
 
     const oldButton = JSON.parse(button);
 
-    const newButton = buttonKeys.reduce((button, key) => {
-        button[key] = null;
-        return button;
-    }, {});
+    const newButton = emptyButton;
 
     if (type === 'microsite') {
         buttonMapper[`Button${idx}`] = {oldButton, newButton};
@@ -57,10 +59,13 @@ export async function createMapping(html, type) {
     const fontFamily = fonts.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontFamily'), {});;
     const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Images'), {});;
     const buttons = buttonElements.reduce((buttonMapper, button, idx) => mapButton(buttonMapper, button, idx, type), {});
-    const allButtons = buttonKeys.reduce((mapper, key) => {
-        mapper[key] = null;
-        return mapper;
-    }, {});
+
+    const allButtons = type === 'microsite' ? emptyButton : 
+        {
+            innerButton: emptyButton,
+            outerButton: emptyButton
+        }
+    ;
 
     return {backgroundColors, fontFamily, images, buttons, allButtons};
 }
