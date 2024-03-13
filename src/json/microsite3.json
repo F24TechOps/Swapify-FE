@@ -2,15 +2,15 @@
   "backgroundColors": {
     "Background0": {
       "oldBackground": "rgb(255, 255, 255)",
-      "newBackground": "yellow"
+      "newBackground": null
     },
     "Background1": {
       "oldBackground": "rgb(25, 4, 199)",
-      "newBackground": "rgb(230, 251, 56)"
+      "newBackground": null
     },
     "Background2": {
       "oldBackground": "rgb(224, 224, 224)",
-      "newBackground": "#00ff00"
+      "newBackground": null
     }
   },
   "fontFamily": {
@@ -24,7 +24,7 @@
     },
     "FontFamily2": {
       "oldFontFamily": "Arial",
-      "newFontFamily": "comic sans ms"
+      "newFontFamily": null
     },
     "FontFamily3": {
       "oldFontFamily": "",
@@ -70,7 +70,7 @@
         "white-space": "normal"
       },
       "newButton": {
-        "background": "pink",
+        "background": null,
         "background-color": null,
         "border-radius": null,
         "color": null,
@@ -182,7 +182,7 @@
   "allButtons": {
     "background": null,
     "background-color": null,
-    "border-radius": "50px",
+    "border-radius": null,
     "color": null,
     "display": null,
     "font-family": null,

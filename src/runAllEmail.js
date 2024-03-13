@@ -1,6 +1,6 @@
 import { flatten } from "./flattener.js";
 import { replaceId } from "./replacer.js";
-import { updateHtmlContent } from "./emailTemplateChange.js";
+import { updateHtmlContent } from "./templateChange.js";
 import { cleanHtml } from "./cleanup.js";
 import fs from 'fs';
 
@@ -12,7 +12,7 @@ export function runAll (html, selections) {
         html = replaceId(html);
 
     if (selections.update)
-        html = updateHtmlContent(html, selections.update);
+        html = cleanHtml(updateHtmlContent(html, selections.update));
     
 
     return html;

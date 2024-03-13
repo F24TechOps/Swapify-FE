@@ -1,67 +1,66 @@
-import { askQuestion } from "./ui/console.js";
 import { extractBackgrounds, extractButton, extractFonts, extractImage } from "./extractor.js";
 
-const mapFeature = async (feature, idx, featureMapper, type) => {
-    const newFeat = await askQuestion(`What do you want to replace ${feature} with?`, feature, type === 'Background');
-    if (newFeat) {
-        featureMapper[`${type}${idx}`] = {};
-        featureMapper[`${type}${idx}`][`old${type}`] = feature;
-        featureMapper[`${type}${idx}`][`new${type}`] = newFeat;
-    }
+const buttonKeys = [
+    'background',
+    'background-color',
+    'border-radius',
+    'color',
+    'display',
+    'font-family',
+    'font-size',
+    'font-style',
+    'font-weight',
+    'line-height',
+    'text-align',
+    'text-decoration',
+    'text-transform'
+];
+
+const mapFeature = (featureMapper, feature, idx, type) => {
+    featureMapper[`${type}${idx}`] = {};
+    featureMapper[`${type}${idx}`][`old${type}`] = feature;
+    featureMapper[`${type}${idx}`][`new${type}`] = null;
+
+    return featureMapper;
 }
 
-const mapButton = async (button, idx, buttonMapper) => {
-    console.log('Button Information:')
-    console.log(button);
+const mapButton = (buttonMapper, button, idx, type) => {
 
-    const colouredVariables = ['background', 'border-color', 'color'];
+    const oldButton = JSON.parse(button);
 
-    const edit = await askQuestion(`Do you want to edit this button? (Press Y or y)`);
+    const newButton = buttonKeys.reduce((button, key) => {
+        button[key] = null;
+        return button;
+    }, {});
 
-    if (edit.toLowerCase() === "y") {
-        const oldButton = JSON.parse(button);
-        const oldKeys = Object.keys(oldButton)
-        const newButton = {};
-
-        for (let i = 0; i < oldKeys.length; i++) {
-            const key = oldKeys[i];
-            const newFeat = await askQuestion(`What do you want to replace the ${key} with? (currently ${oldButton[key]})`, oldButton[key], colouredVariables.includes(key));
-            if (newFeat)
-                newButton[key] = newFeat;
-        }
-
-        buttonMapper[`Button${idx}`] = {};
-        buttonMapper[`Button${idx}`][`oldButton`] = oldButton;
-        buttonMapper[`Button${idx}`][`newButton`] = newButton;
+    if (type === 'microsite') {
+        buttonMapper[`Button${idx}`] = {oldButton, newButton};
     }
+    else {
+        const { innerButton , outerButton } = oldButton;
+
+        buttonMapper[`Button${idx}`] = { innerButton , outerButton }
+        buttonMapper[`Button${idx}`].newInnerButton = newButton;
+        buttonMapper[`Button${idx}`].newOuterButton = newButton;
+    }
+
+    return buttonMapper;
 }
 
-export async function createMapping(html) {
-    const backgrounds = extractBackgrounds(html);
-    const fonts = extractFonts(html);
-    const images = extractImage(html);
-    const buttons = extractButton(html);
+export async function createMapping(html, type) {
+    const backgrounds = extractBackgrounds(html, type);
+    const fonts = extractFonts(html, type);
+    const imageElements = extractImage(html);
+    const buttonElements = extractButton(html, type);
 
-    const backgroundMapper = {};
-    const fontMapper = {};
-    const imageMapper = {};
-    const buttonMapper = {};
+    const backgroundColors = backgrounds.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Background'), {});
+    const fontFamily = fonts.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontFamily'), {});;
+    const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Images'), {});;
+    const buttons = buttonElements.reduce((buttonMapper, button, idx) => mapButton(buttonMapper, button, idx, type), {});
+    const allButtons = buttonKeys.reduce((mapper, key) => {
+        mapper[key] = null;
+        return mapper;
+    }, {});
 
-    for (let idx = 0; idx < backgrounds.length; idx++) {
-        await mapFeature(backgrounds[idx], idx, backgroundMapper, 'Background');
-    }
-
-    for (let idx = 0; idx < fonts.length; idx++) {
-        await mapFeature(fonts[idx], idx, fontMapper, 'FontFamily');
-    }
-
-    for (let idx = 0; idx < images.length; idx++) {
-        await mapFeature(images[idx], idx, imageMapper, 'ImageSrc');
-    }
-
-    for (let idx = 0; idx < buttons.length; idx++) {
-        await mapButton(buttons[idx], idx, buttonMapper);
-    }
-
-    return {backgroundColors: backgroundMapper, fontFamily: fontMapper, images: imageMapper, buttons: buttonMapper};
+    return {backgroundColors, fontFamily, images, buttons, allButtons};
 }

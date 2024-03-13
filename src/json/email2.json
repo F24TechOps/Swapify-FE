@@ -1,0 +1,1078 @@
+{
+  "backgroundColors": {
+    "Background0": {
+      "oldBackground": "rgb(255, 255, 255)",
+      "newBackground": null
+    },
+    "Background1": {
+      "oldBackground": "rgb(247, 247, 247)",
+      "newBackground": null
+    },
+    "Background2": {
+      "oldBackground": "rgb(81, 142, 206)",
+      "newBackground": null
+    },
+    "Background3": {
+      "oldBackground": "rgb(53, 71, 149)",
+      "newBackground": null
+    },
+    "Background4": {
+      "oldBackground": "rgb(112, 199, 213)",
+      "newBackground": null
+    },
+    "Background5": {
+      "oldBackground": "rgb(13, 22, 73)",
+      "newBackground": null
+    },
+    "Background6": {
+      "oldBackground": "rgb(87, 87, 87)",
+      "newBackground": null
+    },
+    "Background7": {
+      "oldBackground": "rgb(59, 72, 85)",
+      "newBackground": null
+    },
+    "Background8": {
+      "oldBackground": "rgb(237, 237, 237)",
+      "newBackground": null
+    },
+    "Background9": {
+      "oldBackground": "rgb(227, 227, 227)",
+      "newBackground": null
+    },
+    "Background10": {
+      "oldBackground": "rgb(224, 224, 224)",
+      "newBackground": null
+    },
+    "Background11": {
+      "oldBackground": "rgb(246, 245, 241)",
+      "newBackground": null
+    }
+  },
+  "fontFamily": {
+    "FontFamily0": {
+      "oldFontFamily": "arial, helvetica, sans-serif",
+      "newFontFamily": null
+    },
+    "FontFamily1": {
+      "oldFontFamily": "",
+      "newFontFamily": null
+    }
+  },
+  "images": {
+    "Images0": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348617-133b1367.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images1": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348658-9fe8c477.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images2": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348720-f17ca8f2.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images3": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348743-b20f7a07.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images4": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707829066-399cbcc6.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images5": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264624-c6e83321.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images6": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913341-59aa6755.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images7": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913370-8dd9b424.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images8": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913582-2de03f5d.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images9": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913594-10af57d0.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images10": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707914086-29587463.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images11": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707914529-941023f7.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images12": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707914681-908fdd29.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images13": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915719-72c0e3ed.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images14": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915735-9922a2f8.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images15": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915772-191baf67.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images16": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915817-40801e06.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images17": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916605-4bc5e7d6.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images18": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915994-70fe0bb9.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images19": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915972-68f07c63.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images20": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916027-cb7c336a.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images21": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916179-e0c8c7a3.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images22": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916664-8eca71ab.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images23": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426463-be1fbcda.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images24": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426512-3ee625d0.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images25": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426411-6f9d6ae8.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images26": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426532-38fca05e.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images27": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708013790-527c0300.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images28": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708013806-692823d1.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images29": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426603-2a84b8f6.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images30": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426620-bcb38d69.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images31": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426640-ce252822.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images32": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708082186-da22f4f9.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images33": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708082269-9896cd4f.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images34": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708082279-9cc01ab5.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images35": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705405794-0a73f34c.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images36": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705406067-c3822966.jpg?v=133547383987492339",
+      "newImages": null
+    },
+    "Images37": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264683-046a8839.jpg?v=133547383987492339",
+      "newImages": null
+    },
+    "Images38": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264700-055c63bc.jpg?v=133547383987492339",
+      "newImages": null
+    },
+    "Images39": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495917-fd51250d.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images40": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495969-2462d006.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images41": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495983-3e4dc219.jpg?v=133547383987492339",
+      "newImages": null
+    },
+    "Images42": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705494963-d42cae59.jpg?v=133547383987492339",
+      "newImages": null
+    },
+    "Images43": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495394-a83320f0.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images44": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495739-e9093567.jpg?v=133547383987492339",
+      "newImages": null
+    },
+    "Images45": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495793-aa42f8cf.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images46": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988214-dcdf0165.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images47": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988309-12a3f33b.png?v=133547383987492339",
+      "newImages": null
+    },
+    "Images48": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988355-8e66e842.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images49": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988432-7e962170.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images50": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988458-50ac0d1e.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images51": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014078-8707c597.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images52": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014089-27110e6f.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images53": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014100-7dbe29d3.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images54": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014111-d7960cfb.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images55": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264767-1074bf60.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images56": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264777-7a0cce1e.png?v=133547383987502129",
+      "newImages": null
+    },
+    "Images57": {
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264786-ba9cb88a.png?v=133547383987502129",
+      "newImages": null
+    }
+  },
+  "buttons": {
+    "Button0": {
+      "innerButton": {
+        "background": "rgb(53,71,149)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#354795",
+        "border-radius": "0px",
+        "border": "initialInitial#354795",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button1": {
+      "innerButton": {
+        "background": "rgb(112,199,213)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#70c7d5",
+        "border-radius": "0px",
+        "border": "#70c7d5",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button2": {
+      "innerButton": {
+        "background": "rgb(255,255,255)",
+        "border-radius": "0px",
+        "color": "rgb(112,199,213)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#FFFFFF",
+        "border-radius": "0px",
+        "border": "#FFFFFF",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button3": {
+      "innerButton": {
+        "background": "rgb(81,142,206)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#518ece",
+        "border-radius": "0px",
+        "border": "#518ece",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button4": {
+      "innerButton": {
+        "background": "rgb(53,71,149)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#354795",
+        "border-radius": "0px",
+        "border": "1pxSolid#354795",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button5": {
+      "innerButton": {
+        "background": "rgb(112,199,213)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#70c7d5",
+        "border-radius": "0px",
+        "border": "1pxSolid#70c7d5",
+        "padding": "15px45px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button6": {
+      "innerButton": {
+        "background": "#F57D20",
+        "border-radius": "8px",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#f57d20",
+        "border-radius": "8px",
+        "border": "1pxsolid#F57D20",
+        "padding": "15px30px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button7": {
+      "innerButton": {
+        "background": "#0D1649",
+        "border-radius": "8px",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#0d1649",
+        "border-radius": "8px",
+        "border": "1pxsolid#0D1649",
+        "padding": "15px30px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button8": {
+      "innerButton": {
+        "background": "#3F9BFC",
+        "border-radius": "8px",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#3f9bfc",
+        "border-radius": "8px",
+        "border": "1pxsolid#3F9BFC",
+        "padding": "15px30px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button9": {
+      "innerButton": {
+        "background": "#518ECE",
+        "border-radius": "0",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#518ece",
+        "border-radius": "0",
+        "border": "1pxsolid#518ECE",
+        "padding": "14px40px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button10": {
+      "innerButton": {
+        "background": "#518ECE",
+        "border-radius": "0",
+        "color": "#ffffff",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#518ece",
+        "border-radius": "0",
+        "border": "1pxsolid#518ECE",
+        "padding": "14px40px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button11": {
+      "innerButton": {
+        "background": "rgb(81,142,206)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#518ece",
+        "border-radius": "0px",
+        "border": "1pxSolid#518ece",
+        "padding": "14px40px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button12": {
+      "innerButton": {
+        "background": "rgb(112,199,213)",
+        "border-radius": "0px",
+        "color": "rgb(255,255,255)",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#70c7d5",
+        "border-radius": "0px",
+        "border": "1pxSolid#70c7d5",
+        "padding": "14px40px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button13": {
+      "innerButton": {
+        "background": "#000000",
+        "border-radius": "8px",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#000000",
+        "border-radius": "8px",
+        "border": "1pxsolid#000000",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button14": {
+      "innerButton": {
+        "background": "#F57D20",
+        "border-radius": "8px",
+        "color": "#ffffff",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#f57d20",
+        "border-radius": "8px",
+        "border": "1pxsolid#F57D20",
+        "padding": "15px25px"
+      },
+      "newInnerButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": null,
+        "background-color": null,
+        "border-radius": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    }
+  },
+  "allButtons": {
+    "background": null,
+    "background-color": null,
+    "border-radius": null,
+    "color": null,
+    "display": null,
+    "font-family": null,
+    "font-size": null,
+    "font-style": null,
+    "font-weight": null,
+    "line-height": null,
+    "text-align": null,
+    "text-decoration": null,
+    "text-transform": null
+  }
+}

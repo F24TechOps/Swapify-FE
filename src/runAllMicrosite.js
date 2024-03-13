@@ -1,10 +1,10 @@
 import { flatten } from "./flattener.js";
 import { replaceId } from "./replacer.js";
-import { updateHtmlContent } from "./micrositeTemplateChange.js";
+import { updateHtmlContent } from "./templateChange.js";
 import { cleanHtml } from "./cleanup.js";
 import fs from 'fs';
 
-export function runAll (html, selections) {
+export function runAll (html, selections, type) {
     if (selections.flatten)
         html = flatten(html);
 
@@ -12,16 +12,15 @@ export function runAll (html, selections) {
         html = replaceId(html);
 
     if (selections.update)
-        html = cleanHtml(updateHtmlContent(html, selections.update));
+        html = cleanHtml(updateHtmlContent(html, selections.update, type), type);
     
-
     return html;
 }
 
-export function readAndRun(inputPath, outputPath, selections) {
+export function readAndRun(inputPath, outputPath, selections, type) {
     const html = readFile(inputPath);
 
-    const newHtml = runAll(html, selections);
+    const newHtml = runAll(html, selections, type);
 
     writeFile(outputPath, newHtml);
 }

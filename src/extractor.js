@@ -11,31 +11,39 @@ export function extractId(html) {
   );
 }
 
-export const extractBackgrounds = (html) =>
+export const getBackgrounds = (document, type) => type === 'microsite' ? document.getElementsByTagName("div") : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
+
+export const getFonts = (document, type) => document.querySelectorAll(type === 'microsite' ? "p, span, strong" :"div.width90pc");
+
+export const getImage = (document) => document.getElementsByTagName("img");
+
+export const extractBackgrounds = (html, type) =>
   extractFeature(
     html,
     (element, dom) =>
       dom.window.getComputedStyle(element, null).backgroundColor,
     ["rgba(0, 0, 0, 0)", "inherit"],
-    "div"
+    getBackgrounds,
+    type
   );
 
-export const extractFonts = (html) =>
+export const extractFonts = (html, type) =>
   extractFeature(
     html,
     (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
     [],
-    "div"
+    getFonts,
+    type
   );
 
 export const extractImage = (html) =>
-  extractFeature(html, (element) => element.src, [], "img");
+  extractFeature(html, (element) => element.src, [], getImage);
 
-function extractFeature(html, getFeature, nonExistent, tagName) {
+function extractFeature(html, getFeature, nonExistent, getElement, type) {
   const dom = new JSDOM(html);
   const document = dom.window.document;
 
-  const allElements = Array.from(document.getElementsByTagName(tagName));
+  const allElements = Array.from(getElement(document, type));
 
   const allBackgrounds = allElements.map((element) => getFeature(element, dom));
 
@@ -60,13 +68,33 @@ export const getButtonInfo = (element) => {
   return JSON.stringify(styleObject, null, 2);
 };
 
-export function extractButton(html) {
+export function extractButton(html, type) {
   const dom = new JSDOM(html);
   const document = dom.window.document;
 
-  const allElements = Array.from(document.getElementsByClassName("btn"));
+  let allStyles;
 
-  const allStyles = allElements.map(getButtonInfo);
+  if (type === 'microsite') {
+    const allElements = Array.from(document.getElementsByClassName("btn"));
+
+    allStyles = allElements.map(getButtonInfo);
+  }
+  else {
+    const allButtonContainers = Array.from(document.querySelectorAll("td.mceNonEditable"));
+
+    allStyles = allButtonContainers.map((container) => {
+      const innerButton = container.querySelector("a");
+      if (!innerButton) return;
+
+      const outerButtonInfo = getButtonInfo(container);
+      const innerButtonInfo = getButtonInfo(innerButton);
+
+      const inner = JSON.parse(innerButtonInfo);
+      const outer = JSON.parse(outerButtonInfo);
+
+      return JSON.stringify({innerButton: inner, outerButton: outer}, null, 2)
+    });
+  }
 
   return Array.from(new Set(...[allStyles]));
 }
