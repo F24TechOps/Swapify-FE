@@ -1,4 +1,4 @@
-import { extractBackgrounds, extractButton, extractFonts, extractImage } from "./extractor.js";
+import { extractBackgrounds, extractButton, extractFontColour, extractFontSize, extractFonts, extractImage } from "./extractor.js";
 
 const buttonKeys = [
     'background',
@@ -52,11 +52,15 @@ const mapButton = (buttonMapper, button, idx, type) => {
 export async function createMapping(html, type) {
     const backgrounds = extractBackgrounds(html, type);
     const fonts = extractFonts(html, type);
+    const fontSizes = extractFontSize(html, type);
+    const fontColors = extractFontColour(html, type);
     const imageElements = extractImage(html);
     const buttonElements = extractButton(html, type);
 
     const backgroundColors = backgrounds.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Background'), {});
     const fontFamily = fonts.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontFamily'), {});;
+    const fontSize = fontSizes.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontSize'), {});;
+    const fontColor = fontColors.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontColor'), {});;
     const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Images'), {});;
     const buttons = buttonElements.reduce((buttonMapper, button, idx) => mapButton(buttonMapper, button, idx, type), {});
 
@@ -67,5 +71,5 @@ export async function createMapping(html, type) {
         }
     ;
 
-    return {backgroundColors, fontFamily, images, buttons, allButtons};
+    return {backgroundColors, fontFamily, fontColor, fontSize, images, buttons, allButtons};
 }

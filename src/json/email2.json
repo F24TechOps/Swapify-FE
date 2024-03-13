@@ -59,6 +59,78 @@
       "newFontFamily": null
     }
   },
+  "fontColor": {
+    "FontColor0": {
+      "oldFontColor": "rgb(255, 255, 255)",
+      "newFontColor": null
+    },
+    "FontColor1": {
+      "oldFontColor": "",
+      "newFontColor": null
+    },
+    "FontColor2": {
+      "oldFontColor": "rgb(227, 227, 227)",
+      "newFontColor": null
+    },
+    "FontColor3": {
+      "oldFontColor": "rgb(81, 142, 206)",
+      "newFontColor": null
+    },
+    "FontColor4": {
+      "oldFontColor": "rgb(39, 39, 39)",
+      "newFontColor": null
+    },
+    "FontColor5": {
+      "oldFontColor": "rgb(13, 22, 73)",
+      "newFontColor": null
+    },
+    "FontColor6": {
+      "oldFontColor": "rgb(112, 199, 213)",
+      "newFontColor": null
+    },
+    "FontColor7": {
+      "oldFontColor": "rgb(0, 0, 0)",
+      "newFontColor": null
+    },
+    "FontColor8": {
+      "oldFontColor": "rgb(68, 68, 68)",
+      "newFontColor": null
+    }
+  },
+  "fontSize": {
+    "FontSize0": {
+      "oldFontSize": "30px",
+      "newFontSize": null
+    },
+    "FontSize1": {
+      "oldFontSize": "",
+      "newFontSize": null
+    },
+    "FontSize2": {
+      "oldFontSize": "16px",
+      "newFontSize": null
+    },
+    "FontSize3": {
+      "oldFontSize": "28px",
+      "newFontSize": null
+    },
+    "FontSize4": {
+      "oldFontSize": "18px",
+      "newFontSize": null
+    },
+    "FontSize5": {
+      "oldFontSize": "24px",
+      "newFontSize": null
+    },
+    "FontSize6": {
+      "oldFontSize": "26px",
+      "newFontSize": null
+    },
+    "FontSize7": {
+      "oldFontSize": "14px",
+      "newFontSize": null
+    }
+  },
   "images": {
     "Images0": {
       "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348617-133b1367.png?v=133547383987492339",
@@ -1064,7 +1136,7 @@
     "innerButton": {
       "background": null,
       "background-color": null,
-      "border-radius": "50px",
+      "border-radius": null,
       "color": null,
       "display": null,
       "font-family": null,
@@ -1079,7 +1151,7 @@
     "outerButton": {
       "background": null,
       "background-color": null,
-      "border-radius": "50px",
+      "border-radius": null,
       "color": null,
       "display": null,
       "font-family": null,

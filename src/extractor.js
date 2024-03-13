@@ -15,6 +15,10 @@ export const getBackgrounds = (document, type) => type === 'microsite' ? documen
 
 export const getFonts = (document, type) => document.querySelectorAll(type === 'microsite' ? "p, span, strong" :"div.width90pc");
 
+export const getText = (document) => document.querySelectorAll(
+  "div > span, div > span > strong"
+);
+
 export const getImage = (document) => document.getElementsByTagName("img");
 
 export const extractBackgrounds = (html, type) =>
@@ -33,6 +37,24 @@ export const extractFonts = (html, type) =>
     (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
     [],
     getFonts,
+    type
+  );
+
+export const extractFontSize = (html, type) =>
+  extractFeature(
+    html,
+    (element) => element.style.fontSize,
+    [],
+    getText,
+    type
+  );
+
+export const extractFontColour = (html, type) =>
+  extractFeature(
+    html,
+    (element) => element.style.color,
+    [],
+    getText,
     type
   );
 

@@ -67,9 +67,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
       }
     }
 
-    const allText = document.querySelectorAll(
-      "div > span, div > span > strong"
-    );
+    const allText = getText(document);
 
     for (const fontType in allUpdatesObj.fontSize) {
       for (let i = 0; i < allText.length; i++) {
