@@ -1,9 +1,15 @@
 import { JSDOM } from "jsdom";
 import { isFullHtml } from "./checkHtml.js";
 import { normalizeUrl } from "./normalizeURL.js";
-import { getBackgrounds, getButtonInfo, getImage, getText } from "./extractor.js";
+import {
+  getBackgrounds,
+  getButtonInfo,
+  getImage,
+  getText,
+  getBackgroundImg,
+} from "./extractor.js";
 
-export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
+export function updateHtmlContent(html, allUpdatesObj, type = "microsite") {
   const full = isFullHtml(html);
   const dom = new JSDOM(html);
   const document = dom.window.document;
@@ -26,8 +32,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
 
         const { newBackground } = allUpdatesObj.backgroundColors[colorType];
 
-        if (newBackground === null)
-          continue;
+        if (newBackground === null) continue;
 
         if (
           dom.window.getComputedStyle(element, null).backgroundColor ===
@@ -42,6 +47,29 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
 
   changeBackgroundColour(allUpdatesObj);
 
+  function changeBackgroundImg(allUpdatesObj) {
+    const backgroundImgElement = getBackgroundImg(document);
+
+    for (const backgroundType in allUpdatesObj.backgroundImg) {
+      for (let i = 0; i < backgroundImgElement.length; i++) {
+        let element = backgroundImgElement[i];
+
+        const { newBackgroundImage } = allUpdatesObj.backgroundImg[backgroundType];
+
+        if (newBackgroundImage === null) continue;
+
+        if (
+          dom.window.getComputedStyle(element, null).backgroundImage ===
+          allUpdatesObj.backgroundImg[backgroundType].oldBackgroundImage
+        ) {
+          element.style.backgroundImage = newBackgroundImage;
+        }
+      }
+    }
+  }
+
+  changeBackgroundImg(allUpdatesObj);
+
   // Update fonts
   function changeFont(allUpdatesObj) {
     const allElements = getText(document, type);
@@ -51,8 +79,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
         const element = allElements[i];
         const { newFontFamily } = allUpdatesObj.fontFamily[fontType];
 
-        if (newFontFamily === null)
-          continue;
+        if (newFontFamily === null) continue;
 
         if (
           dom.window
@@ -72,10 +99,9 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
     for (const fontType in allUpdatesObj.fontSize) {
       for (let i = 0; i < allText.length; i++) {
         const element = allText[i];
-        const  { newFontSize } = allUpdatesObj.fontSize[fontType];
+        const { newFontSize } = allUpdatesObj.fontSize[fontType];
 
-        if (newFontSize === null)
-          continue;
+        if (newFontSize === null) continue;
 
         if (
           dom.window.getComputedStyle(element, null).fontSize ===
@@ -91,8 +117,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
         const element = allText[i];
         const { newFontColor } = allUpdatesObj.fontColor[fontType];
 
-        if (newFontColor === null)
-          continue;
+        if (newFontColor === null) continue;
 
         if (
           dom.window.getComputedStyle(element, null).color ===
@@ -115,9 +140,9 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
         const element = allElements[i];
 
         const normalURL = normalizeUrl(element.src);
-        const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageSrc);
+        const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImages);
 
-        const { newImageSrc } = allUpdatesObj.images[imgType];
+        const { newImages } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
 
@@ -160,29 +185,25 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
         if (outerMatch && innerMatch) {
           Object.entries(buttonData.newOuterButton).forEach(
             ([attribute, value]) => {
-              if (value !== null)
-                container.style[attribute] = value;
+              if (value !== null) container.style[attribute] = value;
             }
           );
           Object.entries(buttonData.newInnerButton).forEach(
             ([attribute, value]) => {
-              if (value !== null)
-                innerButton.style[attribute] = value;
+              if (value !== null) innerButton.style[attribute] = value;
             }
           );
         }
 
         if (allUpdatesObj.allButtons) {
           for (const attribute in allUpdatesObj.allButtons.innerButton) {
-            const newVal = allUpdatesObj.allButtons.innerButton[attribute]
-            if (newVal !== null) 
-              innerButton.style[attribute] = newVal;
+            const newVal = allUpdatesObj.allButtons.innerButton[attribute];
+            if (newVal !== null) innerButton.style[attribute] = newVal;
           }
 
           for (const attribute in allUpdatesObj.allButtons.outerButton) {
-            const newVal = allUpdatesObj.allButtons.outerButton[attribute]
-            if (newVal !== null)
-              container.style[attribute] = newVal;
+            const newVal = allUpdatesObj.allButtons.outerButton[attribute];
+            if (newVal !== null) container.style[attribute] = newVal;
           }
         }
       }
@@ -191,6 +212,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
 
   function changeButtonMicrosite(allUpdatesObj) {
     const allButtons = document.getElementsByClassName("btn");
+    // console.log(getButtonInfo(allButtons[0].outerHTML), '<--- INFO', JSON.stringify(allUpdatesObj.buttons[buttonType].oldButton, null, 2), '<---JSON Stingify')
 
     for (const buttonType in allUpdatesObj.buttons) {
       for (let i = 0; i < allButtons.length; i++) {
@@ -198,12 +220,15 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
 
         const info = getButtonInfo(element);
 
-        if (info === JSON.stringify(allUpdatesObj.buttons[buttonType].oldButton, null, 2)) {
+        if (
+          info ===
+          JSON.stringify(allUpdatesObj.buttons[buttonType].oldButton, null, 2)
+        ) {
           for (const attribute in allUpdatesObj.buttons[buttonType].newButton) {
-            const newVal = allUpdatesObj.buttons[buttonType].newButton[attribute];
+            const newVal =
+              allUpdatesObj.buttons[buttonType].newButton[attribute];
 
-            if (newVal === null)
-              continue
+            if (newVal === null) continue;
 
             element.style[attribute] = newVal;
           }
@@ -215,18 +240,15 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
       for (let i = 0; i < allButtons.length; i++) {
         const element = allButtons[i];
         for (const attribute in allUpdatesObj.allButtons) {
-          const newVal = allUpdatesObj.allButtons[attribute]
-          if (newVal !== null)
-            element.style[attribute] = newVal;
+          const newVal = allUpdatesObj.allButtons[attribute];
+          if (newVal !== null) element.style[attribute] = newVal;
         }
       }
     }
   }
 
-  if (type === 'microsite')
-    changeButtonMicrosite(allUpdatesObj);
-  else
-    changeButtonEmail(allUpdatesObj);
+  if (type === "microsite") changeButtonMicrosite(allUpdatesObj);
+  else changeButtonEmail(allUpdatesObj);
 
   return full ? dom.serialize() : document.body.innerHTML;
 }

@@ -1,8 +1,8 @@
 import { createMapping } from "./mapping.js";
 import { readFile, writeFile } from "./runAllMicrosite.js";
 
-const html = readFile('./.env/switalskis/original.html');
+const html = readFile('./src/html/microsite.html');
 
-const mapping = await createMapping(html, 'email');
+const mapping = await createMapping(html, 'microsite');
 
-writeFile('./.env/switalskis/original.json', JSON.stringify(mapping, null, 2));
+writeFile('./src/json/microsite4.json', JSON.stringify(mapping, null, 2));
