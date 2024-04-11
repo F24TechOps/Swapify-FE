@@ -5,4 +5,4 @@ const update = JSON.parse(jsonData);
 
 const selections = {replaceId: false, flatten: false, update};
 
-readAndRun('./src/html/email2.html', `src/html/updatedemail2.html`, selections, 'email');
+readAndRun('./src/html/email2.html', `src/html/updatedemail3.html`, selections, 'email');
