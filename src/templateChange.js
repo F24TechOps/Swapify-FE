@@ -1,7 +1,7 @@
 import { JSDOM } from "jsdom";
 import { isFullHtml } from "./checkHtml.js";
 import { normalizeUrl } from "./normalizeURL.js";
-import { getBackgrounds, getButtonInfo, getFonts, getImage } from "./extractor.js";
+import { getBackgrounds, getButtonInfo, getImage, getText } from "./extractor.js";
 
 export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
   const full = isFullHtml(html);
@@ -44,7 +44,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
 
   // Update fonts
   function changeFont(allUpdatesObj) {
-    const allElements = getFonts(document, type);
+    const allElements = getText(document, type);
 
     for (const fontType in allUpdatesObj.fontFamily) {
       for (let i = 0; i < allElements.length; i++) {
@@ -89,7 +89,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
     for (const fontType in allUpdatesObj.fontColor) {
       for (let i = 0; i < allText.length; i++) {
         const element = allText[i];
-        const { newFontColor } = allUpdatesObj.fontSize[fontType];
+        const { newFontColor } = allUpdatesObj.fontColor[fontType];
 
         if (newFontColor === null)
           continue;
@@ -119,18 +119,19 @@ export function updateHtmlContent(html, allUpdatesObj, type = 'email') {
 
         const { newImageSrc } = allUpdatesObj.images[imgType];
 
-        if (newImageSrc === null)
+        if (normalURL === oldURL) {
+
+          if (newImageSrc === null)
           continue;
 
-        if (normalURL === oldURL) {
           element.src = newImageSrc;
-          if (element.closest("[data-f24-layout-column-reorder]") && type === 'email') {
-            element.closest("[data-f24-layout-column-reorder]").style.display =
-              "flex";
-            element.closest(
-              "[data-f24-layout-column-reorder]"
-            ).style.alignItems = "center";
-          }
+          // if (element.closest("[data-f24-layout-column-reorder]") && type === 'email') {
+          //   element.closest("[data-f24-layout-column-reorder]").style.display =
+          //     "flex";
+          //   element.closest(
+          //     "[data-f24-layout-column-reorder]"
+          //   ).style.alignItems = "center";
+          // }
         }
       }
     }

@@ -61,7 +61,7 @@ export async function createMapping(html, type) {
     const fontFamily = fonts.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontFamily'), {});;
     const fontSize = fontSizes.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontSize'), {});;
     const fontColor = fontColors.reduce((mapper, font, idx) => mapFeature(mapper, font, idx, 'FontColor'), {});;
-    const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'Images'), {});;
+    const images = imageElements.reduce((mapper, background, idx) => mapFeature(mapper, background, idx, 'ImageSrc'), {});;
     const buttons = buttonElements.reduce((buttonMapper, button, idx) => mapButton(buttonMapper, button, idx, type), {});
 
     const allButtons = type === 'microsite' ? emptyButton : 

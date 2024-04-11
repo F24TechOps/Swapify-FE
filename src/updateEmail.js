@@ -1,8 +1,10 @@
 import { readAndRun, readFile } from "./runAllMicrosite.js";
 
-const jsonData = readFile('./src/json/email2.json', 'utf8');
+const companyName = 'force24';
+
+const jsonData = readFile('./.env/original.json', 'utf8');
 const update = JSON.parse(jsonData);
 
-const selections = {replaceId: false, flatten: false, update};
+const selections = {replaceId: false, flatten: true, update};
 
-readAndRun('./src/html/email2.html', `src/html/updatedemail2.html`, selections, 'email');
+readAndRun('./.env/original.html', `./.env/force/template.html`, selections, 'email');
