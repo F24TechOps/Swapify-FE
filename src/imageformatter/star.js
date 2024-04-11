@@ -2,11 +2,11 @@ import fs from 'fs';
 import { createCanvas, loadImage } from 'canvas';
 
 // Hex color code to replace non-white pixels
-const replaceColor = "#003237"; // Change this to your desired color
+const replaceColor = "#354795"; // Change this to your desired color
 
 // Process images from 'star-1.png' to 'star-5.png'
 for (let i = 1; i <= 5; i++) {
-  const inputFile = `./.env/switalskis/images/star-${i}.png`;
+  const inputFile = `./.env/force24/images/star-${i}.png`;
   const outputFile = inputFile;
 
   // Load image

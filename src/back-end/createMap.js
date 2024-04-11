@@ -5,4 +5,4 @@ const html = readFile('./src/html/email.html');
 
 const mapping = await createMapping(html, 'email');
 
-writeFile('./src/json/email2.json', JSON.stringify(mapping, null, 2));
+writeFile('./.env/switalskis/original.json', JSON.stringify(mapping, null, 2));

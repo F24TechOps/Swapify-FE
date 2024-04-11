@@ -13,8 +13,6 @@ export function extractId(html) {
 
 export const getBackgrounds = (document, type) => type === 'microsite' ? document.getElementsByTagName("div") : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
 
-export const getFonts = (document, type) => document.querySelectorAll(type === 'microsite' ? "p, span, strong" :"div.width90pc");
-
 export const getText = (document) => document.querySelectorAll(
   "div, span, strong, p"
 );
@@ -38,7 +36,7 @@ export const extractFonts = (html, type) =>
     html,
     (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
     [],
-    getFonts,
+    getText,
     type
   );
 

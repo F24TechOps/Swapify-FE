@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "map": "node src/createMap.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/ellaycodes/onboarding-automation#readme",
   "dependencies": {
+    "canvas": "^2.11.2",
     "dompurify": "^3.0.9",
     "fs": "^0.0.1-security",
     "jest": "^29.7.0",

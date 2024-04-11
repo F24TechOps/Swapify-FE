@@ -4,7 +4,6 @@ import { normalizeUrl } from "./normalizeURL.js";
 import {
   getBackgrounds,
   getButtonInfo,
-  getFonts,
   getImage,
   getText,
   getBackgroundImg,
@@ -73,7 +72,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   // Update fonts
   function changeFont(allUpdatesObj) {
-    const allElements = getFonts(document, type);
+    const allElements = getText(document, type);
 
     for (const fontType in allUpdatesObj.fontFamily) {
       for (let i = 0; i < allElements.length; i++) {
@@ -143,22 +142,21 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const normalURL = normalizeUrl(element.src);
         const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImages);
 
-        const { newImages } = allUpdatesObj.images[imgType];
-
-        if (newImages === null) continue;
+        const { newImageSrc } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
-          element.src = newImages;
-          if (
-            element.closest("[data-f24-layout-column-reorder]") &&
-            type === "email"
-          ) {
-            element.closest("[data-f24-layout-column-reorder]").style.display =
-              "flex";
-            element.closest(
-              "[data-f24-layout-column-reorder]"
-            ).style.alignItems = "center";
-          }
+
+          if (newImageSrc === null)
+          continue;
+
+          element.src = newImageSrc;
+          // if (element.closest("[data-f24-layout-column-reorder]") && type === 'email') {
+          //   element.closest("[data-f24-layout-column-reorder]").style.display =
+          //     "flex";
+          //   element.closest(
+          //     "[data-f24-layout-column-reorder]"
+          //   ).style.alignItems = "center";
+          // }
         }
       }
     }
