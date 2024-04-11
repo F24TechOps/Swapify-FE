@@ -5,46 +5,22 @@
       "newBackground": null
     },
     "Background1": {
-      "oldBackground": "rgb(247, 247, 247)",
-      "newBackground": null
+      "oldBackground": "rgb(112, 199, 213)",
+      "newBackground": "rgb(255 , 170 , 0)"
     },
     "Background2": {
       "oldBackground": "rgb(81, 142, 206)",
-      "newBackground": null
+      "newBackground": "rgb(255 , 170 , 0)"
     },
     "Background3": {
       "oldBackground": "rgb(53, 71, 149)",
-      "newBackground": null
+      "newBackground": "rgb(0 , 136 , 204)"
     },
     "Background4": {
-      "oldBackground": "rgb(112, 199, 213)",
-      "newBackground": null
-    },
-    "Background5": {
-      "oldBackground": "rgb(13, 22, 73)",
-      "newBackground": null
-    },
-    "Background6": {
-      "oldBackground": "rgb(87, 87, 87)",
-      "newBackground": null
-    },
-    "Background7": {
-      "oldBackground": "rgb(59, 72, 85)",
-      "newBackground": null
-    },
-    "Background8": {
       "oldBackground": "rgb(237, 237, 237)",
       "newBackground": null
     },
-    "Background9": {
-      "oldBackground": "rgb(227, 227, 227)",
-      "newBackground": null
-    },
-    "Background10": {
-      "oldBackground": "rgb(224, 224, 224)",
-      "newBackground": null
-    },
-    "Background11": {
+    "Background5": {
       "oldBackground": "rgb(246, 245, 241)",
       "newBackground": null
     }
@@ -52,16 +28,16 @@
   "fontFamily": {
     "FontFamily0": {
       "oldFontFamily": "arial, helvetica, sans-serif",
-      "newFontFamily": null
+      "newFontFamily": "Proxima Nova, arial, helvetica, sans-serif"
     },
     "FontFamily1": {
       "oldFontFamily": "",
-      "newFontFamily": null
+      "newFontFamily": "Brandon Grotesque, arial, helvetica, sans-serif"
     }
   },
   "fontColor": {
     "FontColor0": {
-      "oldFontColor": "rgb(255, 255, 255)",
+      "oldFontColor": "rgb(232, 232, 232)",
       "newFontColor": null
     },
     "FontColor1": {
@@ -69,27 +45,27 @@
       "newFontColor": null
     },
     "FontColor2": {
-      "oldFontColor": "rgb(227, 227, 227)",
+      "oldFontColor": "rgb(0, 0, 0)",
       "newFontColor": null
     },
     "FontColor3": {
-      "oldFontColor": "rgb(81, 142, 206)",
+      "oldFontColor": "rgb(255, 255, 255)",
       "newFontColor": null
     },
     "FontColor4": {
-      "oldFontColor": "rgb(39, 39, 39)",
+      "oldFontColor": "rgb(81, 142, 206)",
       "newFontColor": null
     },
     "FontColor5": {
-      "oldFontColor": "rgb(13, 22, 73)",
+      "oldFontColor": "rgb(59, 72, 85)",
       "newFontColor": null
     },
     "FontColor6": {
-      "oldFontColor": "rgb(112, 199, 213)",
+      "oldFontColor": "rgb(39, 39, 39)",
       "newFontColor": null
     },
     "FontColor7": {
-      "oldFontColor": "rgb(0, 0, 0)",
+      "oldFontColor": "rgb(112, 199, 213)",
       "newFontColor": null
     },
     "FontColor8": {
@@ -99,7 +75,7 @@
   },
   "fontSize": {
     "FontSize0": {
-      "oldFontSize": "30px",
+      "oldFontSize": "0px",
       "newFontSize": null
     },
     "FontSize1": {
@@ -111,266 +87,234 @@
       "newFontSize": null
     },
     "FontSize3": {
-      "oldFontSize": "28px",
+      "oldFontSize": "30px",
       "newFontSize": null
     },
     "FontSize4": {
-      "oldFontSize": "18px",
+      "oldFontSize": "24px",
       "newFontSize": null
     },
     "FontSize5": {
-      "oldFontSize": "24px",
+      "oldFontSize": "14px",
       "newFontSize": null
     },
     "FontSize6": {
       "oldFontSize": "26px",
       "newFontSize": null
-    },
-    "FontSize7": {
-      "oldFontSize": "14px",
-      "newFontSize": null
     }
   },
   "images": {
     "Images0": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348617-133b1367.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1708348617-133b1367.png?v=133566304259936170",
+      "newImages": "https://force24.attachments-euc2.freshdesk.com/data/helpdesk/attachments/production/79045769295/original/BEF%20Logo%20WHITE%20RGB.png?response-content-type=image%2Fpng&Expires=1712158945&Signature=G6RiGLuDBIjJE7iFkJFc1LfKvK4H3c2ceKvnceB9tW9mznohrhvSC8gOBHJ8GSuy2AgTUMRBEdgtXidWHPxPXf6R~VPGTtbfPGnrGWS2g8qKYLhRvP2vpENaGyyJ0JdNQdOyq9dnLQh06OpzMXIAoBjnnYYzs70Sadyi0arl1gOPKc~ugn5lj2qDnIFR-AGiqtOR3X9~WcVXWXCRZsXfIyJQRzaPkx7prHqK8aHW2ofWaZgeWoIBLY7b65Z1mIc4iwG~J3sLw-0VWXxkI-ZBVx6PqtI1eWRpr2kvlnbcOAwhW9I3hz2n39gUc04nay1AvfOPhVasE-7lSYM01qytyA__&Key-Pair-Id=APKAJ7JARUX3F6RQIXLA"
     },
     "Images1": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348658-9fe8c477.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710951671-99c075b5.png?v=133566304259936170",
+      "newImages": "https://force24.attachments-euc2.freshdesk.com/data/helpdesk/attachments/production/79045769295/original/BEF%20Logo%20WHITE%20RGB.png?response-content-type=image%2Fpng&Expires=1712158945&Signature=G6RiGLuDBIjJE7iFkJFc1LfKvK4H3c2ceKvnceB9tW9mznohrhvSC8gOBHJ8GSuy2AgTUMRBEdgtXidWHPxPXf6R~VPGTtbfPGnrGWS2g8qKYLhRvP2vpENaGyyJ0JdNQdOyq9dnLQh06OpzMXIAoBjnnYYzs70Sadyi0arl1gOPKc~ugn5lj2qDnIFR-AGiqtOR3X9~WcVXWXCRZsXfIyJQRzaPkx7prHqK8aHW2ofWaZgeWoIBLY7b65Z1mIc4iwG~J3sLw-0VWXxkI-ZBVx6PqtI1eWRpr2kvlnbcOAwhW9I3hz2n39gUc04nay1AvfOPhVasE-7lSYM01qytyA__&Key-Pair-Id=APKAJ7JARUX3F6RQIXLA"
     },
     "Images2": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348720-f17ca8f2.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710951678-20b9fbc5.png?v=133566304259936170",
+      "newImages": "https://force24.attachments-euc2.freshdesk.com/data/helpdesk/attachments/production/79045769295/original/BEF%20Logo%20WHITE%20RGB.png?response-content-type=image%2Fpng&Expires=1712158945&Signature=G6RiGLuDBIjJE7iFkJFc1LfKvK4H3c2ceKvnceB9tW9mznohrhvSC8gOBHJ8GSuy2AgTUMRBEdgtXidWHPxPXf6R~VPGTtbfPGnrGWS2g8qKYLhRvP2vpENaGyyJ0JdNQdOyq9dnLQh06OpzMXIAoBjnnYYzs70Sadyi0arl1gOPKc~ugn5lj2qDnIFR-AGiqtOR3X9~WcVXWXCRZsXfIyJQRzaPkx7prHqK8aHW2ofWaZgeWoIBLY7b65Z1mIc4iwG~J3sLw-0VWXxkI-ZBVx6PqtI1eWRpr2kvlnbcOAwhW9I3hz2n39gUc04nay1AvfOPhVasE-7lSYM01qytyA__&Key-Pair-Id=APKAJ7JARUX3F6RQIXLA"
     },
     "Images3": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708348743-b20f7a07.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710951684-161f8855.png?v=133566304259936170",
+      "newImages": "https://force24.attachments-euc2.freshdesk.com/data/helpdesk/attachments/production/79045769295/original/BEF%20Logo%20WHITE%20RGB.png?response-content-type=image%2Fpng&Expires=1712158945&Signature=G6RiGLuDBIjJE7iFkJFc1LfKvK4H3c2ceKvnceB9tW9mznohrhvSC8gOBHJ8GSuy2AgTUMRBEdgtXidWHPxPXf6R~VPGTtbfPGnrGWS2g8qKYLhRvP2vpENaGyyJ0JdNQdOyq9dnLQh06OpzMXIAoBjnnYYzs70Sadyi0arl1gOPKc~ugn5lj2qDnIFR-AGiqtOR3X9~WcVXWXCRZsXfIyJQRzaPkx7prHqK8aHW2ofWaZgeWoIBLY7b65Z1mIc4iwG~J3sLw-0VWXxkI-ZBVx6PqtI1eWRpr2kvlnbcOAwhW9I3hz2n39gUc04nay1AvfOPhVasE-7lSYM01qytyA__&Key-Pair-Id=APKAJ7JARUX3F6RQIXLA"
     },
     "Images4": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707829066-399cbcc6.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532153-e990d1db.png?v=133566304259936170",
+      "newImages": "https://force24.attachments-euc2.freshdesk.com/data/helpdesk/attachments/production/79045769295/original/BEF%20Logo%20WHITE%20RGB.png?response-content-type=image%2Fpng&Expires=1712158945&Signature=G6RiGLuDBIjJE7iFkJFc1LfKvK4H3c2ceKvnceB9tW9mznohrhvSC8gOBHJ8GSuy2AgTUMRBEdgtXidWHPxPXf6R~VPGTtbfPGnrGWS2g8qKYLhRvP2vpENaGyyJ0JdNQdOyq9dnLQh06OpzMXIAoBjnnYYzs70Sadyi0arl1gOPKc~ugn5lj2qDnIFR-AGiqtOR3X9~WcVXWXCRZsXfIyJQRzaPkx7prHqK8aHW2ofWaZgeWoIBLY7b65Z1mIc4iwG~J3sLw-0VWXxkI-ZBVx6PqtI1eWRpr2kvlnbcOAwhW9I3hz2n39gUc04nay1AvfOPhVasE-7lSYM01qytyA__&Key-Pair-Id=APKAJ7JARUX3F6RQIXLA"
     },
     "Images5": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264624-c6e83321.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532204-3851eeb8.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images6": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913341-59aa6755.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532216-df46c497.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images7": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913370-8dd9b424.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532249-5e469274.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images8": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913582-2de03f5d.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532263-ecd4f51f.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images9": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707913594-10af57d0.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532380-2577870e.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images10": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707914086-29587463.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532411-dcaa2da0.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images11": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707914529-941023f7.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710768936-e006d0b7.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images12": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707914681-908fdd29.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710768953-c5a6a1ac.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images13": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915719-72c0e3ed.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710768696-889ec3cb.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images14": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915735-9922a2f8.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710768705-d2b68d6f.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images15": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915772-191baf67.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710768712-18dc7435.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images16": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915817-40801e06.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710768761-d59dc350.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images17": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916605-4bc5e7d6.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711532430-755cf4d9.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images18": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915994-70fe0bb9.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710769002-2c99cfff.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images19": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707915972-68f07c63.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710769017-36b72d8c.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images20": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916027-cb7c336a.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710769029-98d4e332.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images21": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916179-e0c8c7a3.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711557525-d114659c.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images22": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707916664-8eca71ab.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710769430-efa88a7d.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images23": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426463-be1fbcda.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711220552-6c782842.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images24": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426512-3ee625d0.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711359022-c6ac880e.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images25": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426411-6f9d6ae8.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710426453-2c9f9b87.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images26": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426532-38fca05e.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710426446-2003ec8b.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images27": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708013790-527c0300.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710426439-c9a1c5c9.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images28": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708013806-692823d1.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710426432-6412cecb.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images29": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426603-2a84b8f6.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711359797-7e5e7a2e.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images30": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426620-bcb38d69.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1711360010-02bfd5c8.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images31": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708426640-ce252822.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1705405794-0a73f34c.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images32": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708082186-da22f4f9.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1705406067-c3822966.jpg?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images33": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708082269-9896cd4f.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710264683-046a8839.jpg?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images34": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708082279-9cc01ab5.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710264700-055c63bc.jpg?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images35": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705405794-0a73f34c.png?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433195-371b9293.png?v=133566304259936170",
       "newImages": null
     },
     "Images36": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705406067-c3822966.jpg?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433366-3b3311be.png?v=133566304259936170",
       "newImages": null
     },
     "Images37": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264683-046a8839.jpg?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433475-dcf414c9.png?v=133566304259936170",
       "newImages": null
     },
     "Images38": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264700-055c63bc.jpg?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433487-37655748.png?v=133566304259936170",
       "newImages": null
     },
     "Images39": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495917-fd51250d.png?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433529-06a2197f.png?v=133566304259936170",
       "newImages": null
     },
     "Images40": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495969-2462d006.png?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433542-3df76050.png?v=133566304259936170",
       "newImages": null
     },
     "Images41": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495983-3e4dc219.jpg?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710433551-b19cd01d.png?v=133566304259936170",
       "newImages": null
     },
     "Images42": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705494963-d42cae59.jpg?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1707988214-dcdf0165.png?v=133566304259936170",
       "newImages": null
     },
     "Images43": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495394-a83320f0.png?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1707988309-12a3f33b.png?v=133566304259936170",
       "newImages": null
     },
     "Images44": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495739-e9093567.jpg?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1707988355-8e66e842.png?v=133566304259936170",
       "newImages": null
     },
     "Images45": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1705495793-aa42f8cf.png?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1707988432-7e962170.png?v=133566304259936170",
       "newImages": null
     },
     "Images46": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988214-dcdf0165.png?v=133547383987492339",
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1707988458-50ac0d1e.png?v=133566304259936170",
       "newImages": null
     },
     "Images47": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988309-12a3f33b.png?v=133547383987492339",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710424819-b60622da.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images48": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988355-8e66e842.png?v=133547383987502129",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710423555-c4b46964.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images49": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988432-7e962170.png?v=133547383987502129",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710423548-76a820c8.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     },
     "Images50": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1707988458-50ac0d1e.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images51": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014078-8707c597.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images52": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014089-27110e6f.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images53": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014100-7dbe29d3.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images54": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1708014111-d7960cfb.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images55": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264767-1074bf60.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images56": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264777-7a0cce1e.png?v=133547383987502129",
-      "newImages": null
-    },
-    "Images57": {
-      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/7fcb8329/images/1710264786-ba9cb88a.png?v=133547383987502129",
-      "newImages": null
+      "oldImages": "https://s3.eu-west-2.amazonaws.com/force24-assets/EmailTemplates/AccountTemplates/ab1ab55c/a0017db7/images/1710423541-aad1812b.png?v=133566304259936170",
+      "newImages": "https://www.befund.org/assets/uploads/_blogEntryImage/NPIF-II-Launch-Photo.jpg"
     }
   },
   "buttons": {
     "Button0": {
       "innerButton": {
-        "background": "rgb(53,71,149)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
+        "background": "#FFFFFF",
+        "border-radius": "0",
+        "color": "#70c7d5",
         "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
@@ -381,16 +325,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#354795",
-        "border-radius": "0px",
-        "border": "initialInitial#354795",
+        "background-color": "#ffffff",
+        "border-radius": "0",
         "padding": "15px25px"
       },
       "newInnerButton": {
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -405,7 +349,8 @@
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -419,9 +364,9 @@
     },
     "Button1": {
       "innerButton": {
-        "background": "rgb(112,199,213)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
+        "background": "#FFFFFF",
+        "border-radius": "0",
+        "color": "#518ece",
         "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
@@ -432,16 +377,17 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#70c7d5",
-        "border-radius": "0px",
-        "border": "#70c7d5",
+        "background-color": "#ffffff",
+        "border-radius": "0",
+        "border": "#000000",
         "padding": "15px25px"
       },
       "newInnerButton": {
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -456,7 +402,8 @@
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -470,9 +417,9 @@
     },
     "Button2": {
       "innerButton": {
-        "background": "rgb(255,255,255)",
-        "border-radius": "0px",
-        "color": "rgb(112,199,213)",
+        "background": "#518ECE",
+        "border-radius": "0",
+        "color": "#ffffff",
         "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
@@ -483,15 +430,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#FFFFFF",
-        "border-radius": "0px",
-        "border": "#FFFFFF",
+        "background-color": "#518ece",
+        "border-radius": "0",
+        "border": "#000000",
         "padding": "15px25px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -504,9 +452,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -521,9 +470,9 @@
     },
     "Button3": {
       "innerButton": {
-        "background": "rgb(81,142,206)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
+        "background": "#518ECE",
+        "border-radius": "0",
+        "color": "#ffffff",
         "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
@@ -535,14 +484,15 @@
       },
       "outerButton": {
         "background-color": "#518ece",
-        "border-radius": "0px",
-        "border": "#518ece",
+        "border-radius": "0",
+        "border": "#518ECE",
         "padding": "15px25px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -555,9 +505,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -572,9 +523,9 @@
     },
     "Button4": {
       "innerButton": {
-        "background": "rgb(53,71,149)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
+        "background": "#518ECE",
+        "border-radius": "0",
+        "color": "#ffffff",
         "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
@@ -585,15 +536,15 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#354795",
-        "border-radius": "0px",
-        "border": "1pxSolid#354795",
+        "background-color": "#518ece",
+        "border-radius": "0",
         "padding": "15px25px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -606,9 +557,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -623,9 +575,9 @@
     },
     "Button5": {
       "innerButton": {
-        "background": "rgb(112,199,213)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
+        "background": "#70C7D5",
+        "border-radius": "0",
+        "color": "#ffffff",
         "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
@@ -637,14 +589,14 @@
       },
       "outerButton": {
         "background-color": "#70c7d5",
-        "border-radius": "0px",
-        "border": "1pxSolid#70c7d5",
-        "padding": "15px45px"
+        "border-radius": "0",
+        "padding": "15px25px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -657,9 +609,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -674,10 +627,10 @@
     },
     "Button6": {
       "innerButton": {
-        "background": "#F57D20",
-        "border-radius": "8px",
-        "color": "#FFFFFF",
-        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "background": "#70C7D5",
+        "border-radius": "0",
+        "color": "#ffffff",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
         "font-weight": "bold",
@@ -687,15 +640,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#f57d20",
-        "border-radius": "8px",
-        "border": "1pxsolid#F57D20",
-        "padding": "15px30px"
+        "background-color": "#70c7d5",
+        "border-radius": "0",
+        "border": "#000000",
+        "padding": "15px25px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -708,9 +662,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -725,10 +680,10 @@
     },
     "Button7": {
       "innerButton": {
-        "background": "#0D1649",
-        "border-radius": "8px",
-        "color": "#FFFFFF",
-        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "background": "#FFFFFF",
+        "border-radius": "0",
+        "color": "#70c7d5",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
         "font-weight": "bold",
@@ -738,16 +693,17 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#0d1649",
-        "border-radius": "8px",
-        "border": "1pxsolid#0D1649",
-        "padding": "15px30px"
+        "background-color": "#FFFFFF",
+        "border-radius": "0",
+        "border": "#FFFFFF",
+        "padding": "15px25px"
       },
       "newInnerButton": {
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -762,7 +718,8 @@
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -776,10 +733,10 @@
     },
     "Button8": {
       "innerButton": {
-        "background": "#3F9BFC",
-        "border-radius": "8px",
-        "color": "#FFFFFF",
-        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "background": "#FFFFFF",
+        "border-radius": "0",
+        "color": "#70c7d5",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
         "font-weight": "bold",
@@ -789,16 +746,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#3f9bfc",
-        "border-radius": "8px",
-        "border": "1pxsolid#3F9BFC",
-        "padding": "15px30px"
+        "background-color": "#FFFFFF",
+        "border-radius": "0",
+        "padding": "15px25px"
       },
       "newInnerButton": {
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -813,7 +770,8 @@
         "background": null,
         "background-color": null,
         "border-radius": null,
-        "color": null,
+        "border-color": null,
+        "color": "rgb(0 , 136 , 204)",
         "display": null,
         "font-family": null,
         "font-size": null,
@@ -827,10 +785,10 @@
     },
     "Button9": {
       "innerButton": {
-        "background": "#518ECE",
+        "background": "#354795",
         "border-radius": "0",
-        "color": "#FFFFFF",
-        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "color": "#ffffff",
+        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
         "font-weight": "bold",
@@ -840,15 +798,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#518ece",
+        "background-color": "#354795",
         "border-radius": "0",
-        "border": "1pxsolid#518ECE",
-        "padding": "14px40px"
+        "border": "#354795",
+        "padding": "15px25px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 0 , 0)",
+        "background-color": "rgb(0 , 0 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -861,9 +820,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 0 , 0)",
+        "background-color": "rgb(0 , 0 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -878,6 +838,112 @@
     },
     "Button10": {
       "innerButton": {
+        "background": "#70C7D5",
+        "border-radius": "0",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#70c7d5",
+        "border-radius": "0",
+        "border": "1pxsolid#70C7D5",
+        "padding": "15px30px"
+      },
+      "newInnerButton": {
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button11": {
+      "innerButton": {
+        "background": "#354795",
+        "border-radius": "0",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
+        "font-size": "14px",
+        "font-style": "normal",
+        "font-weight": "bold",
+        "line-height": "1.2",
+        "text-align": "center",
+        "text-decoration": "none",
+        "display": "block"
+      },
+      "outerButton": {
+        "background-color": "#354795",
+        "border-radius": "0",
+        "border": "1pxsolid#354795",
+        "padding": "15px30px"
+      },
+      "newInnerButton": {
+        "background": "rgb(0 , 0 , 0)",
+        "background-color": "rgb(0 , 0 , 0)",
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      },
+      "newOuterButton": {
+        "background": "rgb(0 , 0 , 0)",
+        "background-color": "rgb(0 , 0 , 0)",
+        "border-radius": null,
+        "border-color": null,
+        "color": null,
+        "display": null,
+        "font-family": null,
+        "font-size": null,
+        "font-style": null,
+        "font-weight": null,
+        "line-height": null,
+        "text-align": null,
+        "text-decoration": null,
+        "text-transform": null
+      }
+    },
+    "Button12": {
+      "innerButton": {
         "background": "#518ECE",
         "border-radius": "0",
         "color": "#ffffff",
@@ -897,9 +963,10 @@
         "padding": "14px40px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -912,111 +979,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
-        "color": null,
-        "display": null,
-        "font-family": null,
-        "font-size": null,
-        "font-style": null,
-        "font-weight": null,
-        "line-height": null,
-        "text-align": null,
-        "text-decoration": null,
-        "text-transform": null
-      }
-    },
-    "Button11": {
-      "innerButton": {
-        "background": "rgb(81,142,206)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
-        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
-        "font-size": "14px",
-        "font-style": "normal",
-        "font-weight": "bold",
-        "line-height": "1.2",
-        "text-align": "center",
-        "text-decoration": "none",
-        "display": "block"
-      },
-      "outerButton": {
-        "background-color": "#518ece",
-        "border-radius": "0px",
-        "border": "1pxSolid#518ece",
-        "padding": "14px40px"
-      },
-      "newInnerButton": {
-        "background": null,
-        "background-color": null,
-        "border-radius": null,
-        "color": null,
-        "display": null,
-        "font-family": null,
-        "font-size": null,
-        "font-style": null,
-        "font-weight": null,
-        "line-height": null,
-        "text-align": null,
-        "text-decoration": null,
-        "text-transform": null
-      },
-      "newOuterButton": {
-        "background": null,
-        "background-color": null,
-        "border-radius": null,
-        "color": null,
-        "display": null,
-        "font-family": null,
-        "font-size": null,
-        "font-style": null,
-        "font-weight": null,
-        "line-height": null,
-        "text-align": null,
-        "text-decoration": null,
-        "text-transform": null
-      }
-    },
-    "Button12": {
-      "innerButton": {
-        "background": "rgb(112,199,213)",
-        "border-radius": "0px",
-        "color": "rgb(255,255,255)",
-        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
-        "font-size": "14px",
-        "font-style": "normal",
-        "font-weight": "bold",
-        "line-height": "1.2",
-        "text-align": "center",
-        "text-decoration": "none",
-        "display": "block"
-      },
-      "outerButton": {
-        "background-color": "#70c7d5",
-        "border-radius": "0px",
-        "border": "1pxSolid#70c7d5",
-        "padding": "14px40px"
-      },
-      "newInnerButton": {
-        "background": null,
-        "background-color": null,
-        "border-radius": null,
-        "color": null,
-        "display": null,
-        "font-family": null,
-        "font-size": null,
-        "font-style": null,
-        "font-weight": null,
-        "line-height": null,
-        "text-align": null,
-        "text-decoration": null,
-        "text-transform": null
-      },
-      "newOuterButton": {
-        "background": null,
-        "background-color": null,
-        "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -1031,8 +997,8 @@
     },
     "Button13": {
       "innerButton": {
-        "background": "#000000",
-        "border-radius": "8px",
+        "background": "#518ECE",
+        "border-radius": "0",
         "color": "#FFFFFF",
         "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
         "font-size": "14px",
@@ -1044,15 +1010,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#000000",
-        "border-radius": "8px",
-        "border": "1pxsolid#000000",
-        "padding": "15px25px"
+        "background-color": "#518ece",
+        "border-radius": "0",
+        "border": "1pxsolid#518ECE",
+        "padding": "14px40px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -1065,9 +1032,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(255 , 170 , 0)",
+        "background-color": "rgb(255 , 170 , 0)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -1082,10 +1050,10 @@
     },
     "Button14": {
       "innerButton": {
-        "background": "#F57D20",
-        "border-radius": "8px",
-        "color": "#ffffff",
-        "font-family": "Arial,'HelveticaNeue',Helvetica,sans-serif",
+        "background": "#70C7D5",
+        "border-radius": "0",
+        "color": "#FFFFFF",
+        "font-family": "Arial,\"HelveticaNeue\",Helvetica,sans-serif",
         "font-size": "14px",
         "font-style": "normal",
         "font-weight": "bold",
@@ -1095,15 +1063,16 @@
         "display": "block"
       },
       "outerButton": {
-        "background-color": "#f57d20",
-        "border-radius": "8px",
-        "border": "1pxsolid#F57D20",
-        "padding": "15px25px"
+        "background-color": "#70c7d5",
+        "border-radius": "0",
+        "border": "1pxsolid#70C7D5",
+        "padding": "14px40px"
       },
       "newInnerButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -1116,9 +1085,10 @@
         "text-transform": null
       },
       "newOuterButton": {
-        "background": null,
-        "background-color": null,
+        "background": "rgb(0 , 136 , 204)",
+        "background-color": "rgb(0 , 136 , 204)",
         "border-radius": null,
+        "border-color": null,
         "color": null,
         "display": null,
         "font-family": null,
@@ -1137,6 +1107,7 @@
       "background": null,
       "background-color": null,
       "border-radius": null,
+      "border-color": null,
       "color": null,
       "display": null,
       "font-family": null,
@@ -1152,6 +1123,7 @@
       "background": null,
       "background-color": null,
       "border-radius": null,
+      "border-color": null,
       "color": null,
       "display": null,
       "font-family": null,
@@ -1163,5 +1135,6 @@
       "text-decoration": null,
       "text-transform": null
     }
-  }
+  },
+  "backgroundImg": {}
 }

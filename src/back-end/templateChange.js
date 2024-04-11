@@ -9,7 +9,7 @@ import {
   getBackgroundImg,
 } from "./extractor.js";
 
-export function updateHtmlContent(html, allUpdatesObj, type = "microsite") {
+export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   const full = isFullHtml(html);
   const dom = new JSDOM(html);
   const document = dom.window.document;
