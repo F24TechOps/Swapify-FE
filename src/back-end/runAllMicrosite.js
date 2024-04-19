@@ -3,6 +3,7 @@ import { replaceId } from "./replacer.js";
 import { updateHtmlContent } from "./templateChange.js";
 import { cleanHtml } from "./cleanup.js";
 import fs from 'fs';
+import path from "path";
 
 export function runAll (html, selections, type) {
     if (selections.flatten)
@@ -30,5 +31,11 @@ export function readFile (filePath) {
 };
   
 export function writeFile (filePath, data) {
+    const directory = path.dirname(filePath);
+
+    if (!fs.existsSync(directory)) {
+        fs.mkdirSync(directory, { recursive: true });
+    }
+
     fs.writeFileSync(filePath, data, 'utf8');
 };
