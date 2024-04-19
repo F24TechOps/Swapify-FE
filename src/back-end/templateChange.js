@@ -140,9 +140,9 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const element = allElements[i];
 
         const normalURL = normalizeUrl(element.src);
-        const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImages);
+        const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageSrc);
 
-        const { newImages } = allUpdatesObj.images[imgType];
+        const { newImageSrc } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
 
@@ -186,6 +186,9 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
           Object.entries(buttonData.newOuterButton).forEach(
             ([attribute, value]) => {
               if (value !== null) container.style[attribute] = value;
+
+              if (attribute === 'background-color')
+                container.setAttribute('bgcolor', value);
             }
           );
           Object.entries(buttonData.newInnerButton).forEach(
