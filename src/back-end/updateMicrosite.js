@@ -1,8 +1,8 @@
 import { readAndRun, readFile } from "./runAllMicrosite.js";
 
-const jsonData = readFile('./src/json/microsite4.json', 'utf8');
+const jsonData = readFile('./.env/json/microsite.json', 'utf8');
 const update = JSON.parse(jsonData);
 
 const selections = {replaceId: true, flatten: true, update};
 
-readAndRun('./src/html/microsite.html', `src/html/dairymicrosite.html`, selections, 'microsite');
+readAndRun('./src/html/microsite/base1/microsite.html', `.env/microsite.html`, selections, 'microsite');

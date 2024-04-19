@@ -150,13 +150,6 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
           continue;
 
           element.src = newImageSrc;
-          // if (element.closest("[data-f24-layout-column-reorder]") && type === 'email') {
-          //   element.closest("[data-f24-layout-column-reorder]").style.display =
-          //     "flex";
-          //   element.closest(
-          //     "[data-f24-layout-column-reorder]"
-          //   ).style.alignItems = "center";
-          // }
         }
       }
     }
