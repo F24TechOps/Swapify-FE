@@ -1,8 +1,14 @@
 import { createMapping } from "./mapping.js";
 import { readFile, writeFile } from "./runAllMicrosite.js";
 
-const html = readFile('./src/html/email.html');
+const type = process.argv[2];
+const company = process.argv[3] ?? 'force';
 
-const mapping = await createMapping(html, 'email');
+if (!['email', 'microsite'].includes(type))
+    throw new Error("type must be either 'email' or 'microsite'");
 
-writeFile('./src/json/microsite4.json', JSON.stringify(mapping, null, 2));
+const html = readFile(`./src/html/${type}/base1/template.html`);
+
+const mapping = await createMapping(html, type);
+
+writeFile(`./.env/${company}/${type}/json/mapping.json`, JSON.stringify(mapping, null, 2));
