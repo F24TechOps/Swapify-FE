@@ -39,3 +39,7 @@ export function writeFile (filePath, data) {
 
     fs.writeFileSync(filePath, data, 'utf8');
 };
+
+export function copyFolder (src, dest) {
+    fs.cpSync(src, dest, {recursive: true});
+}

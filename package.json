@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "map": "node ./src/back-end/createMap.js"
+    "map": "node ./src/back-end/createMap.js",
+    "swap": "node ./src/back-end/swap.js"
   },
   "repository": {
     "type": "git",
