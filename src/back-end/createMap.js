@@ -1,5 +1,5 @@
 import { createMapping } from "./mapping.js";
-import { readFile, writeFile } from "./runAllMicrosite.js";
+import { readFile, writeFile } from "./runAll.js";
 
 const type = process.argv[2];
 const company = process.argv[3] ?? 'force';
