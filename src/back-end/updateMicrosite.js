@@ -1,4 +1,4 @@
-import { readAndRun, readFile } from "./runAllMicrosite.js";
+import { readAndRun, readFile } from "./runAll.js";
 
 const jsonData = readFile('./.env/json/microsite.json', 'utf8');
 const update = JSON.parse(jsonData);

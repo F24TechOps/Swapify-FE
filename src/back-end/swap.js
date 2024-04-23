@@ -1,7 +1,10 @@
-import { copyFolder, readAndRun, readFile } from "./runAllMicrosite.js";
+import { copyFolder, readAndRun, readFile } from "./runAll.js";
 
 const type = process.argv[2];
 const company = process.argv[3] ?? 'force';
+
+if (!['email', 'microsite'].includes(type))
+    throw new Error("type must be either 'email' or 'microsite'");
 
 const jsonData = readFile(`./.env/${company}/${type}/json/mapping.json`, 'utf8');
 const update = JSON.parse(jsonData);
