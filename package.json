@@ -9,7 +9,8 @@
     "map": "node ./src/back-end/createMap.js",
     "swap": "node ./src/back-end/swap.js",
     "star": "node ./src/imageformatter/star.js",
-    "circle": "node ./src/imageformatter/circle.js"
+    "circle": "node ./src/imageformatter/circle.js",
+    "zip": "node ./src/back-end/createZip.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "fs": "^0.0.1-security",
     "jest": "^29.7.0",
     "jsdom": "^24.0.0",
+    "jszip": "^3.10.1",
     "path": "^0.12.7",
     "punycode": "^2.3.1",
     "readline": "^1.3.0",
