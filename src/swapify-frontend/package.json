@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "map": "node ./back-end/createMap.js",
+    "swap": "node ./back-end/swap.js",
+    "star": "node ./imageformatter/star.js",
+    "circle": "node ./imageformatter/circle.js",
+    "zip": "node ./back-end/createZip.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
