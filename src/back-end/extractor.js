@@ -21,6 +21,8 @@ export const getBackgroundImg = (document) => document.getElementsByClassName("r
 
 export const getImage = (document) => document.getElementsByTagName("img");
 
+export const getLink = (document) => document.querySelectorAll('[href]');
+
 export const extractBackgrounds = (html, type) =>
   extractFeature(
     html,
@@ -31,11 +33,20 @@ export const extractBackgrounds = (html, type) =>
     type
   );
 
+export const extractLinks = (html, type) =>
+  extractFeature(
+    html,
+    (element) => element.getAttribute('href'),
+    [""],
+    getLink,
+    type
+  );
+
 export const extractFonts = (html, type) =>
   extractFeature(
     html,
     (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
-    [],
+    [""],
     getText,
     type
   );
@@ -44,7 +55,7 @@ export const extractFontSize = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.fontSize,
-    [],
+    [""],
     getText,
     type
   );
@@ -53,12 +64,12 @@ export const extractFontColour = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.color,
-    [],
+    [""],
     getText,
     type
   );
 
-  export const extractBackgroundImg = (html) => extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);
+export const extractBackgroundImg = (html) => extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);
 
 export const extractImage = (html) =>
   extractFeature(html, (element) => element.src, [], getImage);
