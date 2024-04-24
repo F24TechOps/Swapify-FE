@@ -7,12 +7,33 @@ import {
   getImage,
   getText,
   getBackgroundImg,
+  getLink,
 } from "./extractor.js";
 
 export function updateHtmlContent(html, allUpdatesObj, type = "email") {
   const full = isFullHtml(html);
   const dom = new JSDOM(html);
   const document = dom.window.document;
+
+  // Update hyperlinks
+  function changeLink(allUpdatesObj) {
+    const linkElements = getLink(document);
+
+    for (const link in allUpdatesObj.links) {
+      for (let i = 0; i < linkElements.length; i++) {
+        let element = linkElements[i];
+
+        const { newLink } = allUpdatesObj.links[link];
+
+        if (newLink === null) continue;
+
+        if (element.getAttribute("href") === allUpdatesObj.links[link].oldLink)
+          element.setAttribute("href", newLink)
+      }
+    }
+  }
+
+  changeLink(allUpdatesObj);
 
   //   Update colors
   function changeBackgroundColour(allUpdatesObj) {
