@@ -11,8 +11,8 @@ const update = JSON.parse(jsonData);
 
 const selections = {replaceId: false, flatten: false, update};
 
-readAndRun(`./src/html/${type}/base1/template.html`, `./.env/${company}/${type}/final/template.html`, selections, type);
+readAndRun(`../swapify-frontend/html/${type}/base1/template.html`, `./.env/${company}/${type}/final/template.html`, selections, type);
 
 if (type === 'email') {
-    copyFolder(`./src/html/${type}/base1/images`, `./.env/${company}/${type}/final/images`);
+    copyFolder(`../swapify-frontend/html/${type}/base1/images`, `./.env/${company}/${type}/final/images`);
 }

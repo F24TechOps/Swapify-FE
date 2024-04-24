@@ -5,4 +5,4 @@ const update = JSON.parse(jsonData);
 
 const selections = {replaceId: true, flatten: true, update};
 
-readAndRun('./src/html/microsite/base1/microsite.html', `.env/microsite.html`, selections, 'microsite');
+readAndRun('../swapify-frontend/html/microsite/base1/template.html', `.env/microsite.html`, selections, 'microsite');
