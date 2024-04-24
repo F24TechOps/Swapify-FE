@@ -43,7 +43,7 @@ If you want to replace the background colour you can put the new colour for the 
 }
 ```
 
-The same logic applies to fonts, font colours, font sizes and image sources (For emails you can leave the image sources alone). If you want to leave a variable as it is just leave the null value.
+The same logic applies to fonts, font colours, font sizes and image sources (For emails you can leave the image sources alone and keep the names of the image files the same). If you want to leave a variable as it is just leave the null value.
 
 None of these will affect any of the button stylings.
 
@@ -101,9 +101,9 @@ npm run star {company} {colour}
 
 For example `npm run star force24 '#518ece'`. Please use quotes for the colour.
 
-You will need an additional three images called `landscape.png`, `portrait.png` and `circle.png`.
+You will need to replace images called `landscape.png`, `portrait.png`, `circle.png`, `logo-light.png` and `logo-dark.png` and keep their name unchanged (or change it in the mapping JSON before you swap).
 
-If you don't have a circle image you can create one.
+If the client hasn't provided a circle image you can create one.
 
 ```
 npm run circle {company} {image path}
