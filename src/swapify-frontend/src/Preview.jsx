@@ -1,7 +1,6 @@
 import "./css/body.css";
 
 const Preview = () => {
-    console.log(window.location.origin)
   return (
     <div id='preview'>
       <button>Start</button>
