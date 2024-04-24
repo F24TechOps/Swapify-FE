@@ -20,7 +20,19 @@ const buttonKeys = [
 const emptyButton = buttonKeys.reduce((mapper, key) => {
     mapper[key] = null;
     return mapper;
-}, {})
+}, {});
+
+const outerButtonKeys = [
+    "background",
+    "border-radius",
+    "border",
+    "padding"
+];
+
+const emptyOuterButton = outerButtonKeys.reduce((mapper, key) => {
+    mapper[key] = null;
+    return mapper;
+}, {});
 
 const mapFeature = (featureMapper, feature, idx, type) => {
     featureMapper[`${type}${idx}`] = {};
@@ -44,7 +56,7 @@ const mapButton = (buttonMapper, button, idx, type) => {
 
         buttonMapper[`Button${idx}`] = { innerButton , outerButton }
         buttonMapper[`Button${idx}`].newInnerButton = newButton;
-        buttonMapper[`Button${idx}`].newOuterButton = newButton;
+        buttonMapper[`Button${idx}`].newOuterButton = emptyOuterButton;
     }
 
     return buttonMapper;
@@ -70,7 +82,7 @@ export async function createMapping(html, type) {
     const allButtons = type === 'microsite' ? emptyButton : 
         {
             innerButton: emptyButton,
-            outerButton: emptyButton
+            outerButton: emptyOuterButton
         }
     ;
 
