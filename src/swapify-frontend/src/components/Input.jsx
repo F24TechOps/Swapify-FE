@@ -1,4 +1,4 @@
-import "./css/body.css";
+import "../css/body.css";
 import React, { useEffect, useState } from "react";
 
 const Input = () => {

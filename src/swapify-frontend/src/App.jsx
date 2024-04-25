@@ -1,5 +1,5 @@
 import "./css/App.css";
-import Header from "./Header.jsx";
+import Header from "./components/Header.jsx";
 import Body from "./Body.jsx";
 
 function App() {
