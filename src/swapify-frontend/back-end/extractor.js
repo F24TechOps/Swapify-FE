@@ -35,7 +35,7 @@ export const extractFonts = (html, type) =>
   extractFeature(
     html,
     (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
-    [],
+    [""],
     getText,
     type
   );
@@ -44,7 +44,7 @@ export const extractFontSize = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.fontSize,
-    [],
+    [""],
     getText,
     type
   );
@@ -53,7 +53,7 @@ export const extractFontColour = (html, type) =>
   extractFeature(
     html,
     (element) => element.style.color,
-    [],
+    [""],
     getText,
     type
   );

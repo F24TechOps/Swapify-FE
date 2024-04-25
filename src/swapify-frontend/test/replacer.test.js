@@ -1,6 +1,6 @@
-import { extractId } from '../src/extractor';
-import { replaceId } from '../src/replacer';
-import { reformatHtml } from './helpers/testfunctions';
+import { extractId } from '../back-end/extractor.js';
+import { replaceId } from '../back-end/replacer.js';
+import { reformatHtml } from './helpers/testfunctions.js';
  
 describe('test id replacer', () => {
     const div1 = `
