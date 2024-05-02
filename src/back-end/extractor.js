@@ -14,7 +14,7 @@ export function extractId(html) {
 export const getBackgrounds = (document, type) => type === 'microsite' ? document.getElementsByTagName("div") : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
 
 export const getText = (document) => document.querySelectorAll(
-  "div, span, strong, p"
+  "div, span, strong, p, h1, h2, h3, h4, h5, h6"
 );
 
 export const getBackgroundImg = (document) => document.getElementsByClassName("row");

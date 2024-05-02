@@ -201,7 +201,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
             ([attribute, value]) => {
               if (value !== null) container.style[attribute] = value;
 
-              if (attribute === 'background-color')
+              if (attribute === 'background-color' || attribute === 'background')
                 container.setAttribute('bgcolor', value);
             }
           );
