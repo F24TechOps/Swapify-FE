@@ -11,13 +11,16 @@ export function extractId(html) {
   );
 }
 
-export const getBackgrounds = (document, type) => type === 'microsite' ? document.getElementsByTagName("div") : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
+export const getBackgrounds = (document, type) =>
+  type === "microsite"
+    ? document.getElementsByTagName("div")
+    : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
 
-export const getText = (document) => document.querySelectorAll(
-  "div, span, strong, p"
-);
+export const getText = (document) =>
+  document.querySelectorAll("div, span, strong, p");
 
-export const getBackgroundImg = (document) => document.getElementsByClassName("row");
+export const getBackgroundImg = (document) =>
+  document.getElementsByClassName("row");
 
 export const getImage = (document) => document.getElementsByTagName("img");
 
@@ -41,24 +44,13 @@ export const extractFonts = (html, type) =>
   );
 
 export const extractFontSize = (html, type) =>
-  extractFeature(
-    html,
-    (element) => element.style.fontSize,
-    [],
-    getText,
-    type
-  );
+  extractFeature(html, (element) => element.style.fontSize, [], getText, type);
 
 export const extractFontColour = (html, type) =>
-  extractFeature(
-    html,
-    (element) => element.style.color,
-    [],
-    getText,
-    type
-  );
+  extractFeature(html, (element) => element.style.color, [], getText, type);
 
-  export const extractBackgroundImg = (html) => extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);
+export const extractBackgroundImg = (html) =>
+  extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);
 
 export const extractImage = (html) =>
   extractFeature(html, (element) => element.src, [], getImage);
@@ -85,8 +77,10 @@ export const getButtonInfo = (element) => {
   const styleObject = {};
 
   styles.forEach((style) => {
-    const [key, value] = style.split(":").map((prop) => prop.trim().replace("\n", ""));
-    styleObject[key] = value.replace(/\s+/g, '');
+    const [key, value] = style
+      .split(":")
+      .map((prop) => prop.trim().replace("\n", ""));
+    styleObject[key] = value.replace(/\s+/g, "");
   });
 
   return JSON.stringify(styleObject, null, 2);
@@ -98,13 +92,14 @@ export function extractButton(html, type) {
 
   let allStyles;
 
-  if (type === 'microsite') {
+  if (type === "microsite") {
     const allElements = Array.from(document.getElementsByClassName("btn"));
 
     allStyles = allElements.map(getButtonInfo);
-  }
-  else {
-    const allButtonContainers = Array.from(document.querySelectorAll("td.mceNonEditable"));
+  } else {
+    const allButtonContainers = Array.from(
+      document.querySelectorAll("td.mceNonEditable")
+    );
 
     allStyles = allButtonContainers.map((container) => {
       const innerButton = container.querySelector("a");
@@ -116,7 +111,11 @@ export function extractButton(html, type) {
       const inner = JSON.parse(innerButtonInfo);
       const outer = JSON.parse(outerButtonInfo);
 
-      return JSON.stringify({innerButton: inner, outerButton: outer}, null, 2)
+      return JSON.stringify(
+        { innerButton: inner, outerButton: outer },
+        null,
+        2
+      );
     });
   }
 

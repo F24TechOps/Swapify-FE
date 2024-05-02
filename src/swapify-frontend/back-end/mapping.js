@@ -26,7 +26,8 @@ const outerButtonKeys = [
     "background",
     "border-radius",
     "border",
-    "padding"
+    "padding",
+    "background-color"
 ];
 
 const emptyOuterButton = outerButtonKeys.reduce((mapper, key) => {
@@ -85,6 +86,8 @@ export async function createMapping(html, type) {
             outerButton: emptyOuterButton
         }
     ;
+
+    console.log(images)
 
     return {backgroundColors, fontFamily, fontColor, fontSize, images, buttons, allButtons, backgroundImg};
 }
