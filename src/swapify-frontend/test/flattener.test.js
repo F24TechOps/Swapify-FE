@@ -1,5 +1,5 @@
-import {flatten} from '../src/flattener';
-import { reformatHtml } from './helpers/testfunctions';
+import {flatten} from '../back-end/flattener.js';
+import { reformatHtml } from './helpers/testfunctions.js';
  
 describe('test div flattener', () => {
     const div1 = `

@@ -1,6 +1,6 @@
-import { runAll } from '../../src/runAll';
-import { reformatHtml } from '.././helpers/testfunctions';
-import { extractId } from '../../src/extractor';
+import { runAll } from '../../back-end/runAll.js';
+import { reformatHtml } from '.././helpers/testfunctions.js';
+import { extractId } from '../../back-end/extractor.js';
  
 describe('test div flattener works with id replacer', () => {
     const div1 = `

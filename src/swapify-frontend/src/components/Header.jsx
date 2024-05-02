@@ -1,4 +1,4 @@
-import "./css/body.css";
+import "../css/body.css";
 
 const Header = () => {
   return (
@@ -8,13 +8,13 @@ const Header = () => {
       </div>
         <ul>
           <li>
-            <a href="">Microsite</a>
+            <a href="/microsite">Microsite</a>
           </li>
           <li>
-            <a href="">Email</a>
+            <a href="/email">Email</a>
           </li>
           <li>
-            <a href="">Text Template</a>
+            <a href="/text">Text Template</a>
           </li>
         </ul>
     </header>

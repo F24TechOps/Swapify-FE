@@ -1,7 +1,7 @@
 import tmp from 'tmp';
-import { readAndRun, readFile } from '../../src/runAll';
-import { reformatHtml } from '../helpers/testfunctions';
-import { extractId } from '../../src/extractor';
+import { readAndRun, readFile } from '../../back-end/runAll.js';
+import { reformatHtml } from '../helpers/testfunctions.js';
+import { extractId } from '../../back-end/extractor.js';
 
 describe('read and write tests', () => {
     let tempFilePath;

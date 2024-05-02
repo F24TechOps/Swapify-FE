@@ -38,16 +38,35 @@ export const extractFonts = (html, type) =>
   extractFeature(
     html,
     (element, dom) => dom.window.getComputedStyle(element, null).fontFamily,
-    [],
+    [""],
     getText,
     type
   );
 
 export const extractFontSize = (html, type) =>
+<<<<<<< HEAD
   extractFeature(html, (element) => element.style.fontSize, [], getText, type);
 
 export const extractFontColour = (html, type) =>
   extractFeature(html, (element) => element.style.color, [], getText, type);
+=======
+  extractFeature(
+    html,
+    (element) => element.style.fontSize,
+    [""],
+    getText,
+    type
+  );
+
+export const extractFontColour = (html, type) =>
+  extractFeature(
+    html,
+    (element) => element.style.color,
+    [""],
+    getText,
+    type
+  );
+>>>>>>> 405bc7418a34b81a74d66cdc5999e04b9760c383
 
 export const extractBackgroundImg = (html) =>
   extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);

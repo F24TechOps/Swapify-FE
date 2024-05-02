@@ -1,22 +1,21 @@
 import "./css/body.css";
-import Preview from "./Preview.jsx";
-import Input from "./Input.jsx";
-import Output from "./Output.jsx";
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Email from "./components/Email";
+import Microsite from "./components/Microsite";
 
 function Body() {
-  const [isInput, setIsInput] = useState(true);
-
-  const toggleInput = () => {
-    setIsInput(!isInput);
-  };
-
+  
   return (
-    <div id="main-body">
-      <Preview />
-      {isInput ? <Input /> : <Output />}
-      <button onClick={toggleInput}>{isInput ? 'Submit' : 'Download Zip'}</button>
-    </div>
+    <Router>
+      <div id="main-body">
+        <Routes>
+          <Route path="/" Component={Email} />
+          <Route path="/email" Component={Email} />
+          <Route path="/microsite" Component={Microsite} />
+          <Route path="/*" Component={Email} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,11 +1,11 @@
-import "./css/body.css";
+import '../css/body.css'
 
-const Preview = () => {
+const Preview = ({type}) => {
   return (
     <div id='preview'>
       <button>Start</button>
       <iframe
-        src={`${window.location.origin}/html/microsite/base1/template.html`}
+        src={`${window.location.origin}/html/${type}/base1/template.html`}
         frameborder="0"
       >
         HTML PREVIEW
