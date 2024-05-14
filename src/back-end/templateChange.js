@@ -76,14 +76,20 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         let element = backgroundImgElement[i];
 
         const { newBackgroundImage } = allUpdatesObj.backgroundImg[backgroundType];
-
+        
         if (newBackgroundImage === null) continue;
 
+        const extractUrl = (urlStyle) => {
+          const match = /url\(["']?(.*?)["']?\)/i.exec(urlStyle);
+          return match ? match[1] : null;
+        }
+
+
         if (
-          dom.window.getComputedStyle(element, null).backgroundImage ===
+          extractUrl(dom.window.getComputedStyle(element, null).backgroundImage) ===
           allUpdatesObj.backgroundImg[backgroundType].oldBackgroundImage
         ) {
-          element.style.backgroundImage = newBackgroundImage;
+          element.style.backgroundImage = `url(${newBackgroundImage})`;
         }
       }
     }

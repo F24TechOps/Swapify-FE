@@ -14,10 +14,10 @@ export function extractId(html) {
 export const getBackgrounds = (document, type) => type === 'microsite' ? document.getElementsByTagName("div") : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
 
 export const getText = (document) => document.querySelectorAll(
-  "div, span, strong, p, h1, h2, h3, h4, h5, h6"
+  "div, span, strong, p, h1, h2, h3, h4, h5, h6, li"
 );
 
-export const getBackgroundImg = (document) => document.getElementsByClassName("row");
+export const getBackgroundImg = (document) => document.getElementsByClassName("bck-img");
 
 export const getImage = (document) => document.getElementsByTagName("img");
 
@@ -69,7 +69,10 @@ export const extractFontColour = (html, type) =>
     type
   );
 
-export const extractBackgroundImg = (html) => extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);
+  export const extractBackgroundImg = (html) =>
+  extractFeature(html, (element) => { const bgImage = element.style.backgroundImage; 
+    return bgImage.replace(/url\(["']?(.*?)["']?\)/i, "$1");
+  }, [], getBackgroundImg);
 
 export const extractImage = (html) =>
   extractFeature(html, (element) => element.src, [], getImage);
