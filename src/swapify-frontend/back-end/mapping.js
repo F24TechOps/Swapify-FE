@@ -87,7 +87,5 @@ export async function createMapping(html, type) {
         }
     ;
 
-    console.log(images)
-
     return {backgroundColors, fontFamily, fontColor, fontSize, images, buttons, allButtons, backgroundImg};
 }

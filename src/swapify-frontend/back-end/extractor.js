@@ -17,10 +17,10 @@ export const getBackgrounds = (document, type) =>
     : document.querySelectorAll(`[align="center"]:not(.mceNonEditable)`);
 
 export const getText = (document) =>
-  document.querySelectorAll("div, span, strong, p");
+  document.querySelectorAll("div, span, strong, p, h1, h2, h3, h4, h5, h6, li");
 
 export const getBackgroundImg = (document) =>
-  document.getElementsByClassName("row");
+  document.getElementsByClassName("bck-img");
 
 export const getImage = (document) => document.getElementsByTagName("img");
 
@@ -44,12 +44,6 @@ export const extractFonts = (html, type) =>
   );
 
 export const extractFontSize = (html, type) =>
-<<<<<<< HEAD
-  extractFeature(html, (element) => element.style.fontSize, [], getText, type);
-
-export const extractFontColour = (html, type) =>
-  extractFeature(html, (element) => element.style.color, [], getText, type);
-=======
   extractFeature(
     html,
     (element) => element.style.fontSize,
@@ -66,10 +60,11 @@ export const extractFontColour = (html, type) =>
     getText,
     type
   );
->>>>>>> 405bc7418a34b81a74d66cdc5999e04b9760c383
 
 export const extractBackgroundImg = (html) =>
-  extractFeature(html, (element) => element.style.backgroundImage, [], getBackgroundImg);
+  extractFeature(html, (element) => { const bgImage = element.style.backgroundImage; 
+    return bgImage.replace(/url\(["']?(.*?)["']?\)/i, "$1");
+  }, [], getBackgroundImg);
 
 export const extractImage = (html) =>
   extractFeature(html, (element) => element.src, [], getImage);
