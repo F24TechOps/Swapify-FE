@@ -10,7 +10,10 @@
     "swap": "node ./src/back-end/swap.js",
     "star": "node ./src/imageformatter/star.js",
     "circle": "node ./src/imageformatter/circle.js",
-    "zip": "node ./src/back-end/createZip.js"
+    "zip": "node ./src/back-end/createZip.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node ./src/server.js",
+    "client": "npm run dev --prefix ./src/frontend"
   },
   "repository": {
     "type": "git",
@@ -42,7 +45,9 @@
     "@babel/preset-env": "^7.24.0",
     "@jest/core": "^29.7.0",
     "babel-jest": "^29.7.0",
+    "concurrently": "^8.2.2",
     "esm": "^3.2.25",
+    "express": "^4.19.2",
     "jsdom": "^24.0.0",
     "punycode": "^2.3.1",
     "uuid": "^9.0.1"
