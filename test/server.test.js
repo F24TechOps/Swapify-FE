@@ -97,7 +97,6 @@ jest.mock("jszip", () => {
   });
 });
 
-// Setup and teardown
 beforeAll(async () => {
   if (!fs.existsSync(emailTemplatePath)) {
     throw new Error(
@@ -124,9 +123,9 @@ beforeAll(async () => {
     .expect(201);
 });
 
-afterAll(() => {
-  fs.rmSync(mockJsonDir, { recursive: true, force: true });
-});
+// afterAll(() => {
+//   fs.rmSync(mockJsonDir, { recursive: true, force: true });
+// });
 
 describe("GET /api/mapping/:type/:company", () => {
   it("should return the correct JSON data for companyA email", async () => {
@@ -282,11 +281,10 @@ describe("POST /api/swap", () => {
 
     expect(res.text).toContain(`Error executing swap script:`);
   });
-});
+}); 
 
 describe("GET /api/:type/:company/final-template", () => {
   beforeAll(async () => {
-    // Ensure the final templates are created using the swap endpoint before testing
     await request(app)
       .post("/api/swap")
       .send({ type: "email", company: "companyA" })
@@ -426,7 +424,6 @@ describe('PATCH /api/update-mapping/:type/:company', () => {
     const updatedMapping = readContent(emailJson);
     expect(updatedMapping.backgroundColors.Background0.newBackground).toBe("rgb(255, 255, 255)");
 
-    // Ensure other data remains unchanged
     expect(updatedMapping).toMatchObject({
       ...initialMapping,
       backgroundColors: {
@@ -451,14 +448,13 @@ describe('PATCH /api/update-mapping/:type/:company', () => {
     };
 
     await request(app)
-      .patch('/api/update-mapping/microsite/companyB')
+      .patch('/api/update-mapping/microsite/companyA')
       .send(newMappingData)
       .expect(200);
 
     const updatedMapping = readContent(micrositeJson);
     expect(updatedMapping.backgroundColors.Background0.newBackground).toBe("rgb(0, 0, 0)");
 
-    // Ensure other data remains unchanged
     expect(updatedMapping).toMatchObject({
       ...initialMapping,
       backgroundColors: {
@@ -470,8 +466,29 @@ describe('PATCH /api/update-mapping/:type/:company', () => {
     });
   });
 
-  it.only('should return 500 if the mapping JSON file cannot be read', async () => {
+  it('should return 404 if the mapping JSON file does not exist', async () => {
+    const nonExistentPath = path.join(__dirname, '..', '.env', 'companyC', 'email', 'json', 'mapping.json');
+
+    const newMappingData = {
+      backgroundColors: {
+        Background0: {
+          oldBackground: "rgb(112, 199, 213)",
+          newBackground: "rgb(255, 255, 255)"
+        }
+      }
+    };
+
+    const res = await request(app)
+      .patch('/api/update-mapping/email/companyC')
+      .send(newMappingData)
+      .expect(404);
+
+    expect(res.text).toBe('File does not exist');
+  });
+
+  it('should return 500 if the mapping JSON file cannot be read', async () => {
     const invalidJsonPath = path.join(__dirname, '..', '.env', 'companyC', 'email', 'json', 'mapping.json');
+    fs.mkdirSync(path.dirname(invalidJsonPath), { recursive: true });
     fs.writeFileSync(invalidJsonPath, 'invalid json');
 
     const newMappingData = {
