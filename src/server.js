@@ -4,6 +4,10 @@ import { generateMapping } from "./backend/createMap.js";
 import { exec } from "child_process";
 import fs from "fs";
 import { createZip } from "./backend/emailZip.js";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -30,10 +34,7 @@ app.get("/api/:type/template", (req, res) => {
 //tested
 app.get("/api/:type/:company/final-template", (req, res) => {
   const { type, company } = req.params;
-  const filePath = path.join(
-    __dirname,
-    `../.env/${company}/${type}/final/template.html`
-  );
+  const filePath = path.join(__dirname, `../.env/${company}/${type}/final/template.html`);
 
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -144,6 +145,7 @@ app.post("/api/swap", (req, res) => {
   });
 });
 
+//tested
 app.patch("/api/update-mapping/:type/:company", async (req, res) => {
   const { type, company } = req.params;
   const mappingData = req.body;
@@ -153,11 +155,11 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
     `../.env/${company}/${type}/json/mapping.json`
   );
 
-  if (!filePath) {
-    console.log('true');
-  }
-
   try {
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).send("File does not exist");
+    }
+
     const fileData = fs.readFileSync(filePath, "utf8");
     const existingMappingData = JSON.parse(fileData);
 

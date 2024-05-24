@@ -235,7 +235,6 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
   function changeButtonMicrosite(allUpdatesObj) {
     const allButtons = document.getElementsByClassName("btn");
-    // console.log(getButtonInfo(allButtons[0].outerHTML), '<--- INFO', JSON.stringify(allUpdatesObj.buttons[buttonType].oldButton, null, 2), '<---JSON Stingify')
 
     for (const buttonType in allUpdatesObj.buttons) {
       for (let i = 0; i < allButtons.length; i++) {
