@@ -25,11 +25,11 @@ export const createZip = (htmlPath, imagePath, dest) => {
           resolve();
         })
         .catch((err) => {
-          console.error("Error creating zip file:", err);
+          // console.error("Error creating zip file:", err);
           reject(err);
         });
     } catch (err) {
-      console.error(`error reading files:`, err);
+      // console.error(`error reading files:`, err);
       reject(err);
     }
   });
