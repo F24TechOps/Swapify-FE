@@ -5,12 +5,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "map": "node ./src/back-end/createMap.js",
-    "swap": "node ./src/back-end/swap.js",
+    "test": "jest --watch --detectOpenHandles",
+    "map": "node ./src/backend/createMap.js",
+    "swap": "node ./src/backend/swap.js",
     "star": "node ./src/imageformatter/star.js",
     "circle": "node ./src/imageformatter/circle.js",
-    "zip": "node ./src/back-end/createZip.js",
+    "zip": "node ./src/backend/createZip.js",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node ./src/server.js",
     "client": "npm run dev --prefix ./src/frontend"
@@ -50,6 +50,7 @@
     "express": "^4.19.2",
     "jsdom": "^24.0.0",
     "punycode": "^2.3.1",
+    "supertest": "^7.0.0",
     "uuid": "^9.0.1"
   }
 }
