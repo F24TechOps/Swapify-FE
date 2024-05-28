@@ -167,16 +167,16 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const element = allElements[i];
 
         const normalURL = normalizeUrl(element.src);
-        const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageSrc);
+        const oldURL = normalizeUrl(allUpdatesObj.images[imgType].oldImageLink);
 
-        const { newImageSrc } = allUpdatesObj.images[imgType];
+        const { newImageLink } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
 
-          if (newImageSrc === null)
+          if (newImageLink === null)
           continue;
 
-          element.src = newImageSrc;
+          element.src = newImageLink;
         }
       }
     }

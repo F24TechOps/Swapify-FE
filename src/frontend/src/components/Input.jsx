@@ -26,6 +26,7 @@ function Input({ type, company }) {
   useEffect(() => {
     getMappingData(type, company).then((response) => {
       setMappingData(response.data);
+      console.log(mappingData);
     });
   }, [type, company]);
 
@@ -64,11 +65,12 @@ function Input({ type, company }) {
     try {
       const res = await createZipOrCopy(type, company);
       if (type === "microsite") {
-        const text = await res.data;
+        const text = await res.data.text();
         await navigator.clipboard.writeText(text);
         alert("Microsite Template copied to clipboard");
-      } else {
-        const url = window.URL.createObjectURL(new Blob([response.data]));
+      } else if (type === 'email') {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        console.log(url);
         const link = document.createElement("a");
         link.href = url;
         link.setAttribute("download", `${company}.zip`);
@@ -156,17 +158,21 @@ function Input({ type, company }) {
                     </div>
                   ))
                 : Object.keys(mappingData[category]).map((key) => {
-                  const newValuesKey = Object.keys(
-                    mappingData[category][key]
-                  )[1];
+                    const newValuesKey = Object.keys(
+                      mappingData[category][key]
+                    )[1];
                     return (
                       <div key={key}>
                         <label>
                           {formatLabel(key)}
                           <input
                             type="text"
-                            value={mappingData[category][key][newValuesKey] || ""}
-                            onChange={(e) => handleChange(e, category, key, newValuesKey)}
+                            value={
+                              mappingData[category][key][newValuesKey] || ""
+                            }
+                            onChange={(e) =>
+                              handleChange(e, category, key, newValuesKey)
+                            }
                           />
                         </label>
                       </div>

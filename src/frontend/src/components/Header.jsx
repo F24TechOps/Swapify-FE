@@ -1,4 +1,5 @@
 import "../css/body.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,17 +7,14 @@ const Header = () => {
       <div id="logo-body">
         <p id="logo">Swapify</p>
       </div>
-        <ul>
-          <li>
-            <a href="/microsite">Microsite</a>
-          </li>
-          <li>
-            <a href="/email">Email</a>
-          </li>
-          <li>
-            <a href="/text">Text Template</a>
-          </li>
-        </ul>
+      <ul>
+        <li>
+          <Link to="/microsite">Microsite</Link>
+        </li>
+        <li>
+          <Link to="/email">Email</Link>
+        </li>
+      </ul>
     </header>
   );
 };

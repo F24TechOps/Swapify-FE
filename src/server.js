@@ -14,7 +14,19 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "frontend-build")));
+app.use(express.static(path.join(__dirname, "./frontend-build")));
+
+app.use(
+  "/images", (req, res, next) => {
+    console.log(`image: ${req.path}`);
+    next()
+  },
+  express.static(path.join(__dirname, "./src/html/email/base1/images"))
+);
+
+app.use('/images', (req, res) => {
+  res.status(404).send('image not found error msg')
+})
 
 //tested
 app.get("/api/:type/template", (req, res) => {
@@ -34,7 +46,10 @@ app.get("/api/:type/template", (req, res) => {
 //tested
 app.get("/api/:type/:company/final-template", (req, res) => {
   const { type, company } = req.params;
-  const filePath = path.join(__dirname, `../.env/${company}/${type}/final/template.html`);
+  const filePath = path.join(
+    __dirname,
+    `../.env/${company}/${type}/final/template.html`
+  );
 
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -181,9 +196,9 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
   }
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend-build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./frontend-build", "index.html"));
+// });
 
 const PORT = process.env.NODE_ENV === "test" ? 5501 : process.env.PORT || 5500;
 app.listen(PORT, () => {

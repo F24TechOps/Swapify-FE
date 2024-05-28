@@ -4,14 +4,16 @@ import { getTemplate } from '../services/api';
 import { createMappingData } from '../services/api';
 
 const Preview = ({type, company}) => {
-
   const [preview, setPreview] = useState('...loading')
 
   useEffect(() => {
     getTemplate(type).then((res) => {
       setPreview(res.data)
+    }).catch(err => {
+      console.error('Error fetching template', err)
+      setPreview('Error Loading file')
     })
-  }, [])
+  }, [type])
 
   const createMapping = () => {
     createMappingData(type, company);
