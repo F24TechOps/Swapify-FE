@@ -13,6 +13,13 @@ const Preview = ({type, company}) => {
       console.error('Error fetching template', err)
       setPreview('Error Loading file')
     })
+
+    // getImages(imgName).then((res) => {
+    //   setImage(res.data)
+    // }).catch(err => {
+    //   console.error(`Error fetching ${imgName}`, err)
+    //   setImage(`Error Loading Image`)
+    // })
   }, [type])
 
   const createMapping = () => {

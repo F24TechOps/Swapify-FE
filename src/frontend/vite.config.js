@@ -7,10 +7,14 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:5500',
+      '/api': {
+        target: 'http://localhost:5500',
+        changeOrigin: true,
+        secure: false,
+      }
     }
-  },
-  build: {
-    outDir: path.resolve(__dirname, '../frontend-build')
   }
+  // build: {
+  //   outDir: path.resolve(__dirname, "./frontend/build")
+  // }
 })

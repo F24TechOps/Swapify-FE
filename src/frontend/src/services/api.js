@@ -8,7 +8,17 @@ export const getTemplate = async (type) => {
     return response;
   } catch (err) {
     console.error(`error in getTemplate: ${err}`);
-    throw err
+    throw err;
+  }
+};
+
+export const getImages = async (imgName) => {
+  try {
+    const response = axios.get(`images/${imgName}`);
+    return response;
+  } catch (err) {
+    console.error(`error getting image ${imgName}`);
+    throw err;
   }
 };
 

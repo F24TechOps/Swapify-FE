@@ -3,8 +3,11 @@ import path from "path";
 import { generateMapping } from "./backend/createMap.js";
 import { exec } from "child_process";
 import fs from "fs";
-import { createZip } from "./backend/emailZip.js";
 import { fileURLToPath } from "url";
+import { createZip } from "./backend/emailZip.js";
+import http from "http";
+import https from "https";
+import cheerio from "cheerio";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,19 +17,33 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "./frontend-build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.use(
-  "/images", (req, res, next) => {
-    console.log(`image: ${req.path}`);
-    next()
-  },
+  "/images",
   express.static(path.join(__dirname, "./src/html/email/base1/images"))
 );
 
-app.use('/images', (req, res) => {
-  res.status(404).send('image not found error msg')
-})
+const downloadImage = (url, filename) => {
+  return new Promise((resolve, reject) => {
+    const protocol = url.startsWith("https") ? https : http;
+    protocol
+      .get(url, (response) => {
+        if (response.statusCode === 200) {
+          const file = fs.createWriteStream(filename);
+          response.pipe(file);
+          file.on("finish", () => {
+            file.close(resolve);
+          });
+        } else {
+          reject(`Failed to get '${url}' (${response.statusCode})`);
+        }
+      })
+      .on("error", (err) => {
+        reject(err.message);
+      });
+  });
+};
 
 //tested
 app.get("/api/:type/template", (req, res) => {
@@ -79,14 +96,15 @@ app.get("/api/mapping/:type/:company", (req, res) => {
 });
 
 //tested
-app.post("/api/create-download", (req, res) => {
-  const { type, company } = req.body;
+app.post("/api/create-download", async (req, res) => {
+  const { type, company, imageUrls } = req.body;
 
   if (type === "email") {
     const htmlPath = path.join(
       __dirname,
       `../.env/${company}/email/final/template.html`
     );
+    console.log(htmlPath);
     const imagePath = path.join(
       __dirname,
       `../.env/${company}/email/final/images`
@@ -96,19 +114,41 @@ app.post("/api/create-download", (req, res) => {
       `../.env/${company}/email/final/${company}.zip`
     );
 
-    createZip(htmlPath, imagePath, zipDest)
-      .then(() => {
-        res.download(zipDest, `${company}.zip`, (err) => {
-          if (err) {
-            // console.error("Error sending zip file:", err);
-            res.status(400).send("Error sending zip file");
-          }
-        });
-      })
-      .catch((error) => {
-        // console.error(`Error Downloading Zip`, error);
-        res.status(400).send(`Error creating zip file`);
+    console.log(imagePath);
+
+    try {
+      fs.mkdirSync(imagePath, { recursive: true });
+
+      for (const [index, url] of Object.entries(imageUrls)) {
+        await downloadImage(url, path.join(imagePath, `image${index}.png`));
+      }
+
+      const htmlContent = fs.readFileSync(htmlPath, "utf8");
+      const $ = cheerio.load(htmlContent);
+
+      $("img").each((index, element) => {
+        $(element).attr("src", `images/image${index}.png`);
       });
+
+      fs.writeFileSync(htmlPath, $.html(), "utf8");
+
+      createZip(htmlPath, imagePath, zipDest)
+        .then(() => {
+          res.download(zipDest, `${company}.zip`, (err) => {
+            if (err) {
+              console.error("error sending file", err);
+              res.status(400).send("Error sending zip file");
+            }
+          });
+        })
+        .catch((error) => {
+          console.error("Error creating zip file:", error);
+          res.status(400).send(`Error creating zip file :${error}`);
+        });
+    } catch (error) {
+      console.error("Error downloading images:", error);
+      res.status(400).send(`Error downloading images: ${error.message}`);
+    }
   } else if (type === "microsite") {
     const htmlPath = path.join(
       __dirname,
@@ -196,9 +236,9 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
   }
 });
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./frontend-build", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+});
 
 const PORT = process.env.NODE_ENV === "test" ? 5501 : process.env.PORT || 5500;
 app.listen(PORT, () => {

@@ -13,9 +13,9 @@ const Editor = ({ type, company }) => {
 
   return (
     <div id="container">
-      <Preview type={type} company={company} />
-      <Input type={type} company={company} />
-      <Output type={type} company={company} />
+      <Preview type={currentType} company={company} />
+      <Input type={currentType} company={company} />
+      <Output type={currentType} company={company} />
     </div>
   );
 };
