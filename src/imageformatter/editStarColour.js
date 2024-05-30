@@ -1,22 +1,21 @@
-import fs from 'fs';
-import { createCanvas, loadImage } from 'canvas';
+import fs from "fs";
+import { createCanvas, loadImage } from "canvas";
 
-export const starColour = (directory, replaceColor) => {
-    for (let i = 1; i <= 5; i++) {
-        const inputFile = directory + `/star-${i}.png`;
-      
-        // Load image
-        loadImage(inputFile).then(img => {
+export const starColour = (directory, replaceColor, starFiles) => {
+  const promises = starFiles.map((file) => {
+    return loadImage(file)
+      .then((img) => {
+        return new Promise((resolve, reject) => {
           const canvas = createCanvas(img.width, img.height);
-          const ctx = canvas.getContext('2d');
-      
+          const ctx = canvas.getContext("2d");
+
           // Draw the image onto the canvas
           ctx.drawImage(img, 0, 0);
-      
+
           // Get the image data
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           const data = imageData.data;
-      
+
           // Loop through each pixel
           for (let j = 0; j < data.length; j += 4) {
             // Check if the pixel is not white
@@ -27,15 +26,21 @@ export const starColour = (directory, replaceColor) => {
               data[j + 2] = parseInt(replaceColor.substring(5, 7), 16); // Blue
             }
           }
-      
+
           ctx.putImageData(imageData, 0, 0);
-      
-          const out = fs.createWriteStream(inputFile);
+
+          const out = fs.createWriteStream(file);
           const stream = canvas.createPNGStream();
           stream.pipe(out);
-        }).catch(err => {
-          console.error('Error processing image:', err);
+          out.on("finish", resolve);
+          out.on("error", reject);
         });
-      }
-      
-}
+      })
+      .catch((err) => {
+        console.error("Error processing image:", err);
+        return Promise.reject(err);
+      });
+  });
+
+  return Promise.all(promises);
+};

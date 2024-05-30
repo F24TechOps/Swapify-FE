@@ -28,7 +28,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (newLink === null) continue;
 
         if (element.getAttribute("href") === allUpdatesObj.links[link].oldLink)
-          element.setAttribute("href", newLink)
+          element.setAttribute("href", newLink);
       }
     }
   }
@@ -75,19 +75,20 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
       for (let i = 0; i < backgroundImgElement.length; i++) {
         let element = backgroundImgElement[i];
 
-        const { newBackgroundImage } = allUpdatesObj.backgroundImg[backgroundType];
-        
+        const { newBackgroundImage } =
+          allUpdatesObj.backgroundImg[backgroundType];
+
         if (newBackgroundImage === null) continue;
 
         const extractUrl = (urlStyle) => {
           const match = /url\(["']?(.*?)["']?\)/i.exec(urlStyle);
           return match ? match[1] : null;
-        }
-
+        };
 
         if (
-          extractUrl(dom.window.getComputedStyle(element, null).backgroundImage) ===
-          allUpdatesObj.backgroundImg[backgroundType].oldBackgroundImage
+          extractUrl(
+            dom.window.getComputedStyle(element, null).backgroundImage
+          ) === allUpdatesObj.backgroundImg[backgroundType].oldBackgroundImage
         ) {
           element.style.backgroundImage = `url(${newBackgroundImage})`;
         }
@@ -172,9 +173,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const { newImageLink } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
-
-          if (newImageLink === null)
-          continue;
+          if (newImageLink === null) continue;
 
           element.src = newImageLink;
         }
@@ -205,12 +204,29 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (outerMatch && innerMatch) {
           Object.entries(buttonData.newOuterButton).forEach(
             ([attribute, value]) => {
-              if (value !== null) container.style[attribute] = value;
+              if (value !== null) {
+                container.style[attribute] = value;
 
-              if (attribute === 'background-color' || attribute === 'background')
-                container.setAttribute('bgcolor', value);
+                if (
+                  attribute === "background-color" ||
+                  attribute === "background"
+                ) {
+                  container.setAttribute("bgcolor", value);
+                }
+              }
             }
           );
+
+          if (
+            buttonData.newOuterButton["background-color"] === null &&
+            container.style["background-color"]
+          ) {
+            container.setAttribute(
+              "bgcolor",
+              container.style["background-color"]
+            );
+          }
+
           Object.entries(buttonData.newInnerButton).forEach(
             ([attribute, value]) => {
               if (value !== null) innerButton.style[attribute] = value;
@@ -226,7 +242,25 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
           for (const attribute in allUpdatesObj.allButtons.outerButton) {
             const newVal = allUpdatesObj.allButtons.outerButton[attribute];
-            if (newVal !== null) container.style[attribute] = newVal;
+            if (newVal !== null) {
+              container.style[attribute] = newVal;
+
+              if (
+                attribute === "background-color" ||
+                attribute === "background"
+              ) {
+                container.setAttribute("bgcolor", newVal);
+              }
+            }
+          }
+          if (
+            allUpdatesObj.allButtons.outerButton["background-color"] === null &&
+            container.style["background-color"]
+          ) {
+            container.setAttribute(
+              "bgcolor",
+              container.style["background-color"]
+            );
           }
         }
       }

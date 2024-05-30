@@ -23,6 +23,7 @@ const categoryTitles = {
 function Input({ type, company }) {
   const [mappingData, setMappingData] = useState(null);
   const [imageUrls, setImageUrls] = useState({});
+  const [replaceColor, setReplaceColor] = useState("");
 
   useEffect(() => {
     getMappingData(type, company).then((response) => {
@@ -31,30 +32,38 @@ function Input({ type, company }) {
     });
   }, [type, company]);
 
+  useEffect(() => {
+    if (mappingData) {
+      const newImageUrls = {};
+      if (mappingData.images) {
+        Object.keys(mappingData.images).forEach((key) => {
+          const newLink = mappingData.images[key].newImageLink;
+          const oldLink = mappingData.images[key].oldImageLink;
+          newImageUrls[key] = newLink ? newLink : oldLink;
+        });
+      }
+      setImageUrls(newImageUrls);
+    }
+  }, [mappingData]);
+
   const handleChange = (e, category, key, subKey = null) => {
     const { value } = e.target;
-    const newMappingData = { ...mappingData };
+    setMappingData((prevMappingData) => {
+      const newMappingData = { ...prevMappingData };
 
-    if (subKey) {
-      const keys = subKey.split(".");
-      if (keys.length === 2) {
-        newMappingData[category][key][keys[0]][keys[1]] = value;
+      if (subKey) {
+        const keys = subKey.split(".");
+        if (keys.length === 2) {
+          newMappingData[category][key][keys[0]][keys[1]] = value;
+        } else {
+          newMappingData[category][key][subKey] = value;
+        }
       } else {
-        newMappingData[category][key][subKey] = value;
+        newMappingData[category][key] = value;
       }
-    } else {
-      newMappingData[category][key] = value;
-    }
-    setMappingData(newMappingData);
-    console.log(mappingData);
-  };
 
-  const handleImageUrlChange = (e, key) => {
-    const { value } = e.target;
-    setImageUrls((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+      return newMappingData;
+    });
   };
 
   const handleUpdate = async () => {
@@ -72,7 +81,8 @@ function Input({ type, company }) {
 
   const handleDownload = async () => {
     try {
-      const res = await createZipOrCopy(type, company, imageUrls);
+      console.log(imageUrls);
+      const res = await createZipOrCopy(type, company, imageUrls, replaceColor);
       if (type === "microsite") {
         const text = await res.data.text();
         await navigator.clipboard.writeText(text);
@@ -218,29 +228,15 @@ function Input({ type, company }) {
           );
         })}
       </form>
-      {Object.keys(imageUrls).map((key) => (
-        <div key={key}>
-          <label>
-            Image URL {parseInt(key) + 1}:
-            <input
-              type="text"
-              value={imageUrls[key]}
-              onChange={(e) => handleImageUrlChange(e, key)}
-            />
-          </label>
-        </div>
-      ))}
-      <button
-        type="button"
-        onClick={() =>
-          setImageUrls((prev) => ({
-            ...prev,
-            [Object.keys(imageUrls).length]: null,
-          }))
-        }
-      >
-        Add Image URL
-      </button>
+      <div>
+        <h3>Process Image</h3>
+        <input
+          type="text"
+          placeholder="Star Color (hex)"
+          value={replaceColor}
+          onChange={(e) => setReplaceColor(e.target.value)}
+        />
+      </div>
       <button type="button" onClick={handleUpdate}>
         Submit
       </button>

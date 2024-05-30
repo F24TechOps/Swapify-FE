@@ -5,9 +5,11 @@ import { exec } from "child_process";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import { createZip } from "./backend/emailZip.js";
+import { cropCircle } from "./imageformatter/createCircle.js";
+import { starColour } from "./imageformatter/editStarColour.js";
 import http from "http";
 import https from "https";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -97,14 +99,13 @@ app.get("/api/mapping/:type/:company", (req, res) => {
 
 //tested
 app.post("/api/create-download", async (req, res) => {
-  const { type, company, imageUrls } = req.body;
+  const { type, company, imageUrls, replaceColor } = req.body;
 
   if (type === "email") {
     const htmlPath = path.join(
       __dirname,
       `../.env/${company}/email/final/template.html`
     );
-    console.log(htmlPath);
     const imagePath = path.join(
       __dirname,
       `../.env/${company}/email/final/images`
@@ -114,20 +115,45 @@ app.post("/api/create-download", async (req, res) => {
       `../.env/${company}/email/final/${company}.zip`
     );
 
-    console.log(imagePath);
-
     try {
+      if (fs.existsSync(imagePath)) {
+        fs.rmSync(imagePath, { recursive: true, force: true });
+      }
       fs.mkdirSync(imagePath, { recursive: true });
 
-      for (const [index, url] of Object.entries(imageUrls)) {
-        await downloadImage(url, path.join(imagePath, `image${index}.png`));
+      const starImages = [];
+
+      for (const [key, url] of Object.entries(imageUrls)) {
+        const filename = path.join(imagePath, `${key}.png`);
+        await downloadImage(url, filename);
+
+        if (key === "ImageLink4") {
+          await cropCircle(filename, filename);
+        }
+
+        if (url.includes("star-")) {
+          starImages.push(filename);
+        }
+      }
+
+      if (replaceColor && starImages.length > 0) {
+        await starColour(imagePath, replaceColor, starImages);
       }
 
       const htmlContent = fs.readFileSync(htmlPath, "utf8");
       const $ = cheerio.load(htmlContent);
 
+      const srcMapping = {};
+      for (const [key, url] of Object.entries(imageUrls)) {
+        const localPath = `images/${key}.png`;
+        srcMapping[url.split('?')[0]] = localPath;
+      }
+
       $("img").each((index, element) => {
-        $(element).attr("src", `images/image${index}.png`);
+        const originalSrc = $(element).attr("src").split('?')[0];
+        if (srcMapping[originalSrc]) {
+          $(element).attr("src", srcMapping[originalSrc]);
+        }
       });
 
       fs.writeFileSync(htmlPath, $.html(), "utf8");

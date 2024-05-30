@@ -30,10 +30,10 @@ export const getMappingData = (type, company) => {
   return axios.get(`${API_URL}/mapping/${type}/${company}`);
 };
 
-export const createZipOrCopy = (type, company) => {
+export const createZipOrCopy = (type, company, imageUrls, replaceColor) => {
   return axios.post(
     `${API_URL}/create-download`,
-    { type, company },
+    { type, company, imageUrls, replaceColor },
     { responseType: "blob" }
   );
 };
@@ -52,3 +52,7 @@ export const updateMappingData = (type, company, mappingData) => {
     mappingData
   );
 };
+
+// export const processStarColor = (company, replaceColor) => {
+//   return axios.post(`${API_URL}/process-star`, { company, replaceColor });
+// };
