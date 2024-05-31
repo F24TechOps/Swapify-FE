@@ -5,6 +5,8 @@ import {
   updateMappingData,
   makeSwap,
   createZipOrCopy,
+  processCircleImage,
+  processStarColor,
 } from "../services/api";
 import { formatLabel } from "../utils/format";
 
@@ -24,11 +26,13 @@ function Input({ type, company }) {
   const [mappingData, setMappingData] = useState(null);
   const [imageUrls, setImageUrls] = useState({});
   const [replaceColor, setReplaceColor] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getMappingData(type, company).then((response) => {
       setMappingData(response.data);
-      console.log(mappingData);
+      setLoading(false);
     });
   }, [type, company]);
 
@@ -69,10 +73,21 @@ function Input({ type, company }) {
   const handleUpdate = async () => {
     try {
       await updateMappingData(type, company, mappingData);
-      await makeSwap(type, company, mappingData).then((res) => {
-        console.log(res.data);
-      });
-      console.log(mappingData);
+
+      if (type === "email" && imageUrls["ImageLink4"]) {
+        await processCircleImage(
+          company,
+          "ImageLink4",
+          imageUrls["ImageLink4"]
+        );
+      }
+
+      if (type === "email" && replaceColor) {
+        await processStarColor(company, replaceColor, imageUrls);
+      }
+
+      await makeSwap(type, company, imageUrls);
+
       location.reload();
     } catch (err) {
       console.error(err);
@@ -101,7 +116,7 @@ function Input({ type, company }) {
     }
   };
 
-  if (!mappingData) {
+  if (loading) {
     return <div>..loading</div>;
   }
 
@@ -118,24 +133,26 @@ function Input({ type, company }) {
                 ? Object.keys(mappingData[category]).map((buttonType) => (
                     <div key={buttonType}>
                       <h3>{formatLabel(buttonType)}</h3>
-                      {Object.keys(mappingData[category][buttonType]).map(
-                        (attr) => (
-                          <div key={`${buttonType}-${attr}`}>
-                            <label>
-                              {formatLabel(attr)}
-                              <input
-                                type="text"
-                                value={
-                                  mappingData[category][buttonType][attr] || ""
-                                }
-                                onChange={(e) =>
-                                  handleChange(e, category, buttonType, attr)
-                                }
-                              />
-                            </label>
-                          </div>
-                        )
-                      )}
+                      {mappingData[category][buttonType] &&
+                        Object.keys(mappingData[category][buttonType]).map(
+                          (attr) => (
+                            <div key={`${buttonType}-${attr}`}>
+                              <label>
+                                {formatLabel(attr)}
+                                <input
+                                  type="text"
+                                  value={
+                                    mappingData[category][buttonType][attr] ||
+                                    ""
+                                  }
+                                  onChange={(e) =>
+                                    handleChange(e, category, buttonType, attr)
+                                  }
+                                />
+                              </label>
+                            </div>
+                          )
+                        )}
                     </div>
                   ))
                 : category === "allButtons" && type === "microsite"

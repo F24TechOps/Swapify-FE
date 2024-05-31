@@ -116,29 +116,29 @@ app.post("/api/create-download", async (req, res) => {
     );
 
     try {
-      if (fs.existsSync(imagePath)) {
-        fs.rmSync(imagePath, { recursive: true, force: true });
-      }
-      fs.mkdirSync(imagePath, { recursive: true });
+      // if (fs.existsSync(imagePath)) {
+      //   fs.rmSync(imagePath, { recursive: true, force: true });
+      // }
+      // fs.mkdirSync(imagePath, { recursive: true });
 
-      const starImages = [];
+      // const starImages = [];
 
-      for (const [key, url] of Object.entries(imageUrls)) {
-        const filename = path.join(imagePath, `${key}.png`);
-        await downloadImage(url, filename);
+      // for (const [key, url] of Object.entries(imageUrls)) {
+      //   const filename = path.join(imagePath, `${key}.png`);
+      //   await downloadImage(url, filename);
 
-        if (key === "ImageLink4") {
-          await cropCircle(filename, filename);
-        }
+      //   if (key === "ImageLink4") {
+      //     await cropCircle(filename, filename);
+      //   }
 
-        if (url.includes("star-")) {
-          starImages.push(filename);
-        }
-      }
+      //   if (url.includes("star-")) {
+      //     starImages.push(filename);
+      //   }
+      // }
 
-      if (replaceColor && starImages.length > 0) {
-        await starColour(imagePath, replaceColor, starImages);
-      }
+      // if (replaceColor && starImages.length > 0) {
+      //   await starColour(imagePath, replaceColor, starImages);
+      // }
 
       const htmlContent = fs.readFileSync(htmlPath, "utf8");
       const $ = cheerio.load(htmlContent);
@@ -146,11 +146,11 @@ app.post("/api/create-download", async (req, res) => {
       const srcMapping = {};
       for (const [key, url] of Object.entries(imageUrls)) {
         const localPath = `images/${key}.png`;
-        srcMapping[url.split('?')[0]] = localPath;
+        srcMapping[url.split("?")[0]] = localPath;
       }
 
       $("img").each((index, element) => {
-        const originalSrc = $(element).attr("src").split('?')[0];
+        const originalSrc = $(element).attr("src").split("?")[0];
         if (srcMapping[originalSrc]) {
           $(element).attr("src", srcMapping[originalSrc]);
         }
@@ -214,6 +214,8 @@ app.post("/api/swap", (req, res) => {
 
   const command = `node ./src/backend/swap.js ${type} ${company}`;
 
+  console.log('here');
+
   exec(command, (error, stdout, stderr) => {
     if (error) {
       // console.error(`Error executing swap script: ${error} ${stderr}`);
@@ -260,6 +262,68 @@ app.patch("/api/update-mapping/:type/:company", async (req, res) => {
     // console.error("Error updating mapping:", error);
     res.status(500).send("Error updating mapping");
   }
+});
+
+app.post("/api/process-circle", async (req, res) => {
+  const { company, imageKey, imageUrl } = req.body;
+  const imagePath = path.join(
+    __dirname,
+    `../.env/${company}/email/final/images`
+  );
+
+  try {
+    // Ensure the images directory exists
+    if (!fs.existsSync(imagePath)) {
+      fs.mkdirSync(imagePath, { recursive: true });
+    }
+
+    
+    const filename = path.join(imagePath, `${imageKey}.png`);
+    await downloadImage(imageUrl, filename);
+    await cropCircle(filename, filename);
+    
+    res.status(200).send("Circle image processed");
+  } catch (err) {
+    console.error("Error processing circle image:", err);
+    res.status(500).send("Error processing circle image");
+  }
+});
+
+app.post("/api/process-star", async (req, res) => {
+  const { company, replaceColor, imageUrls } = req.body;
+  const starImages = [];
+  const imagePath = path.join(
+    __dirname,
+    `../.env/${company}/email/final/images`
+  );
+
+  try {
+    // Ensure the images directory exists
+    if (!fs.existsSync(imagePath)) {
+      fs.mkdirSync(imagePath, { recursive: true });
+    }
+
+    // Download images and identify star images
+    for (const [key, url] of Object.entries(imageUrls)) {
+      const filename = path.join(imagePath, `${key}.png`);
+      await downloadImage(url, filename);
+
+      if (url.includes("star-")) {
+        starImages.push(filename);
+      }
+    }
+
+    // Process star images to change color
+    if (replaceColor && starImages.length > 0) {
+      await starColour(imagePath, replaceColor, starImages);
+    }
+
+    res.status(200).send("Star color processed");
+  } catch (err) {
+    console.error("Error processing star color:", err);
+    res.status(500).send("Error processing star color");
+  }
+
 });
 
 app.get("*", (req, res) => {

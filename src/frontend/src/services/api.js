@@ -42,8 +42,8 @@ export const createMappingData = (type, company) => {
   return axios.post(`${API_URL}/create-mapping/${type}/${company}`);
 };
 
-export const makeSwap = (type, company) => {
-  return axios.post(`${API_URL}/swap`, { type, company });
+export const makeSwap = (type, company, imageUrls) => {
+  return axios.post(`${API_URL}/swap`, { type, company, imageUrls });
 };
 
 export const updateMappingData = (type, company, mappingData) => {
@@ -53,6 +53,13 @@ export const updateMappingData = (type, company, mappingData) => {
   );
 };
 
-// export const processStarColor = (company, replaceColor) => {
-//   return axios.post(`${API_URL}/process-star`, { company, replaceColor });
-// };
+export const processStarColor = (company, replaceColor, imageUrls) => {
+  return axios.post(`${API_URL}/process-star`, {
+    company,
+    replaceColor,
+    imageUrls,
+  });
+};
+
+export const processCircleImage = (company, imageKey, imageUrl) =>
+  axios.post(`${API_URL}/process-circle`, { company, imageKey, imageUrl });
