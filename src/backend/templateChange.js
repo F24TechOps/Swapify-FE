@@ -78,7 +78,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const { newBackgroundImage } =
           allUpdatesObj.backgroundImg[backgroundType];
 
-        if (newBackgroundImage === null) continue;
+        if (newBackgroundImage === null || newBackgroundImage === "") continue;
 
         const extractUrl = (urlStyle) => {
           const match = /url\(["']?(.*?)["']?\)/i.exec(urlStyle);
@@ -173,7 +173,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const { newImageLink } = allUpdatesObj.images[imgType];
 
         if (normalURL === oldURL) {
-          if (newImageLink === null) continue;
+          if (newImageLink === null || newImageLink === "") continue;
 
           element.src = newImageLink;
         }
@@ -204,7 +204,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (outerMatch && innerMatch) {
           Object.entries(buttonData.newOuterButton).forEach(
             ([attribute, value]) => {
-              if (value !== null) {
+              if (value !== null && value !== "") {
                 container.style[attribute] = value;
 
                 if (
@@ -229,7 +229,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
           Object.entries(buttonData.newInnerButton).forEach(
             ([attribute, value]) => {
-              if (value !== null) innerButton.style[attribute] = value;
+              if (value !== null && value !== "") innerButton.style[attribute] = value;
             }
           );
         }
@@ -237,12 +237,12 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         if (allUpdatesObj.allButtons) {
           for (const attribute in allUpdatesObj.allButtons.innerButton) {
             const newVal = allUpdatesObj.allButtons.innerButton[attribute];
-            if (newVal !== null) innerButton.style[attribute] = newVal;
+            if (newVal !== null && newVal !== "") innerButton.style[attribute] = newVal;
           }
 
           for (const attribute in allUpdatesObj.allButtons.outerButton) {
             const newVal = allUpdatesObj.allButtons.outerButton[attribute];
-            if (newVal !== null) {
+            if (newVal !== null && newVal !== "") {
               container.style[attribute] = newVal;
 
               if (
@@ -284,7 +284,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
             const newVal =
               allUpdatesObj.buttons[buttonType].newButton[attribute];
 
-            if (newVal === null) continue;
+            if (newVal === null || newVal === "") continue;
 
             element.style[attribute] = newVal;
           }
@@ -297,7 +297,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const element = allButtons[i];
         for (const attribute in allUpdatesObj.allButtons) {
           const newVal = allUpdatesObj.allButtons[attribute];
-          if (newVal !== null) element.style[attribute] = newVal;
+          if (newVal !== null && newVal !== "") element.style[attribute] = newVal;
         }
       }
     }

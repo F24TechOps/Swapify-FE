@@ -1,5 +1,5 @@
 import "../css/body.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -7,14 +7,16 @@ const Header = () => {
       <div id="logo-body">
         <p id="logo">Swapify</p>
       </div>
-      <ul>
-        <li>
-          <Link to="/microsite">Microsite</Link>
-        </li>
-        <li>
-          <Link to="/email">Email</Link>
-        </li>
-      </ul>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/microsite" activeClassName="active">Microsite</NavLink>
+          </li>
+          <li>
+            <NavLink to="/email" activeClassName="active">Email</NavLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };

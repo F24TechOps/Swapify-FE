@@ -214,8 +214,6 @@ app.post("/api/swap", (req, res) => {
 
   const command = `node ./src/backend/swap.js ${type} ${company}`;
 
-  console.log('here');
-
   exec(command, (error, stdout, stderr) => {
     if (error) {
       // console.error(`Error executing swap script: ${error} ${stderr}`);
