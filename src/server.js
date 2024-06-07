@@ -47,6 +47,19 @@ const downloadImage = (url, filename) => {
   });
 };
 
+const ACCOUNTS_FILE = path.join(__dirname, 'accounts.json');
+
+const loadAccounts = () => {
+  if (fs.existsSync(ACCOUNTS_FILE)) {
+    return JSON.parse(fs.readFileSync(ACCOUNTS_FILE, 'utf8'));
+  }
+  return [];
+};
+
+const saveAccounts = (accounts) => {
+  fs.writeFileSync(ACCOUNTS_FILE, JSON.stringify(accounts, null, 2), 'utf8');
+};
+
 //tested
 app.get("/api/:type/template", (req, res) => {
   const { type } = req.params;
@@ -60,6 +73,23 @@ app.get("/api/:type/template", (req, res) => {
       res.status(404).send(`${type} isn't an accepted template type`);
     }
   });
+});
+
+app.get("/api/companies", (req, res) => {
+  const accounts = loadAccounts();
+  res.status(200).json(accounts);
+});
+
+app.post("/api/companies", (req, res) => {
+  const { company } = req.body;
+  const accounts = loadAccounts();
+
+  if (!accounts.includes(company)) {
+    accounts.push(company);
+    saveAccounts(accounts);
+  }
+
+  res.status(201).json(accounts);
 });
 
 //tested
@@ -213,6 +243,8 @@ app.post("/api/swap", (req, res) => {
   const { type, company } = req.body;
 
   const command = `node ./src/backend/swap.js ${type} ${company}`;
+
+  console.log('here');
 
   exec(command, (error, stdout, stderr) => {
     if (error) {

@@ -23,11 +23,13 @@ const Preview = ({type, company}) => {
   return (
     <div id='preview'>
       <button onClick={(e) => createMapping(e)}>Start</button>
+      <div className='iframe-container'>
       <iframe
         srcDoc={preview}
         style={{ width: '100%', height: '100%' }}
       >
       </iframe>
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Output = ({ type, company }) => {
   }
 
   return (
-    <div id="output-body">
+    <div className="iframe-container">
       <iframe
         srcDoc={output}
         style={{ width: "100%", height: "100vh" }}
