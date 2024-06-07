@@ -1,5 +1,5 @@
 import "../css/body.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   getMappingData,
   updateMappingData,
@@ -10,6 +10,7 @@ import {
 } from "../services/api";
 import { formatLabel } from "../utils/format";
 import { isLightColor } from "../utils/fontColor";
+import Loading from "./Loading";
 
 const categoryTitles = {
   links: "Links",
@@ -20,7 +21,7 @@ const categoryTitles = {
   images: "Images",
   buttons: "Buttons",
   allButtons: "All Buttons",
-  backgroundImg: "Main Images",
+  backgroundImg: "Main Image",
 };
 
 function Input({ type, company }) {
@@ -28,34 +29,46 @@ function Input({ type, company }) {
   const [imageUrls, setImageUrls] = useState({});
   const [replaceColor, setReplaceColor] = useState("");
   const [loading, setLoading] = useState(true);
+  const [collapsedSections, setCollapsedSections] = useState({});
 
   useEffect(() => {
     setLoading(true);
     getMappingData(type, company).then((response) => {
+      const initialCollapsedState = Object.keys(response.data).reduce((acc, key) => {
+        acc[key] = true;
+        return acc;
+      }, {});
       setMappingData(response.data);
+      setCollapsedSections(initialCollapsedState);
       setLoading(false);
     });
   }, [type, company]);
 
   useEffect(() => {
+    setMappingData(null);
+    setImageUrls({});
+    setReplaceColor("");
+  }, [type]);
+
+  useEffect(() => {
     if (mappingData) {
-      const newImageUrls = {};
-      if (mappingData.images) {
-        Object.keys(mappingData.images).forEach((key) => {
-          const newLink = mappingData.images[key].newImageLink;
-          const oldLink = mappingData.images[key].oldImageLink;
-          newImageUrls[key] = newLink ? newLink : oldLink;
-        });
-      }
+      const newImageUrls = Object.keys(mappingData.images || {}).reduce(
+        (acc, key) => {
+          const newLink = mappingData.images[key]?.newImageLink;
+          const oldLink = mappingData.images[key]?.oldImageLink;
+          acc[key] = newLink || oldLink;
+          return acc;
+        },
+        {}
+      );
       setImageUrls(newImageUrls);
     }
   }, [mappingData]);
 
-  const handleChange = (e, category, key, subKey = null) => {
+  const handleChange = useCallback((e, category, key, subKey = null) => {
     const { value } = e.target;
     setMappingData((prevMappingData) => {
       const newMappingData = { ...prevMappingData };
-
       if (subKey) {
         const keys = subKey.split(".");
         if (keys.length === 2) {
@@ -66,19 +79,16 @@ function Input({ type, company }) {
       } else {
         newMappingData[category][key] = value;
       }
-
       return newMappingData;
     });
-  };
+  }, []);
 
   const handleUpdate = async () => {
     try {
       await updateMappingData(type, company, mappingData);
-
       if (type === "email" && replaceColor) {
         await processStarColor(company, replaceColor, imageUrls);
       }
-
       if (type === "email" && imageUrls["ImageLink4"]) {
         await processCircleImage(
           company,
@@ -86,9 +96,7 @@ function Input({ type, company }) {
           imageUrls["ImageLink4"]
         );
       }
-
       await makeSwap(type, company, imageUrls);
-
       location.reload();
     } catch (err) {
       console.error(err);
@@ -115,8 +123,221 @@ function Input({ type, company }) {
     }
   };
 
+  const toggleCollapse = (category) => {
+    setCollapsedSections((prevState) => ({
+      ...prevState,
+      [category]: !prevState[category],
+    }));
+  };
+
+  const renderInputs = useCallback(
+    (category, data = {}) => {
+      if (!data) return null;
+
+      return Object.keys(data).map((key) => {
+        if (!data[key]) return null;
+        const keys = Object.keys(data[key] || {});
+        if (keys.length < 2) return null;
+
+        const valueKey = keys[1];
+        const oldValuesKey = keys[0];
+        const oldFontColor = data[key][oldValuesKey];
+        const isLight = oldFontColor ? isLightColor(oldFontColor) : false;
+        const backgroundColor = isLight ? "#000000" : "#ffffff";
+
+        return (
+          <div key={key} className="input-group">
+            <label>
+              <div className="old-attribute">
+                {category === "backgroundColors" ? (
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundColor: data[key][oldValuesKey],
+                      borderRadius: "20px",
+                      border: "1px solid #000",
+                    }}
+                  ></div>
+                ) : category === "fontFamily" ? (
+                  <div style={{ fontFamily: data[key][oldValuesKey] }}>
+                    {data[key][oldValuesKey]}
+                  </div>
+                ) : category === "fontColor" ? (
+                  <div
+                    style={{
+                      color: data[key][oldValuesKey],
+                      backgroundColor: backgroundColor,
+                      padding: "5px",
+                      border: "1px solid #000",
+                      width: "310px",
+                    }}
+                  >
+                    {`The colour of this text is ${data[key][oldValuesKey]}`}
+                  </div>
+                ) : category === "fontSize" ? (
+                  <div style={{ fontSize: data[key][oldValuesKey] }}>
+                    {data[key][oldValuesKey]}
+                  </div>
+                ) : category === "images" || category === "backgroundImg" ? (
+                  <img
+                    src={data[key][oldValuesKey]}
+                    alt="Old attribute"
+                    style={{ width: "100px", height: "auto" }}
+                  />
+                ) : (
+                  data[key][oldValuesKey]
+                )}
+              </div>
+              <input
+                type="text"
+                value={data[key][valueKey] || ""}
+                onChange={(e) => handleChange(e, category, key, valueKey)}
+              />
+            </label>
+          </div>
+        );
+      });
+    },
+    [handleChange]
+  );
+
+  const renderButtons = useCallback(
+    (category, data = {}) => {
+      if (!data) return null;
+
+      return Object.keys(data).map((key) => {
+        const buttonData = data[key] || {};
+        const oldButton =
+          type === "microsite" ? buttonData.oldButton : buttonData.outerButton;
+        const newButton =
+          type === "microsite"
+            ? buttonData.newButton
+            : buttonData.newOuterButton;
+        const innerOldButton = type === "email" ? buttonData.innerButton : {};
+        const innerNewButton =
+          type === "email" ? buttonData.newInnerButton : {};
+
+        return (
+          <div key={key} id="individual-button">
+            <div className="button-preview">
+              {type === "email" ? (
+                <div style={{ ...oldButton, padding: "10px 20px" }}>
+                  <div style={{ ...innerOldButton }}>Sample Button</div>
+                </div>
+              ) : (
+                <div style={{ ...oldButton, padding: "10px 20px" }}>
+                  Sample Button
+                </div>
+              )}
+            </div>
+            <div id="button-encasing">
+              {type === "email" && (
+                <>
+                  <div className="input-title">Inner Button</div>
+                  <div className="input-group-container">
+                    {Object.keys(innerNewButton || {}).map((attr) => (
+                      <div key={`${key}-inner-${attr}`} className="input-group">
+                        <label>
+                          {formatLabel(attr)}
+                          <input
+                            type="text"
+                            value={innerNewButton[attr] || ""}
+                            onChange={(e) =>
+                              handleChange(
+                                e,
+                                category,
+                                key,
+                                `newInnerButton.${attr}`
+                              )
+                            }
+                          />
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="input-title">Outer Button</div>
+                </>
+              )}
+              <div className="input-group-container">
+                {Object.keys(newButton || {}).map((attr) => (
+                  <div key={`${key}-${attr}`} className="input-group">
+                    <label>
+                      {formatLabel(attr)}
+                      <input
+                        type="text"
+                        value={newButton[attr] || ""}
+                        onChange={(e) =>
+                          handleChange(e, category, key, `newButton.${attr}`)
+                        }
+                      />
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      });
+    },
+    [handleChange, type]
+  );
+
+  const renderAllButtons = useCallback(
+    (category, data = {}) => {
+      if (!data) return null;
+
+      if (type === "email") {
+        return Object.keys(data).map((key) => (
+          <div key={key} id="all-buttons">
+            <div id="button-encasing">
+              <div className="input-title">{formatLabel(key)}</div>
+              <div className="input-group-container">
+                {data[key] &&
+                  Object.keys(data[key] || {}).map((attr) => (
+                    <div key={`${key}-${attr}`} className="input-group">
+                      <label>
+                        {formatLabel(attr)}
+                        <input
+                          type="text"
+                          value={data[key][attr] || ""}
+                          onChange={(e) => handleChange(e, category, key, attr)}
+                        />
+                      </label>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        ));
+      } else if (type === "microsite") {
+        return (
+          <div key={category} id="all-buttons">
+            <div id="button-encasing">
+              <div className="input-group-container">
+                {Object.keys(data).map((attr) => (
+                  <div key={attr} className="input-group">
+                    <label>
+                      {formatLabel(attr)}
+                      <input
+                        type="text"
+                        value={data[attr] || ""}
+                        onChange={(e) => handleChange(e, category, attr)}
+                      />
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+    },
+    [handleChange, type]
+  );
+
   if (loading) {
-    return <div>..loading</div>;
+    return <Loading/>;
   }
 
   return (
@@ -125,307 +346,28 @@ function Input({ type, company }) {
         Submit
       </button>
       <form>
-        {Object.keys(mappingData).map((category) => {
-          const title = categoryTitles[category] || category;
-
-          return (
-            <div key={category} id="category">
-              <h2>{title}</h2>
+        {Object.keys(mappingData || {}).map((category) => (
+          <div key={category} id="category">
+            <h2
+              onClick={() => toggleCollapse(category)}
+              style={{ cursor: "pointer" }}
+            >
+              {categoryTitles[category] || category}
+              {collapsedSections[category] ? " +" : " -"}
+            </h2>
+            {!collapsedSections[category] && (
               <div id="input-section">
-                {category === "allButtons" && type === "email"
-                  ? Object.keys(mappingData[category]).map((buttonType) => (
-                      <div key={buttonType}>
-                        <h3>{formatLabel(buttonType)}</h3>
-                        {mappingData[category][buttonType] &&
-                          Object.keys(mappingData[category][buttonType]).map(
-                            (attr) => (
-                              <div
-                                key={`${buttonType}-${attr}`}
-                                className="input-group"
-                              >
-                                <label>
-                                  {formatLabel(attr)}
-                                  <input
-                                    type="text"
-                                    value={
-                                      mappingData[category][buttonType][attr] ||
-                                      ""
-                                    }
-                                    onChange={(e) =>
-                                      handleChange(
-                                        e,
-                                        category,
-                                        buttonType,
-                                        attr
-                                      )
-                                    }
-                                  />
-                                </label>
-                              </div>
-                            )
-                          )}
-                      </div>
-                    ))
-                  : category === "allButtons" && type === "microsite"
-                    ? Object.keys(mappingData[category]).map((attr) => (
-                        <div key={attr} className="input-group">
-                          <label>
-                            {formatLabel(attr)}
-                            <input
-                              type="text"
-                              value={mappingData[category][attr] || ""}
-                              onChange={(e) => handleChange(e, category, attr)}
-                            />
-                          </label>
-                        </div>
-                      ))
-                    : category === "buttons"
-                      ? Object.keys(mappingData[category]).map((key) => {
-                          const innerButton =
-                            mappingData[category][key].innerButton || {};
-                          const outerButton =
-                            mappingData[category][key].outerButton || {};
-                          const micrositeButton =
-                            mappingData[category][key].oldButton || {};
-
-                          return (
-                            <div key={key} id="individual-button">
-                              {/* <h3>{formatLabel(key)}</h3> */}
-                              <div className="button-preview">
-                                {type === "email" ? (
-                                  <div
-                                    style={{
-                                      backgroundColor:
-                                        outerButton.background ||
-                                        outerButton["background-color"],
-                                      borderRadius:
-                                        outerButton["border-radius"],
-                                      border: outerButton.border,
-                                      padding: outerButton.padding,
-                                      display: "inline-block",
-                                      ...outerButton,
-                                    }}
-                                  >
-                                    <div
-                                      style={{
-                                        backgroundColor:
-                                          innerButton.background ||
-                                          innerButton["background-color"],
-                                        borderRadius:
-                                          innerButton["border-radius"],
-                                        border: innerButton.border,
-                                        color: innerButton.color,
-                                        fontFamily: innerButton["font-family"],
-                                        fontSize: innerButton["font-size"],
-                                        fontStyle: innerButton["font-style"],
-                                        fontWeight: innerButton["font-weight"],
-                                        lineHeight: innerButton["line-height"],
-                                        textAlign: innerButton["text-align"],
-                                        textDecoration:
-                                          innerButton["text-decoration"],
-                                        display: innerButton.display,
-                                        padding: "10px 20px",
-                                        ...innerButton,
-                                      }}
-                                    >
-                                      Sample Button
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <div
-                                    style={{
-                                      backgroundColor:
-                                        micrositeButton.background ||
-                                        micrositeButton["background-color"],
-                                      borderRadius:
-                                        micrositeButton["border-radius"],
-                                      borderColor:
-                                        micrositeButton["border-color"],
-                                      borderStyle:
-                                        micrositeButton["border-style"],
-                                      borderWidth:
-                                        micrositeButton["border-width"],
-                                      color: micrositeButton.color,
-                                      fontFamily:
-                                        micrositeButton["font-family"],
-                                      fontSize: micrositeButton["font-size"],
-                                      fontWeight:
-                                        micrositeButton["font-weight"],
-                                      padding: "10px 20px",
-                                      textAlign: "center",
-                                      width:
-                                        micrositeButton.width === "auto"
-                                          ? "200px"
-                                          : '30vw',
-                                      whiteSpace:
-                                        micrositeButton["white-space"],
-                                    }}
-                                  >
-                                    Sample Button
-                                  </div>
-                                )}
-                              </div>
-                              <div id="button-encasing">
-                              {Object.keys(mappingData[category][key]).map(
-                                (attr) =>
-                                  typeof mappingData[category][key][attr] ===
-                                    "object" && attr.includes("new") ? (
-                                    Object.keys(
-                                      mappingData[category][key][attr]
-                                    ).map((subAttr) => (
-                                      <div
-                                        key={`${key}-${attr}-${subAttr}`}
-                                        className="input-group"
-                                      >
-                                        <label>
-                                          {formatLabel(subAttr)}
-                                          <input
-                                            type="text"
-                                            value={
-                                              mappingData[category][key][attr][
-                                                subAttr
-                                              ] || ""
-                                            }
-                                            onChange={(e) =>
-                                              handleChange(
-                                                e,
-                                                category,
-                                                key,
-                                                `${attr}.${subAttr}`
-                                              )
-                                            }
-                                          />
-                                        </label>
-                                      </div>
-                                    ))
-                                  ) : attr.includes("new") ? (
-                                    <div
-                                      key={`${key}-${attr}`}
-                                      className="input-group"
-                                    >
-                                      <label>
-                                        {formatLabel(attr)}
-                                        <input
-                                          type="text"
-                                          value={
-                                            mappingData[category][key][attr] ||
-                                            ""
-                                          }
-                                          onChange={(e) =>
-                                            handleChange(e, category, key, attr)
-                                          }
-                                        />
-                                      </label>
-                                    </div>
-                                  ) : null
-                              )}
-                              </div>
-                            </div>
-                          );
-                        })
-                      : Object.keys(mappingData[category]).map((key) => {
-                          const newValuesKey = Object.keys(
-                            mappingData[category][key]
-                          )[1];
-                          const oldValuesKey = Object.keys(
-                            mappingData[category][key]
-                          )[0];
-                          const oldFontColor =
-                            mappingData[category][key][oldValuesKey];
-                          const isLight = oldFontColor
-                            ? isLightColor(oldFontColor)
-                            : false;
-                          const backgroundColor = isLight
-                            ? "#000000"
-                            : "#ffffff";
-                          return (
-                            <div key={key} className="input-group">
-                              <label>
-                                {/* {formatLabel(key)} */}
-                                <div className="old-attribute">
-                                  {category === "backgroundColors" ? (
-                                    <div
-                                      style={{
-                                        width: "40px",
-                                        height: "40px",
-                                        backgroundColor:
-                                          mappingData[category][key][
-                                            oldValuesKey
-                                          ],
-                                        borderRadius: "20px",
-                                        border: "1px solid #000",
-                                      }}
-                                    ></div>
-                                  ) : category === "fontFamily" ? (
-                                    <div
-                                      style={{
-                                        fontFamily:
-                                          mappingData[category][key][
-                                            oldValuesKey
-                                          ],
-                                      }}
-                                    >
-                                      {`${mappingData[category][key][oldValuesKey]}`}
-                                    </div>
-                                  ) : category === "fontColor" ? (
-                                    <div className="font-colour"
-                                      style={{
-                                        color:
-                                          mappingData[category][key][
-                                            oldValuesKey
-                                          ],
-                                        backgroundColor: backgroundColor,
-                                        padding: "5px",
-                                        border: "1px solid #000",
-                                        width: "310px",
-                                      }}
-                                    >
-                                      {`The colour of this text is ${mappingData[category][key][oldValuesKey]}`}
-                                    </div>
-                                  ) : category === "fontSize" ? (
-                                    <div
-                                      style={{
-                                        fontSize:
-                                          mappingData[category][key][
-                                            oldValuesKey
-                                          ],
-                                      }}
-                                    >
-                                      {mappingData[category][key][oldValuesKey]}
-                                    </div>
-                                  ) : category === "images" ||
-                                    category === "backgroundImg" ? (
-                                    <img
-                                      src={
-                                        mappingData[category][key][oldValuesKey]
-                                      }
-                                      alt="Old attribute"
-                                      style={{ width: "100px", height: "auto" }}
-                                    />
-                                  ) : (
-                                    `${mappingData[category][key][oldValuesKey]}`
-                                  )}
-                                </div>
-                                <input
-                                  type="text"
-                                  value={
-                                    mappingData[category][key][newValuesKey] ||
-                                    ""
-                                  }
-                                  onChange={(e) =>
-                                    handleChange(e, category, key, newValuesKey)
-                                  }
-                                />
-                              </label>
-                            </div>
-                          );
-                        })}
+                {category === "buttons"
+                  ? renderButtons(category, mappingData[category] || {})
+                  : category === "allButtons"
+                    ? renderAllButtons(category, mappingData[category] || {})
+                    : renderInputs(category, mappingData[category] || {})}
               </div>
-            </div>
-          );
-        })}
+            )}
+          </div>
+        ))}
       </form>
-      {type === "email" ? (
+      {type === "email" && (
         <div>
           <h3>Process Image</h3>
           <input
@@ -435,7 +377,7 @@ function Input({ type, company }) {
             onChange={(e) => setReplaceColor(e.target.value)}
           />
         </div>
-      ) : null}
+      )}
       <button type="button" onClick={handleUpdate}>
         Submit
       </button>

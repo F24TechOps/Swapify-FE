@@ -5,29 +5,48 @@ body {
 .company-input {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 20px 0 10vh 0;
+}
+
+.create-company-input {
+  display: flex;
+  width: 50vw;
+}
+
+.company-input button {
+  width: auto;
 }
 
 .company-input input,
 .company-input button,
 .company-input select {
   margin: 0 10px;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
 .company-input button {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #393030;
+  color: #c9fff7;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .company-input button:hover {
-  background-color: #45a049;
+  background-color: #f0f0f0;
+  border-color: #888;
+  color: #393030;
+}
+
+.company-input select {
+  background-color: transparent;
+  border: transparent;
+  font-weight: 700;
+  color: #393030;
 }
 

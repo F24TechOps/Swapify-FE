@@ -1,7 +1,6 @@
 import '../css/body.css'
 import { useEffect, useState } from 'react'
 import { getTemplate } from '../services/api';
-import { createMappingData } from '../services/api';
 
 const Preview = ({type, company}) => {
   const [preview, setPreview] = useState('...loading')
@@ -15,14 +14,8 @@ const Preview = ({type, company}) => {
     })
   }, [type])
 
-  const createMapping = () => {
-    createMappingData(type, company);
-    location.reload()
-  }
-
   return (
     <div id='preview'>
-      <button onClick={(e) => createMapping(e)}>Start</button>
       <div className='iframe-container'>
       <iframe
         srcDoc={preview}

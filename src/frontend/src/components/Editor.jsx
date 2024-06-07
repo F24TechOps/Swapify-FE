@@ -6,16 +6,18 @@ import { useState, useEffect } from "react";
 
 const Editor = ({ type, company }) => {
   const [currentType, setCurrentType] = useState(type);
+  const [currentCompany, setCurrentCompany] = useState(company)
 
   useEffect(() => {
     setCurrentType(type);
+    setCurrentCompany(company)
   }, [type, company]);
 
   return (
     <div id="container">
-      <Preview type={currentType} company={company} />
-      <Input type={currentType} company={company} />
-      <Output type={currentType} company={company} />
+      <Preview type={currentType} company={currentCompany} />
+      <Input type={currentType} company={currentCompany} />
+      <Output type={currentType} company={currentCompany} />
     </div>
   );
 };
