@@ -7,7 +7,6 @@ const Output = ({ type, company }) => {
   const [output, setOutput] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     const fetchOutput = async () => {
       try {

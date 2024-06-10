@@ -192,6 +192,7 @@ function Input({ type, company }) {
               <input
                 type="text"
                 value={data[key][valueKey] || ""}
+                placeholder="New Attribute"
                 onChange={(e) => handleChange(e, category, key, valueKey)}
               />
             </label>
@@ -366,10 +367,9 @@ function Input({ type, company }) {
             )}
           </div>
         ))}
-      </form>
-      {type === "email" && (
-        <div>
-          <h3>Process Image</h3>
+        {type === "email" && (
+        <div className="star-colour">
+          <h2>Star Colour</h2>
           <input
             type="text"
             placeholder="Star Color (hex)"
@@ -378,6 +378,7 @@ function Input({ type, company }) {
           />
         </div>
       )}
+      </form>
       <button type="button" onClick={handleUpdate}>
         Submit
       </button>

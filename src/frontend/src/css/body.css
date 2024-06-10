@@ -90,6 +90,7 @@ ul li a.active {
 #input-body {
   width: 48%;
   margin-bottom: 40px;
+  min-width: 300px;
 }
 
 #input-body button {
@@ -230,8 +231,7 @@ iframe {
     height: auto;
     border: none;
     border-radius: 10px;
-    background-color: #c9fff7;
-    /* padding: 20px; */
+    background-color: #fff;
 }
 
 .iframe-container {
@@ -259,6 +259,7 @@ iframe {
   color: #4b5563;
   font-family: Arial, sans-serif;
   font-size: 1.5rem;
+  min-width: 700px;
 }
 
 .spinner {

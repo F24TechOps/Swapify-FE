@@ -53,7 +53,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
 
         const { newBackground } = allUpdatesObj.backgroundColors[colorType];
 
-        if (newBackground === null) continue;
+        if (newBackground === null || newBackground === "") continue;
 
         if (
           dom.window.getComputedStyle(element, null).backgroundColor ===
@@ -107,7 +107,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const element = allElements[i];
         const { newFontFamily } = allUpdatesObj.fontFamily[fontType];
 
-        if (newFontFamily === null) continue;
+        if (newFontFamily === null || newFontFamily === '') continue;
 
         if (
           dom.window
@@ -129,7 +129,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const element = allText[i];
         const { newFontSize } = allUpdatesObj.fontSize[fontType];
 
-        if (newFontSize === null) continue;
+        if (newFontSize === null || newFontSize === '') continue;
 
         if (
           dom.window.getComputedStyle(element, null).fontSize ===
@@ -145,7 +145,7 @@ export function updateHtmlContent(html, allUpdatesObj, type = "email") {
         const element = allText[i];
         const { newFontColor } = allUpdatesObj.fontColor[fontType];
 
-        if (newFontColor === null) continue;
+        if (newFontColor === null || newFontColor === "") continue;
 
         if (
           dom.window.getComputedStyle(element, null).color ===
