@@ -6,7 +6,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 0 10vh 0;
+  margin: 3vh 10vw 5vh 10vw;
 }
 
 .create-company-input {
@@ -38,8 +38,8 @@ body {
 }
 
 .company-input button:hover {
-  background-color: #f0f0f0;
-  border-color: #888;
+  background-color: #fff;
+  border-color: #fff;
   color: #393030;
 }
 
@@ -48,5 +48,17 @@ body {
   border: transparent;
   font-weight: 700;
   color: #393030;
+  width: 200px;
+}
+
+.custom-select {
+  background-color: #c9fff7;
+  width: 400px;
+}
+
+.description {
+  margin: 0 10vw;
+  padding: 0 0 20px 0;
+  font-weight: 700;
 }
 

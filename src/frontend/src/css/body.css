@@ -15,11 +15,11 @@ label {
 /* Header Styles */
 header {
   background-color: #c9fff7;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0px 20px;
+  /* padding: 0px 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0px 10vw;
 }
 
 #logo-body {
@@ -92,6 +92,21 @@ ul li a.active {
   margin-bottom: 40px;
 }
 
+#input-body button {
+  background-color: #c9fff7;
+  color: #393030;
+  font-weight: 700;
+  font-size: 17px;
+  width: auto;
+  padding: 10px 20px;
+}
+
+#input-body button:hover {
+  background-color: #393030;
+  color: #c9fff7;
+  border: 1px solid #c9fff7;
+}
+
 #preview {
   width: 45%;
   margin-bottom: 40px;
@@ -99,13 +114,19 @@ ul li a.active {
 
 #container {
   display: flex;
-  gap: 30px;
+  row-gap: 30px;
   flex-wrap: wrap;
-  margin-left: 40px;
+  padding: 5vh 0 5vh 10vw;
   justify-content: center;
+  background-color: #393030;
+  column-gap: 60px;
 }
 
 /* category */
+
+#category {
+  color: #c9fff7;
+}
 
 #input-section {
   display: flex;
@@ -156,6 +177,7 @@ ul li a.active {
 
 input {
   width: 100%;
+  max-width: 400px;
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
@@ -163,25 +185,31 @@ input {
   box-sizing: border-box;
 }
 
+.star-colour {
+  margin-bottom: 30px;
+  color: #c9fff7;
+}
+
 /* Button Styles */
 button {
   background-color: #393030;
   width: 150px;
-  padding: 15px 10px;
+  padding: 10px 20px;
   margin: 5px;
   border-radius: 30px;
   border: 2px solid #393030;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
   color: #c9fff7;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: Helvetica, sans-serif;
 }
 
 button:hover {
-  background-color: #f0f0f0;
-  border-color: #888;
-  color: #393030;
+  background-color: #393030;
+  border-color: #393030;
+  color: #c9fff7;
 }
 
 button:active {
@@ -202,16 +230,18 @@ iframe {
     height: auto;
     border: none;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #c9fff7;
+    /* padding: 20px; */
 }
 
 .iframe-container {
   position: relative;
     height: 100%;
-    min-height: 500px;
+    min-height: 600px;
     overflow: hidden;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 1px solid #000;
 }
 
 .font-colour {

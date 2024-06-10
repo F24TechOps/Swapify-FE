@@ -5,7 +5,7 @@ const Header = ({ company }) => {
   return (
     <header>
       <div id="logo-body">
-        <p id="logo">Swapify - {company}</p>
+        <p id="logo">{company}</p>
       </div>
       <nav>
         <ul>

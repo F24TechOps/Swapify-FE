@@ -231,12 +231,12 @@ app.post("/api/swap", (req, res) => {
 
   exec(command, (error, stdout, stderr) => {
     if (error) {
-      // console.error(`Error executing swap script: ${error} ${stderr}`);
+      console.error(`Error executing swap script: ${error} ${stderr}`);
       return res
         .status(400)
         .send(`Error executing swap script: ${error.message}`);
     }
-    // console.log(`Swap script output: ${stdout}`);
+    console.log(`Swap script output: ${stdout}`);
     res.status(200).send("Swap script executed successfully");
   });
 });
