@@ -9,7 +9,7 @@ function App() {
   const [company, setCompany] = useState(
     localStorage.getItem("selectedCompany") || "Force24"
   );
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState(['Force24']);
   const [isCreatingCompany, setIsCreatingCompany] = useState(false);
   const [newCompanyName, setNewCompanyName] = useState("");
 
@@ -45,16 +45,18 @@ function App() {
   };
 
   const handleDeleteCompany = (comp) => {
-    deleteCompany(comp);
-    const filteredCompanies = companies.filter((c) => c !== comp);
-    setCompanies(filteredCompanies);
-    localStorage.setItem("companies", JSON.stringify(filteredCompanies));
+    if (comp !== "Force24") {
+      deleteCompany(comp);
+      const filteredCompanies = companies.filter((c) => c !== comp);
+      setCompanies(filteredCompanies);
+      localStorage.setItem("companies", JSON.stringify(filteredCompanies));
 
-    if (company === comp) {
-      const newSelectedCompany =
-        filteredCompanies.length > 0 ? filteredCompanies[0] : "Force24";
-      setCompany(newSelectedCompany);
-      localStorage.setItem("selectedCompany", newSelectedCompany);
+      if (company === comp) {
+        const newSelectedCompany =
+          filteredCompanies.length > 0 ? filteredCompanies[0] : "Force24";
+        setCompany(newSelectedCompany);
+        localStorage.setItem("selectedCompany", newSelectedCompany);
+      }
     }
   };
 
@@ -89,15 +91,15 @@ function App() {
             </div>
           )}
         </div>
-        <button onClick={() => handleDeleteCompany(company)}>
+        {company !== 'Force24' && <button onClick={() => handleDeleteCompany(company)}>
           Delete Company
-        </button>
+        </button>}
       </div>
       <div className="description">
         <ol>
           <li>
-            Enter the attribute you would like to replace the current
-            attributes with into the input box.
+            Enter the attribute you would like to replace the current attributes
+            with into the input box.
           </li>
           <li>Click Submit to see the changes</li>
           <li>Once you are happy with the template, select download.</li>
