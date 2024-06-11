@@ -1,0 +1,20 @@
+{
+	"siteId": "6f96fd19-2207-4dd4-9b8a-c8050746d66d",
+	"geolocation": {
+		"data": {
+			"city": "Manchester",
+			"country": {
+				"code": "GB",
+				"name": "United Kingdom"
+			},
+			"subdivision": {
+				"code": "ENG",
+				"name": "England"
+			},
+			"timezone": "Europe/London",
+			"latitude": 53.4323,
+			"longitude": -2.1952
+		},
+		"timestamp": 1718102626464
+	}
+}
