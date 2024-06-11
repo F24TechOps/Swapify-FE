@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 // app.use(
 //   "/images",
@@ -345,7 +345,7 @@ app.get("/*", (req, res) => {
 
 const PORT = process.env.NODE_ENV === "test" ? 5501 : process.env.PORT || 5500;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`New Server is running on port ${PORT}`);
 });
 
 export default app;

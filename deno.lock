@@ -1,0 +1,55 @@
+{
+  "version": "3",
+  "remote": {
+    "https://edge.netlify.com/": "ff84a16f192fdb43db8b9dff869889f555c05857d075044d2a7cfa54c283a0a0",
+    "https://edge.netlify.com/bootstrap/config.ts": "0aa0a225d978b89e0e62cbd853701605199e7a84095e55eeb70147faf1a24803",
+    "https://edge.netlify.com/bootstrap/context.ts": "8f99269eeeeccf9b852e6089cc648c962a0ea20b2198b8b38b38e3b2ce2b9143",
+    "https://edge.netlify.com/bootstrap/cookie.ts": "8b0baae708989ca183c6f3b4ab3d029e6abcbc2e43f93edeb0ff447b3bbc3a05",
+    "https://edge.netlify.com/bootstrap/edge_function.ts": "b8253e86aa83c67341f5cfedeba5049d77fbf84dcab7eceff7566b7728ae9b39",
+    "https://edge.netlify.com/bootstrap/globals.ts": "38f9e0be6c2c78206bf14d2387d41964d38bbe81644b3668e203c6f6473408a7"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@babel/cli@^7.23.9",
+        "npm:@babel/core@^7.24.0",
+        "npm:@babel/plugin-proposal-private-property-in-object@^7.21.11",
+        "npm:@babel/plugin-transform-private-property-in-object@^7.24.6",
+        "npm:@babel/preset-env@^7.24.0",
+        "npm:@jest/core@^29.7.0",
+        "npm:@testing-library/dom@^10.1.0",
+        "npm:@testing-library/react@^16.0.0",
+        "npm:babel-jest@^29.7.0",
+        "npm:body-parser@^1.20.2",
+        "npm:canvas@^2.11.2",
+        "npm:cheerio@^1.0.0-rc.12",
+        "npm:concurrently@^8.2.2",
+        "npm:dompurify@^3.0.9",
+        "npm:eslint-config-prettier@^9.1.0",
+        "npm:eslint-plugin-import@^2.29.1",
+        "npm:eslint-plugin-jsx-a11y@^6.8.0",
+        "npm:eslint-plugin-react-hooks@^4.6.2",
+        "npm:eslint-plugin-react@^7.34.2",
+        "npm:eslint@^8.57.0",
+        "npm:esm@^3.2.25",
+        "npm:express@^4.19.2",
+        "npm:fs@^0.0.1-security",
+        "npm:jest@^29.7.0",
+        "npm:jsdom@^24.0.0",
+        "npm:jszip@^3.10.1",
+        "npm:path@^0.12.7",
+        "npm:prettier@^3.2.5",
+        "npm:punycode@^2.3.1",
+        "npm:react-router-dom@^6.23.1",
+        "npm:react-scripts@^5.0.1",
+        "npm:readline@^1.3.0",
+        "npm:request-promise-native@^1.0.9",
+        "npm:request@^2.88.2",
+        "npm:stream@^0.0.2",
+        "npm:supertest@^7.0.0",
+        "npm:tmp@^0.2.3",
+        "npm:uuid@^9.0.1"
+      ]
+    }
+  }
+}
