@@ -2,7 +2,7 @@ import '../css/body.css'
 import { useEffect, useState } from 'react'
 import { getTemplate } from '../services/api';
 
-const Preview = ({type, company}) => {
+const Preview = ({type}) => {
   const [preview, setPreview] = useState('...loading')
 
   useEffect(() => {

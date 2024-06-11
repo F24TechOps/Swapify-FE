@@ -21,10 +21,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-app.use(
-  "/images",
-  express.static(path.join(__dirname, "./src/html/email/base1/images"))
-);
+// app.use(
+//   "/images",
+//   express.static(path.join(__dirname, "./src/html/email/base1/images"))
+// );
 
 const downloadImage = (url, filename) => {
   return new Promise((resolve, reject) => {
@@ -339,7 +339,7 @@ app.post("/api/process-star", async (req, res) => {
 
 });
 
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
 });
 

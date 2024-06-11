@@ -12,7 +12,7 @@
     "circle": "node ./src/imageformatter/circle.js",
     "zip": "node ./src/backend/createZip.js",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node ./src/server.js",
+    "server": "node ./src/index.js",
     "client": "npm run dev --prefix ./src/frontend",
     "build": "cd ./src/frontend && npm install && npm run build"
   },
