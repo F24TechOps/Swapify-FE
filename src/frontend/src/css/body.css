@@ -9,7 +9,7 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  align-items: center;
+  align-items: start;
 }
 
 /* Header Styles */
@@ -68,7 +68,6 @@ ul li a:hover {
 
 ul li a.active {
   color: #c9fff7;
-  border-bottom: 2px solid #393030;
   background-color: #393030;
 }
 

@@ -148,14 +148,14 @@ function Input({ type, company }) {
         return (
           <div key={key} className="input-group">
             <label>
-              <div className="old-attribute">
+              <div className="old-attribute" style={{margin: 0,}}>
                 {category === "backgroundColors" ? (
                   <div
                     style={{
-                      width: "40px",
+                      width: "200px",
                       height: "40px",
                       backgroundColor: data[key][oldValuesKey],
-                      borderRadius: "20px",
+                      borderRadius: "10px 10px 0 0",
                       border: "1px solid #000",
                     }}
                   ></div>
@@ -171,6 +171,7 @@ function Input({ type, company }) {
                       padding: "5px",
                       border: "1px solid #000",
                       width: "310px",
+                      borderRadius: '10px 10px 0 0',
                     }}
                   >
                     {`The colour of this text is ${data[key][oldValuesKey]}`}
@@ -194,6 +195,7 @@ function Input({ type, company }) {
                 value={data[key][valueKey] || ""}
                 placeholder="New Attribute"
                 onChange={(e) => handleChange(e, category, key, valueKey)}
+                style={{margin: 0,}}
               />
             </label>
           </div>

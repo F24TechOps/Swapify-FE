@@ -96,11 +96,11 @@ function App() {
       <div className="description">
         <ol>
           <li>
-            Enter the New attribute you would like to replace the current
-            attributes with
+            Enter the attribute you would like to replace the current
+            attributes with into the input box.
           </li>
           <li>Click Submit to see the changes</li>
-          <li>Once you are happy with the template, select download </li>
+          <li>Once you are happy with the template, select download.</li>
         </ol>
       </div>
       <Routes>
