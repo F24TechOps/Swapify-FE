@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api";
+const API_URL = "http://localhost:5500/api";
 
 export const getTemplate = async (type) => {
   try {
@@ -27,6 +27,7 @@ export const getFinal = (type, company) => {
 };
 
 export const getMappingData = (type, company) => {
+  console.log(`${API_URL}/mapping/${type}/${company}`)
   return axios.get(`${API_URL}/mapping/${type}/${company}`);
 };
 
@@ -44,7 +45,7 @@ export const createMappingData = (type, company) => {
 
 export const makeSwap = (type, company, imageUrls) => {
   console.log(type, company, imageUrls);
-  return axios.post(`${API_URL}/swap`, { type, company, imageUrls });
+  return axios.post(`${API_URL}/swap`, { type, company });
 };
 
 export const updateMappingData = (type, company, mappingData) => {

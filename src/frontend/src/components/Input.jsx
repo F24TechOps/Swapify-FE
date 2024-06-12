@@ -27,7 +27,7 @@ const categoryTitles = {
 function Input({ type, company }) {
   const [mappingData, setMappingData] = useState(null);
   const [imageUrls, setImageUrls] = useState({});
-  const [replaceColor, setReplaceColor] = useState("");
+  const [replaceColor, setReplaceColor] = useState("#70C7D5");
   const [loading, setLoading] = useState(true);
   const [collapsedSections, setCollapsedSections] = useState({});
 
@@ -47,7 +47,6 @@ function Input({ type, company }) {
   useEffect(() => {
     setMappingData(null);
     setImageUrls({});
-    setReplaceColor("");
   }, [type]);
 
   useEffect(() => {
