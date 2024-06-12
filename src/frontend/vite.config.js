@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5500',
+        target: 'https://swapify-server.onrender.com',
         changeOrigin: true,
         secure: false,
       }
