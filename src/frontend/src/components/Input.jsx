@@ -72,11 +72,20 @@ function Input({ type, company }) {
       if (subKey) {
         const keys = subKey.split(".");
         if (keys.length === 2) {
+          if (!newMappingData[category][key][keys[0]]) {
+            newMappingData[category][key][keys[0]] = {};
+          }
           newMappingData[category][key][keys[0]][keys[1]] = value;
         } else {
+          if (!newMappingData[category][key]) {
+            newMappingData[category][key] = {};
+          }
           newMappingData[category][key][subKey] = value;
         }
       } else {
+        if (!newMappingData[category][key]) {
+          newMappingData[category][key] = {};
+        }
         newMappingData[category][key] = value;
       }
       return newMappingData;
@@ -208,7 +217,6 @@ function Input({ type, company }) {
   const renderButtons = useCallback(
     (category, data = {}) => {
       if (!data) return null;
-
       return Object.keys(data).map((key) => {
         const buttonData = data[key] || {};
         const oldButton =
@@ -220,7 +228,6 @@ function Input({ type, company }) {
         const innerOldButton = type === "email" ? buttonData.innerButton : {};
         const innerNewButton =
           type === "email" ? buttonData.newInnerButton : {};
-
         return (
           <div key={key} id="individual-button">
             <div className="button-preview">
@@ -271,7 +278,14 @@ function Input({ type, company }) {
                         type="text"
                         value={newButton[attr] || ""}
                         onChange={(e) =>
-                          handleChange(e, category, key, `newButton.${attr}`)
+                          handleChange(
+                            e,
+                            category,
+                            key,
+                            type === "email"
+                              ? `newOuterButton.${attr}`
+                              : `newButton.${attr}`
+                          )
                         }
                       />
                     </label>
