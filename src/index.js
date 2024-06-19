@@ -116,30 +116,6 @@ app.post("/api/create-download", async (req, res) => {
     );
 
     try {
-      // if (fs.existsSync(imagePath)) {
-      //   fs.rmSync(imagePath, { recursive: true, force: true });
-      // }
-      // fs.mkdirSync(imagePath, { recursive: true });
-
-      // const starImages = [];
-
-      // for (const [key, url] of Object.entries(imageUrls)) {
-      //   const filename = path.join(imagePath, `${key}.png`);
-      //   await downloadImage(url, filename);
-
-      //   if (key === "ImageLink4") {
-      //     await cropCircle(filename, filename);
-      //   }
-
-      //   if (url.includes("star-")) {
-      //     starImages.push(filename);
-      //   }
-      // }
-
-      // if (replaceColor && starImages.length > 0) {
-      //   await starColour(imagePath, replaceColor, starImages);
-      // }
-
       const htmlContent = fs.readFileSync(htmlPath, "utf8");
       const $ = cheerio.load(htmlContent);
 
@@ -185,6 +161,45 @@ app.post("/api/create-download", async (req, res) => {
       res.status(200).send(copyText);
     } catch (error) {
       res.status(400).send(`Error reading HTML file: ${error}`);
+    }
+  } else if (type === 'plain') {
+    const htmlPath = path.join(
+      __dirname,
+      `./html/plain/base1/template.html`
+    );
+    const imagePath = path.join(
+      __dirname,
+      `./html/plain/base1/images`
+    );
+    const zipDest = path.join(
+      __dirname,
+      `../.env/${company}/${company}ptt.zip`
+    );
+
+    try {
+      const htmlContent = fs.readFileSync(htmlPath, "utf8");
+      const $ = cheerio.load(htmlContent);
+
+      $('img').attr('src', `images/logo.png`)
+
+      fs.writeFileSync(htmlPath, $.html(), "utf8");
+
+      createZip(htmlPath, imagePath, zipDest)
+        .then(() => {
+          res.download(zipDest, `${company}ptt.zip`, (err) => {
+            if (err) {
+              console.error("error sending file", err);
+              res.status(400).send("Error sending zip file");
+            }
+          });
+        })
+        .catch((error) => {
+          console.error("Error creating zip file:", error);
+          res.status(400).send(`Error creating zip file :${error}`);
+        });
+    } catch (error) {
+      console.error("Error downloading images:", error);
+      res.status(400).send(`Error downloading images: ${error.message}`);
     }
   } else {
     res.status(404).send("Invalid type specified");
@@ -236,7 +251,6 @@ app.post("/api/swap", (req, res) => {
         .status(400)
         .send(`Error executing swap script: ${error.message}`);
     }
-    console.log(`Swap script output: ${stdout}`);
     res.status(200).send("Swap script executed successfully");
   });
 });

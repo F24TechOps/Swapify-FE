@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import Editor from "./components/Editor.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { createMappingData, deleteCompany } from "./services/api";
+import Plain from "./components/Plain.jsx";
 
 function App() {
   const [company, setCompany] = useState(
@@ -117,7 +118,7 @@ function App() {
         />
         <Route
           path="/plain"
-          element={<Editor type="plain" company={company} />}
+          element={<Plain type="plain" company={company}/>}
         />
         <Route path="/" element={<Editor type="email" company={company} />} />
       </Routes>

@@ -57,7 +57,9 @@ ul li a {
   color: #393030;
   font-size: 16px;
   font-weight: 700;
-  transition: color 0.3s ease, background-color 0.3s ease; /* Include background-color transition */
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease; /* Include background-color transition */
   padding: 20px 40px;
 }
 
@@ -199,7 +201,10 @@ button {
   border-radius: 30px;
   border: 2px solid #393030;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.1s ease;
   color: #c9fff7;
   font-weight: 600;
   font-size: 15px;
@@ -207,10 +212,10 @@ button {
 }
 
 button:hover {
-  background-color: #393030;
-  border-color: #393030;
-  color: #c9fff7;
-}
+    background-color: #fff;
+    border-color: #fff;
+    color: #393030;
+  }
 
 button:active {
   background-color: #e0e0e0;
@@ -224,23 +229,37 @@ button:active {
 
 /* Iframe Styles */
 iframe {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    border: none;
-    border-radius: 10px;
-    background-color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .iframe-container {
   position: relative;
-    height: 100%;
-    min-height: 600px;
-    overflow: hidden;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border: 1px solid #000;
+  height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid #000;
+}
+
+#plain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plain-container {
+  width: 60vw;
+  height: 56vw;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid #000;
 }
 
 .font-colour {
@@ -271,8 +290,12 @@ iframe {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
