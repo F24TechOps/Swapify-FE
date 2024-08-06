@@ -285,7 +285,6 @@ app.post("/api/process-circle", async (req, res) => {
   );
 
   try {
-    // Ensure the images directory exists
     if (!fs.existsSync(imagePath)) {
       fs.mkdirSync(imagePath, { recursive: true });
     }
@@ -311,7 +310,6 @@ app.post("/api/process-star", async (req, res) => {
   );
 
   try {
-    // Ensure the images directory exists
     if (!fs.existsSync(imagePath)) {
       fs.mkdirSync(imagePath, { recursive: true });
     }
