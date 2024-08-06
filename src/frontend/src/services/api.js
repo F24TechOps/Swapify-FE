@@ -27,7 +27,6 @@ export const getFinal = (type, company) => {
 };
 
 export const getMappingData = (type, company) => {
-  console.log(`${API_URL}/mapping/${type}/${company}`)
   return axios.get(`${API_URL}/mapping/${type}/${company}`);
 };
 
@@ -44,7 +43,6 @@ export const createMappingData = (type, company) => {
 };
 
 export const makeSwap = (type, company, imageUrls) => {
-  console.log(type, company, imageUrls);
   return axios.post(`${API_URL}/swap`, { type, company });
 };
 
