@@ -1,5 +1,5 @@
 import "./css/body.css";
-import { BrowserRouter as Router, Routes, Route } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Email from "./components/Email";
 import Microsite from "./components/Microsite";
 
