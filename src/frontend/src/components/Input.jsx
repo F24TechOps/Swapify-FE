@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import {
   getMappingData,
   updateMappingData,
+  createMappingData,
   makeSwap,
   createZipOrCopy,
   processCircleImage,
@@ -25,6 +26,7 @@ const categoryTitles = {
 };
 
 function Input({ type, company }) {
+  const [mappingDataCache, setMappingDataCache] = useState({});
   const [mappingData, setMappingData] = useState(null);
   const [imageUrls, setImageUrls] = useState({});
   const [replaceColor, setReplaceColor] = useState("#70C7D5");
@@ -32,26 +34,63 @@ function Input({ type, company }) {
   const [collapsedSections, setCollapsedSections] = useState({});
 
   useEffect(() => {
-    setLoading(true);
-    getMappingData(type, company).then((response) => {
-      const initialCollapsedState = Object.keys(response.data).reduce(
-        (acc, key) => {
+    if (mappingDataCache[type]) {
+      // Use cached data if available
+      setMappingData(mappingDataCache[type]);
+      setCollapsedSections(
+        Object.keys(mappingDataCache[type]).reduce((acc, key) => {
           acc[key] = true;
           return acc;
-        },
-        {}
+        }, {})
       );
-      setMappingData(response.data);
-      setCollapsedSections(initialCollapsedState);
       setLoading(false);
-    });
+    } else {
+      setLoading(true);
+      // Fetch or create mapping data
+      getMappingData(type, company)
+        .then((response) => {
+          let newData = response.data;
+
+          if (!newData || Object.keys(newData).length === 0) {
+            // Create mapping data if it doesn't exist
+            return createMappingData(type, company).then(() =>
+              getMappingData(type, company)
+            );
+          }
+
+          return { data: newData };
+        })
+        .then((response) => {
+          const newData = response.data;
+
+          // Cache the data for future use
+          setMappingDataCache((prevCache) => ({
+            ...prevCache,
+            [type]: newData,
+          }));
+
+          // Update state with the new data
+          setMappingData(newData);
+          setCollapsedSections(
+            Object.keys(newData).reduce((acc, key) => {
+              acc[key] = true;
+              return acc;
+            }, {})
+          );
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error handling mapping data:", error);
+          setLoading(false);
+        });
+    }
   }, [type, company]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     setMappingData(null);
     setImageUrls({});
     setReplaceColor("#70C7D5");
-  }, [type]);
+  }, [type]);*/
 
   useEffect(() => {
     if (mappingData) {
@@ -365,11 +404,8 @@ function Input({ type, company }) {
 
   return (
     <div id="input-body">
-      <button type="button" onClick={handleUpdate}>
-        Submit
-      </button>
-      <form>
-        {Object.keys(mappingData || {}).map((category) => (
+      <form onSubmit={handleUpdate}>
+        {mappingData && Object.keys(mappingData).map((category) => (
           <div key={category} id="category">
             <h2
               onClick={() => toggleCollapse(category)}
@@ -400,15 +436,16 @@ function Input({ type, company }) {
             />
           </div>
         )}
-      </form>
-      <button type="button" onClick={handleUpdate}>
+        <button type="button" onClick={handleUpdate}>
         Submit
       </button>
+      </form>
       <button type="button" onClick={handleDownload}>
         {type === "email" ? "Download Zip" : "Copy Code"}
       </button>
     </div>
   );
+  
 }
 
 export default Input;
