@@ -84,7 +84,7 @@ function Input({ type, company }) {
           setLoading(false);
         });
     }
-  }, [type, company]);
+  }, [type, company, mappingDataCache]);
 
   /*useEffect(() => {
     setMappingData(null);
