@@ -29,7 +29,7 @@ const Output = ({ type, company }) => {
   }
 
   if (error) {
-    return null; // Hide the final template on error
+    return null; 
   }
 
   return (

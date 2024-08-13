@@ -34,10 +34,13 @@ function Input({ type, company }) {
   useEffect(() => {
     setLoading(true);
     getMappingData(type, company).then((response) => {
-      const initialCollapsedState = Object.keys(response.data).reduce((acc, key) => {
-        acc[key] = true;
-        return acc;
-      }, {});
+      const initialCollapsedState = Object.keys(response.data).reduce(
+        (acc, key) => {
+          acc[key] = true;
+          return acc;
+        },
+        {}
+      );
       setMappingData(response.data);
       setCollapsedSections(initialCollapsedState);
       setLoading(false);
@@ -47,6 +50,7 @@ function Input({ type, company }) {
   useEffect(() => {
     setMappingData(null);
     setImageUrls({});
+    setReplaceColor("#70C7D5");
   }, [type]);
 
   useEffect(() => {
@@ -71,11 +75,20 @@ function Input({ type, company }) {
       if (subKey) {
         const keys = subKey.split(".");
         if (keys.length === 2) {
+          if (!newMappingData[category][key][keys[0]]) {
+            newMappingData[category][key][keys[0]] = {};
+          }
           newMappingData[category][key][keys[0]][keys[1]] = value;
         } else {
+          if (!newMappingData[category][key]) {
+            newMappingData[category][key] = {};
+          }
           newMappingData[category][key][subKey] = value;
         }
       } else {
+        if (!newMappingData[category][key]) {
+          newMappingData[category][key] = {};
+        }
         newMappingData[category][key] = value;
       }
       return newMappingData;
@@ -85,7 +98,10 @@ function Input({ type, company }) {
   const handleUpdate = async () => {
     try {
       await updateMappingData(type, company, mappingData);
-      if (type === "email" && replaceColor) {
+      if (type === "email" && replaceColor.length > 2) {
+        await processStarColor(company, replaceColor, imageUrls);
+      } else {
+        setReplaceColor("#70C7D5");
         await processStarColor(company, replaceColor, imageUrls);
       }
       if (type === "email" && imageUrls["ImageLink4"]) {
@@ -96,7 +112,7 @@ function Input({ type, company }) {
         );
       }
       await makeSwap(type, company, imageUrls);
-      location.reload();
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -147,7 +163,7 @@ function Input({ type, company }) {
         return (
           <div key={key} className="input-group">
             <label>
-              <div className="old-attribute" style={{margin: 0,}}>
+              <div className="old-attribute" style={{ margin: 0 }}>
                 {category === "backgroundColors" ? (
                   <div
                     style={{
@@ -170,7 +186,7 @@ function Input({ type, company }) {
                       padding: "5px",
                       border: "1px solid #000",
                       width: "310px",
-                      borderRadius: '10px 10px 0 0',
+                      borderRadius: "10px 10px 0 0",
                     }}
                   >
                     {`The colour of this text is ${data[key][oldValuesKey]}`}
@@ -194,7 +210,7 @@ function Input({ type, company }) {
                 value={data[key][valueKey] || ""}
                 placeholder="New Attribute"
                 onChange={(e) => handleChange(e, category, key, valueKey)}
-                style={{margin: 0,}}
+                style={{ margin: 0 }}
               />
             </label>
           </div>
@@ -207,7 +223,6 @@ function Input({ type, company }) {
   const renderButtons = useCallback(
     (category, data = {}) => {
       if (!data) return null;
-
       return Object.keys(data).map((key) => {
         const buttonData = data[key] || {};
         const oldButton =
@@ -219,7 +234,6 @@ function Input({ type, company }) {
         const innerOldButton = type === "email" ? buttonData.innerButton : {};
         const innerNewButton =
           type === "email" ? buttonData.newInnerButton : {};
-
         return (
           <div key={key} id="individual-button">
             <div className="button-preview">
@@ -270,7 +284,14 @@ function Input({ type, company }) {
                         type="text"
                         value={newButton[attr] || ""}
                         onChange={(e) =>
-                          handleChange(e, category, key, `newButton.${attr}`)
+                          handleChange(
+                            e,
+                            category,
+                            key,
+                            type === "email"
+                              ? `newOuterButton.${attr}`
+                              : `newButton.${attr}`
+                          )
                         }
                       />
                     </label>
@@ -339,7 +360,7 @@ function Input({ type, company }) {
   );
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
@@ -369,16 +390,16 @@ function Input({ type, company }) {
           </div>
         ))}
         {type === "email" && (
-        <div className="star-colour">
-          <h2>Star Colour</h2>
-          <input
-            type="text"
-            placeholder="Star Color (hex)"
-            value={replaceColor}
-            onChange={(e) => setReplaceColor(e.target.value)}
-          />
-        </div>
-      )}
+          <div className="star-colour">
+            <h2>Star Colour</h2>
+            <input
+              type="text"
+              placeholder="Star Color (hex)"
+              value={replaceColor}
+              onChange={(e) => setReplaceColor(e.target.value)}
+            />
+          </div>
+        )}
       </form>
       <button type="button" onClick={handleUpdate}>
         Submit

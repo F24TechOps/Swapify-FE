@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+//import React, { useState, useEffect } from "react";
 import "./css/App.css";
 import Header from "./components/Header.jsx";
 import Editor from "./components/Editor.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { createMappingData, deleteCompany } from "./services/api";
+//import { createMappingData, deleteCompany } from "./services/api";
 
 function App() {
-  const [company, setCompany] = useState(
+  const company = 'Force24'
+  /*const [company, setCompany] = useState(
     localStorage.getItem("selectedCompany") || "Force24"
   );
   const [companies, setCompanies] = useState(['Force24']);
@@ -58,12 +59,12 @@ function App() {
         localStorage.setItem("selectedCompany", newSelectedCompany);
       }
     }
-  };
+  };*/
 
   return (
     <Router>
       <Header company={company} />
-      <div className="company-input">
+      {/*<div className="company-input">
         <div className="create-company-input">
           <button onClick={toggleCreateNewCompany}>
             {isCreatingCompany ? "Cancel" : "Create New Company"}
@@ -94,7 +95,7 @@ function App() {
         {company !== 'Force24' && <button onClick={() => handleDeleteCompany(company)}>
           Delete Company
         </button>}
-      </div>
+      </div>*/}
       <div className="description">
         <ol>
           <li>
