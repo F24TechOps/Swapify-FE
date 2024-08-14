@@ -34,56 +34,71 @@ function Input({ type, company }) {
   const [collapsedSections, setCollapsedSections] = useState({});
 
   useEffect(() => {
-    if (mappingDataCache[type]) {
-      // Use cached data if available
-      setMappingData(mappingDataCache[type]);
-      setCollapsedSections(
-        Object.keys(mappingDataCache[type]).reduce((acc, key) => {
-          acc[key] = true;
-          return acc;
-        }, {})
-      );
-      setLoading(false);
-    } else {
+    const fetchData = async () => {
       setLoading(true);
-      // Fetch or create mapping data
-      getMappingData(type, company)
-        .then((response) => {
-          let newData = response.data;
 
+      try {
+        let newData;
+        // Check if data is cached
+        if (mappingDataCache[type]) {
+          newData = mappingDataCache[type];
+        } else {
+          // Try to fetch the mapping data
+          const response = await getMappingData(type, company);
+          newData = response.data;
+
+          // If no data or empty object, attempt to create mapping data
           if (!newData || Object.keys(newData).length === 0) {
-            // Create mapping data if it doesn't exist
-            return createMappingData(type, company).then(() =>
-              getMappingData(type, company)
-            );
+            throw new Error("No mapping data found, creating new data.");
           }
+        }
 
-          return { data: newData };
-        })
-        .then((response) => {
-          const newData = response.data;
+        // Update state with the fetched or cached data
+        setMappingDataCache((prevCache) => ({
+          ...prevCache,
+          [type]: newData,
+        }));
+        setMappingData(newData);
 
-          // Cache the data for future use
-          setMappingDataCache((prevCache) => ({
-            ...prevCache,
-            [type]: newData,
-          }));
+        /*setCollapsedSections(
+          Object.keys(newData).reduce((acc, key) => {
+            acc[key] = true;
+            return acc;
+          }, {})
+        );*/
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          // If 404 error, create mapping data
+          try {
+            await createMappingData(type, company);
+            const response = await getMappingData(type, company);
+            const newData = response.data;
 
-          // Update state with the new data
-          setMappingData(newData);
-          setCollapsedSections(
-            Object.keys(newData).reduce((acc, key) => {
-              acc[key] = true;
-              return acc;
-            }, {})
-          );
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error handling mapping data:", error);
-          setLoading(false);
-        });
-    }
+            // Cache the new data
+            setMappingDataCache((prevCache) => ({
+              ...prevCache,
+              [type]: newData,
+            }));
+            setMappingData(newData);
+
+            setCollapsedSections(
+              Object.keys(newData).reduce((acc, key) => {
+                acc[key] = true;
+                return acc;
+              }, {})
+            );
+          } catch (createError) {
+            console.error("Error creating new mapping data:", createError);
+          }
+        } else {
+          console.error("Error fetching mapping data:", error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [type, company, mappingDataCache]);
 
   /*useEffect(() => {
@@ -405,26 +420,27 @@ function Input({ type, company }) {
   return (
     <div id="input-body">
       <form onSubmit={handleUpdate}>
-        {mappingData && Object.keys(mappingData).map((category) => (
-          <div key={category} id="category">
-            <h2
-              onClick={() => toggleCollapse(category)}
-              style={{ cursor: "pointer" }}
-            >
-              {categoryTitles[category] || category}
-              {collapsedSections[category] ? " +" : " -"}
-            </h2>
-            {!collapsedSections[category] && (
-              <div id="input-section">
-                {category === "buttons"
-                  ? renderButtons(category, mappingData[category] || {})
-                  : category === "allButtons"
-                    ? renderAllButtons(category, mappingData[category] || {})
-                    : renderInputs(category, mappingData[category] || {})}
-              </div>
-            )}
-          </div>
-        ))}
+        {mappingData &&
+          Object.keys(mappingData).map((category) => (
+            <div key={category} id="category">
+              <h2
+                onClick={() => toggleCollapse(category)}
+                style={{ cursor: "pointer" }}
+              >
+                {categoryTitles[category] || category}
+                {collapsedSections[category] ? " +" : " -"}
+              </h2>
+              {!collapsedSections[category] && (
+                <div id="input-section">
+                  {category === "buttons"
+                    ? renderButtons(category, mappingData[category] || {})
+                    : category === "allButtons"
+                      ? renderAllButtons(category, mappingData[category] || {})
+                      : renderInputs(category, mappingData[category] || {})}
+                </div>
+              )}
+            </div>
+          ))}
         {type === "email" && (
           <div className="star-colour">
             <h2>Star Colour</h2>
@@ -437,15 +453,14 @@ function Input({ type, company }) {
           </div>
         )}
         <button type="button" onClick={handleUpdate}>
-        Submit
-      </button>
+          Submit
+        </button>
       </form>
       <button type="button" onClick={handleDownload}>
         {type === "email" ? "Download Zip" : "Copy Code"}
       </button>
     </div>
   );
-  
 }
 
 export default Input;
