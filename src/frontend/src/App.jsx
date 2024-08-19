@@ -30,6 +30,7 @@ function App() {
   };
 
   const saveCompany = async () => {
+    window.location.reload();
     if (newCompanyName && !companies.includes(newCompanyName)) {
       const newCompanies = [...companies, newCompanyName];
       setCompanies(newCompanies);
