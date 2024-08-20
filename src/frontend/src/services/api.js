@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://swapify-server-0kyv.onrender.com/api";
+const API_URL = "https://swapify-server-kw7h.onrender.com/api";
 
 export const getTemplate = async (type) => {
   try {
