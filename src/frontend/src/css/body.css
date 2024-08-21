@@ -57,7 +57,9 @@ ul li a {
   color: #393030;
   font-size: 16px;
   font-weight: 700;
-  transition: color 0.3s ease, background-color 0.3s ease; /* Include background-color transition */
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease; /* Include background-color transition */
   padding: 20px 40px;
 }
 
@@ -199,7 +201,10 @@ button {
   border-radius: 30px;
   border: 2px solid #393030;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.1s ease;
   color: #c9fff7;
   font-weight: 600;
   font-size: 15px;
@@ -224,23 +229,23 @@ button:active {
 
 /* Iframe Styles */
 iframe {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    border: none;
-    border-radius: 10px;
-    background-color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .iframe-container {
   position: relative;
-    height: 100%;
-    min-height: 600px;
-    overflow: hidden;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border: 1px solid #000;
+  height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid #000;
 }
 
 .font-colour {
@@ -248,7 +253,7 @@ iframe {
 }
 
 /* Loading */
-.loading-container {
+/*.loading-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -277,4 +282,49 @@ iframe {
 
 .loading-text {
   margin-top: 20px;
+}*/
+
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+svg {
+  font-family: "Russo One", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+svg text {
+  animation: stroke 5s infinite alternate;
+  stroke-width: 2;
+  stroke: #365fa0;
+  font-size: 100px;
+}
+@keyframes stroke {
+  0% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  70% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+  }
+  80% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-width: 3;
+  }
+  100% {
+    fill: rgba(72, 138, 204, 1);
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}
+
+.wrapper {
+  background-color: #ffffff;
+  width: 30vw;
+  height: 50vh;
 }
