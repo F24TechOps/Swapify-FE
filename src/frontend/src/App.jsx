@@ -30,16 +30,17 @@ function App() {
   };
 
   const saveCompany = async () => {
+    let normalizedCompanyName = newCompanyName.replace(/[^a-zA-Z]/g, '').toLowerCase();
     window.location.reload();
-    if (newCompanyName && !companies.includes(newCompanyName)) {
-      const newCompanies = [...companies, newCompanyName];
+    if (normalizedCompanyName && !companies.includes(normalizedCompanyName)) {
+      const newCompanies = [...companies, normalizedCompanyName];
       setCompanies(newCompanies);
       localStorage.setItem("companies", JSON.stringify(newCompanies));
-      localStorage.setItem("selectedCompany", newCompanyName);
+      localStorage.setItem("selectedCompany", normalizedCompanyName);
       setIsCreatingCompany(false);
 
-      await createMappingData("email", newCompanyName);
-      await createMappingData("microsite", newCompanyName);
+      await createMappingData("email", normalizedCompanyName);
+      await createMappingData("microsite", normalizedCompanyName);
 
       window.location.reload();
     }

@@ -14,7 +14,8 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node ./src/index.js",
     "client": "npm run dev --prefix ./src/frontend",
-    "build": "cd ./src/frontend && npm install && npm run build"
+    "build": "cd ./src/frontend && npm install && npm run build",
+    "dev": "cd ./src/frontend && npm run dev"
   },
   "repository": {
     "type": "git",
