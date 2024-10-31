@@ -3,18 +3,21 @@ import "../css/body.css";
 import { getFinal } from "../services/api";
 import Loading from "./Loading";
 
-const Output = ({ type, company }) => {
+const Output = ({ type, company , dataVersion}) => {
   const [output, setOutput] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+
   useEffect(() => {
     const fetchOutput = async () => {
+      setLoading(true)
       try {
         const res = await getFinal(type, company);
         setOutput(res.data);
         setError(false);
       } catch (err) {
-        console.error('Error fetching final template', err);
+        // console.error('Error fetching final template', err);
         setError(true);
       } finally {
         setLoading(false);
@@ -22,7 +25,7 @@ const Output = ({ type, company }) => {
     };
 
     fetchOutput();
-  }, [type, company]);
+  }, [type, company, dataVersion]);
 
   if (loading) {
     return <Loading />;

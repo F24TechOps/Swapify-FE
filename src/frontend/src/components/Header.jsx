@@ -10,12 +10,12 @@ const Header = ({ company }) => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/microsite" activeClassName="active">
+            <NavLink to="/microsite">
               Microsite
             </NavLink>
           </li>
           <li>
-            <NavLink to="/email" activeClassName="active">
+            <NavLink to="/email">
               Email
             </NavLink>
           </li>

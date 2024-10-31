@@ -43,7 +43,6 @@ export const createMappingData = (type, company) => {
 };
 
 export const makeSwap = (type, company, imageUrls) => {
-  console.log(type, company, imageUrls);
   return axios.post(`${API_URL}/swap`, { type, company });
 };
 
