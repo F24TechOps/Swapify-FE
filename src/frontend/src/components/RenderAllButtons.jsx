@@ -31,10 +31,10 @@ function AllButtons({ category, data, handleChange, type }) {
                   <input
                     type="text"
                     value={
-                      data.innerButton[attr] !== null &&
-                      data.outerButton[attr] !== undefined
-                        ? data.innerButton[attr]
-                        : data.outerButton[attr] || ""
+                      data?.innerButton?.[attr] !== null &&
+                      data?.outerButton?.[attr] !== undefined
+                        ? data.innerButton?.[attr]
+                        : data.outerButton?.[attr] || ""
                     }
                     onChange={(e) =>
                       handleChange(e, category, "outerButton", attr, true)
@@ -51,9 +51,9 @@ function AllButtons({ category, data, handleChange, type }) {
                   <input
                     type="text"
                     value={
-                      data.innerButton[attr] !== null &&
-                      data.outerButton[attr] !== undefined
-                        ? data.outerButton[attr]
+                      data?.innerButton?.[attr] !== null &&
+                      data?.outerButton?.[attr] !== undefined
+                        ? data?.outerButton?.[attr]
                         : ""
                     }
                     onChange={(e) =>
@@ -71,7 +71,7 @@ function AllButtons({ category, data, handleChange, type }) {
                   <input
                     type="text"
                     value={
-                      data.innerButton[attr]
+                      data?.innerButton?.[attr]
                     }
                     onChange={(e) =>
                       handleChange(e, category, "innerButton", attr)
