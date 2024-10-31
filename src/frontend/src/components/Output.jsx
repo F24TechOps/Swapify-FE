@@ -17,7 +17,7 @@ const Output = ({ type, company , dataVersion}) => {
         setOutput(res.data);
         setError(false);
       } catch (err) {
-        console.error('Error fetching final template', err);
+        // console.error('Error fetching final template', err);
         setError(true);
       } finally {
         setLoading(false);

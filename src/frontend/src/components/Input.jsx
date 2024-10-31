@@ -1,3 +1,4 @@
+import { cloneDeep } from "lodash";
 import React, { useState, useEffect } from "react";
 import "../css/body.css";
 import {
@@ -35,7 +36,7 @@ function Input({ type, company, onDataUpdate }) {
   const [replaceColor, setReplaceColor] = useState("#70C7D5"); // State for replacing star color in emails
   const [loading, setLoading] = useState(true); // State to track whether data is loading
   const [collapsedSections, setCollapsedSections] = useState({}); // State to track collapsed/expanded sections in the form
-
+  
   // useEffect to fetch the mapping data when the component loads or when 'type' or 'company' changes
   useEffect(() => {
     let isMounted = true; // Used to track if the component is still mounted
@@ -112,6 +113,8 @@ function Input({ type, company, onDataUpdate }) {
 
   // useEffect to extract image URLs from the mapping data whenever mappingData changes
   useEffect(() => {
+    console.log(mappingData);
+    
     if (mappingData) {
       const newImageUrls = Object.keys(mappingData.images || {}).reduce(
         (acc, key) => {
@@ -127,27 +130,41 @@ function Input({ type, company, onDataUpdate }) {
   }, [mappingData]);
 
   // Handle input change in the form fields
-  const handleChange = (e, category, key, subKey = null) => {
+  const handleChange = (e, category, key, attr = null, updateBoth = false) => {
     const { value } = e.target;
+
+    console.log(category, '<== category', key, '<== Key', attr, '<== Attribute', updateBoth, '<== Update Both Var');
+  
     setMappingData((prevMappingData) => {
-      const newMappingData = { ...prevMappingData };
-      // If subKey exists, handle nested changes (e.g., newInnerButton.backgroundColor)
-      if (subKey) {
-        const keys = subKey.split(".");
+      const newMappingData = cloneDeep(prevMappingData);
+  
+      if (updateBoth) {
+        // Update both innerButton and outerButton attributes if `updateBoth` is true
+        if (newMappingData[category]?.innerButton?.hasOwnProperty(attr)) {
+          newMappingData[category].innerButton[attr] = value;
+        }
+        if (newMappingData[category]?.outerButton?.hasOwnProperty(attr)) {
+          newMappingData[category].outerButton[attr] = value;
+        }
+      } else if (attr) {
+        // Handle nested keys if an attribute is provided
+        const keys = attr.split(".");
         if (keys.length === 2) {
           if (!newMappingData[category][key][keys[0]]) {
             newMappingData[category][key][keys[0]] = {};
           }
-          newMappingData[category][key][keys[0]][keys[1]] = value; // Update the specific attribute
+          newMappingData[category][key][keys[0]][keys[1]] = value;
         } else {
-          newMappingData[category][key][subKey] = value; // Update the attribute
+          newMappingData[category][key][attr] = value;
         }
       } else {
-        newMappingData[category][key] = value; // Directly update the key's value in the category
+        // Directly update the key's value if no attribute is provided
+        newMappingData[category][key] = value;
       }
-      return newMappingData; // Return the updated mappingData
+  
+      return newMappingData;
     });
-  };
+  };  
 
   // Handle the submission and processing of form data
   const handleUpdate = async () => {
