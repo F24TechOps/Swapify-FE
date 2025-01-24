@@ -99,7 +99,7 @@ function Input({ type, company }) {
     };
 
     fetchData();
-  }, [type, company, mappingDataCache]);
+  }, [type, company]);
 
   /*useEffect(() => {
     setMappingData(null);
