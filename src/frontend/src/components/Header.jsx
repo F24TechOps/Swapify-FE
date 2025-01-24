@@ -19,6 +19,11 @@ const Header = ({ company }) => {
               Email
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/templates" activeClassName="active">
+              Templates
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

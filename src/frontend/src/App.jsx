@@ -116,6 +116,10 @@ function App() {
           path="/email"
           element={<Editor type="email" company={company} />}
         />
+        <Route
+          path="/templates"
+          element={<Editor type="templates" company={company} />}
+        />
         <Route path="/" element={<Editor type="email" company={company} />} />
       </Routes>
     </Router>

@@ -30,6 +30,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.24.6",
     "@vitejs/plugin-react": "^4.3.1",
+    "axios": "^1.7.9",
     "canvas": "^2.11.2",
     "dompurify": "^3.0.9",
     "fs": "^0.0.1-security",
