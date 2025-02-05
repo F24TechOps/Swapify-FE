@@ -30,10 +30,10 @@ export const getMappingData = (type, company) => {
   return axios.get(`${API_URL}/mapping/${type}/${company}`);
 };
 
-export const createZipOrCopy = (type, company, imageUrls, replaceColor) => {
-  return axios.post(
+export const createZipOrCopy = (type, company, imageUrls) => {
+  return axios.post(  
     `${API_URL}/create-download`,
-    { type, company, imageUrls, replaceColor },
+    { type, company, imageUrls},
     { responseType: "blob" }
   );
 };
