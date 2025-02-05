@@ -23,6 +23,7 @@ const categoryTitles = {
   buttons: "Buttons",
   allButtons: "All Buttons",
   backgroundImg: "Main Image",
+  color: "Colours",
 };
 
 function Input({ type, company }) {
@@ -60,12 +61,12 @@ function Input({ type, company }) {
         }));
         setMappingData(newData);
 
-        /*setCollapsedSections(
+        setCollapsedSections(
           Object.keys(newData).reduce((acc, key) => {
             acc[key] = true;
             return acc;
           }, {})
-        );*/
+        );
       } catch (error) {
         if (error.response && error.response.status === 404) {
           // If 404 error, create mapping data
@@ -100,12 +101,6 @@ function Input({ type, company }) {
 
     fetchData();
   }, [type, company]);
-
-  /*useEffect(() => {
-    setMappingData(null);
-    setImageUrls({});
-    setReplaceColor("#70C7D5");
-  }, [type]);*/
 
   useEffect(() => {
     if (mappingData) {
@@ -179,7 +174,7 @@ function Input({ type, company }) {
         const text = await res.data.text();
         await navigator.clipboard.writeText(text);
         alert("Microsite Template copied to clipboard");
-      } else if (type === "email") {
+      } else if (type === "email" || type === "templates") {
         const url = window.URL.createObjectURL(new Blob([res.data]));
         const link = document.createElement("a");
         link.href = url;
@@ -218,7 +213,7 @@ function Input({ type, company }) {
           <div key={key} className="input-group">
             <label>
               <div className="old-attribute" style={{ margin: 0 }}>
-                {category === "backgroundColors" ? (
+                {category === "backgroundColors" || category === "color" ? (
                   <div
                     style={{
                       width: "200px",
@@ -259,13 +254,47 @@ function Input({ type, company }) {
                   data[key][oldValuesKey]
                 )}
               </div>
-              <input
-                type="text"
-                value={data[key][valueKey] || ""}
-                placeholder="New Attribute"
-                onChange={(e) => handleChange(e, category, key, valueKey)}
-                style={{ margin: 0 }}
-              />
+              {category === "backgroundColors" || category === "color" ? (
+                <>
+                  <input
+                    className="color"
+                    type="color"
+                    value={data[key][valueKey] || ""}
+                    placeholder=""
+                    onChange={(e) => handleChange(e, category, key, valueKey)}
+                    style={{ margin: 0 }}
+                  />
+                  <input
+                    className="reset-button"
+                    type="button"
+                    value="Reset"
+                    onClick={() => {
+                      handleChange(
+                        { target: { value: "" } },
+                        category,
+                        key,
+                        valueKey
+                      );
+                    }}
+                  />
+                </>
+              ) : category === "links" ? (
+                <input
+                  type="url"
+                  value={data[key][valueKey] || ""}
+                  placeholder="https://www..."
+                  onChange={(e) => handleChange(e, category, key, valueKey)}
+                  style={{ margin: 0 }}
+                />
+              ) : (
+                <input
+                  type="text"
+                  value={data[key][valueKey] || ""}
+                  placeholder="New Attribute"
+                  onChange={(e) => handleChange(e, category, key, valueKey)}
+                  style={{ margin: 0 }}
+                />
+              )}
             </label>
           </div>
         );
@@ -457,7 +486,9 @@ function Input({ type, company }) {
         </button>
       </form>
       <button type="button" onClick={handleDownload}>
-        {type === "email" ? "Download Zip" : "Copy Code"}
+        {type === "email" || type === "templates"
+          ? "Download Zip"
+          : "Copy Code"}
       </button>
     </div>
   );

@@ -187,6 +187,10 @@ input {
   box-sizing: border-box;
 }
 
+input.color {
+  padding: 0;
+}
+
 .star-colour {
   margin-bottom: 30px;
   color: #c9fff7;
@@ -225,6 +229,34 @@ button:active {
 
 .button-preview {
   margin-bottom: 20px;
+}
+
+.reset-button {
+  background-color: #393030;
+  border: 2px solid #393030;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.1s ease;
+  color: #c9fff7;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: Helvetica, sans-serif;
+  text-align: left;
+  width: auto;
+}
+
+.reset-button:hover {
+  background-color: #c9fff7;
+  border-color: #393030;
+  color: #393030;
+}
+
+.reset-button:active {
+  background-color: #e0e0e0;
+  border-color: #555;
+  transform: scale(0.98);
 }
 
 /* Iframe Styles */
