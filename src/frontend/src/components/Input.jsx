@@ -27,7 +27,6 @@ const categoryTitles = {
 };
 
 function Input({ type, company }) {
-  const [mappingDataCache, setMappingDataCache] = useState({});
   const [mappingData, setMappingData] = useState(null);
   const [imageUrls, setImageUrls] = useState({});
   const [replaceColor, setReplaceColor] = useState("#70C7D5");
@@ -37,57 +36,22 @@ function Input({ type, company }) {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-
+  
       try {
-        let newData;
-        // Check if data is cached
-        if (mappingDataCache[type]) {
-          newData = mappingDataCache[type];
-        } else {
-          // Try to fetch the mapping data
-          const response = await getMappingData(type, company);
-          newData = response.data;
-
-          // If no data or empty object, attempt to create mapping data
-          if (!newData || Object.keys(newData).length === 0) {
-            throw new Error("No mapping data found, creating new data.");
-          }
+        const response = await getMappingData(type, company);
+        const newData = response.data;
+  
+        if (!newData || Object.keys(newData).length === 0) {
+          throw new Error("No mapping data found, creating new data.");
         }
-
-        // Update state with the fetched or cached data
-        setMappingDataCache((prevCache) => ({
-          ...prevCache,
-          [type]: newData,
-        }));
-        setMappingData(newData);
-
-        setCollapsedSections(
-          Object.keys(newData).reduce((acc, key) => {
-            acc[key] = true;
-            return acc;
-          }, {})
-        );
+  
+        updateMappingState(newData);
       } catch (error) {
-        if (error.response && error.response.status === 404) {
-          // If 404 error, create mapping data
+        if (error?.response?.status === 404) {
           try {
             await createMappingData(type, company);
             const response = await getMappingData(type, company);
-            const newData = response.data;
-
-            // Cache the new data
-            setMappingDataCache((prevCache) => ({
-              ...prevCache,
-              [type]: newData,
-            }));
-            setMappingData(newData);
-
-            setCollapsedSections(
-              Object.keys(newData).reduce((acc, key) => {
-                acc[key] = true;
-                return acc;
-              }, {})
-            );
+            updateMappingState(response.data);
           } catch (createError) {
             console.error("Error creating new mapping data:", createError);
           }
@@ -98,9 +62,20 @@ function Input({ type, company }) {
         setLoading(false);
       }
     };
-
+  
+    const updateMappingState = (data) => {
+      setMappingData(data);
+      setCollapsedSections(
+        Object.keys(data).reduce((acc, key) => {
+          acc[key] = true;
+          return acc;
+        }, {})
+      );
+    };
+  
     fetchData();
   }, [type, company]);
+  
 
   useEffect(() => {
     if (mappingData) {
