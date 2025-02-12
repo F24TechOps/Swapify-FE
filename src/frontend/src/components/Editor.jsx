@@ -1,6 +1,5 @@
 import Preview from "./Preview.jsx";
 import Input from "./Input.jsx";
-import Templates from "./Templates.jsx";
 import Output from "./Output.jsx";
 import "../css/body.css";
 import { useState, useEffect } from "react";
