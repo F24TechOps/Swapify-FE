@@ -3,7 +3,7 @@ import "./css/App.css";
 import Header from "./components/Header.jsx";
 import Editor from "./components/Editor.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { createMappingData, deleteCompany } from "./services/api";
+import { createMappingData, deleteCompany, getCompanies } from "./services/api";
 
 function App() {
   const [company, setCompany] = useState(
@@ -14,8 +14,12 @@ function App() {
   const [newCompanyName, setNewCompanyName] = useState("");
 
   useEffect(() => {
-    const savedCompanies = JSON.parse(localStorage.getItem("companies")) || [];
-    setCompanies(savedCompanies);
+    const fetchCompanies = async () => {
+      const savedCompanies = await getCompanies().then((res) => res.data);
+      setCompanies(savedCompanies);
+      localStorage.setItem("companies", JSON.stringify(savedCompanies));
+    };
+    fetchCompanies();
   }, []);
 
   const handleCompanyChange = (e) => {
@@ -33,14 +37,13 @@ function App() {
     let normalizedCompanyName = newCompanyName.replace(/[^a-zA-Z]/g, '').toLowerCase();
     window.location.reload();
     if (normalizedCompanyName && !companies.includes(normalizedCompanyName)) {
-      const newCompanies = [...companies, normalizedCompanyName];
-      setCompanies(newCompanies);
-      localStorage.setItem("companies", JSON.stringify(newCompanies));
+      localStorage.setItem("companies", JSON.stringify(companies));
       localStorage.setItem("selectedCompany", normalizedCompanyName);
       setIsCreatingCompany(false);
 
       await createMappingData("email", normalizedCompanyName);
       await createMappingData("microsite", normalizedCompanyName);
+      await createMappingData("templates", normalizedCompanyName);
 
       window.location.reload();
     }

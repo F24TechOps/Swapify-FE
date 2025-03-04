@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://swapify-server-kw7h.onrender.com/api";
+// const API_URL = "https://swapify-server-kw7h.onrender.com/api";
+const API_URL = "http://localhost:5500/api";
 
 export const getTemplate = async (type) => {
   try {
@@ -8,6 +9,16 @@ export const getTemplate = async (type) => {
     return response;
   } catch (err) {
     console.error(`error in getTemplate: ${err}`);
+    throw err;
+  }
+};
+
+export const getCompanies = async () => {
+  try {
+    const response = axios.get(`${API_URL}/companies`);
+    return response;
+  } catch (err) {
+    console.error(`error in getCompanies: ${err}`);
     throw err;
   }
 };
