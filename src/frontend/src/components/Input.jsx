@@ -108,12 +108,13 @@ function Input({ type, company }) {
           message.remove();
         }, 5000);
       }
-  }
-  setIsError('no-error');
+    }
+    setIsError('no-error');
   }, [isError]);
 
   const handleChange = useCallback((e, category, key, subKey = null) => {
     const { value } = e.target;
+
     setMappingData((prevMappingData) => {
       const newMappingData = { ...prevMappingData };
       if (subKey) {
@@ -140,6 +141,13 @@ function Input({ type, company }) {
   }, []);
 
   const handleUpdate = async () => {
+    if (type === "templates") {
+      if (!/\.(jpg|jpeg|png|webp|avif|gif|svg)(\?.*)?$/i.test(mappingData.images.ImageLink0.newImageLink)) {
+        handleError("Please enter a valid image URL");
+        throw isError;
+      }
+    }
+
     try {
       await updateMappingData(type, company, mappingData);
       if (type === "email" && replaceColor.length > 2) {
@@ -185,7 +193,7 @@ function Input({ type, company }) {
 
   const handleError = (msg) => {
     setIsError('error');
-    
+
     setCollapsedSections((prevState) => {
       const updatedSections = Object.keys(prevState).reduce((acc, key) => {
         acc[key] = false;
@@ -296,15 +304,23 @@ function Input({ type, company }) {
                   onChange={(e) => handleChange(e, category, key, valueKey)}
                   style={{ margin: 0 }}
                 />
-              ) : (
-                  <input
-                    type="text"
-                    value={data[key][valueKey] || ""}
-                    placeholder="New Attribute"
-                    onChange={(e) => handleChange(e, category, key, valueKey)}
-                    style={{ margin: 0 }}
-                    className={`url-input`}
-                  />
+              ) : category === 'images' ? (
+              <input
+                type="text"
+                value={data[key][valueKey] || ""}
+                placeholder="Image URL"
+                onChange={(e) => handleChange(e, category, key, valueKey)}
+                style={{ margin: 0 }}
+                className={`url-input`}
+              />
+            ) : (
+                <input
+                  type="text"
+                  value={data[key][valueKey] || ""}
+                  placeholder="New Attribute"
+                  onChange={(e) => handleChange(e, category, key, valueKey)}
+                  style={{ margin: 0 }}
+                />
               )}
             </label>
           </div>
