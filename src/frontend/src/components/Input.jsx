@@ -110,7 +110,7 @@ function Input({ type, company }) {
       }
     }
     setIsError('no-error');
-  }, [isError]);
+  }, [isError, errorMessage]);
 
   const handleChange = useCallback((e, category, key, subKey = null) => {
     const { value } = e.target;
