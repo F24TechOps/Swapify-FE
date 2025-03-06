@@ -1,11 +1,12 @@
 import "../css/body.css";
 import { NavLink } from "react-router-dom";
+import full from "../assets/full.png";
 
 const Header = () => {
   return (
     <header>
       <div id="logo-body">
-        <img id="logo" src="/src/assets/full.png" width={200}/>
+        <img id="logo" src={full} width={200}/>
       </div>
       <nav>
         <ul>
