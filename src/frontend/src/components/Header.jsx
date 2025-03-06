@@ -5,7 +5,7 @@ const Header = ({ company }) => {
   return (
     <header>
       <div id="logo-body">
-        <p id="logo">{company}</p>
+        <img id="logo" src="/src/assets/full.png" width={200}/>
       </div>
       <nav>
         <ul>
