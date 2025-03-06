@@ -12,6 +12,17 @@ label {
   align-items: start;
 }
 
+.error {
+  color: red;
+  font-size: 0.8em;
+  border: 2px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+}
+
 /* Header Styles */
 header {
   background-color: #c9fff7;

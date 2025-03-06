@@ -32,19 +32,21 @@ function Input({ type, company }) {
   const [replaceColor, setReplaceColor] = useState("#70C7D5");
   const [loading, setLoading] = useState(true);
   const [collapsedSections, setCollapsedSections] = useState({});
+  const [isError, setIsError] = useState('no-error');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-  
+
       try {
         const response = await getMappingData(type, company);
         const newData = response.data;
-  
+
         if (!newData || Object.keys(newData).length === 0) {
           throw new Error("No mapping data found, creating new data.");
         }
-  
+
         updateMappingState(newData);
       } catch (error) {
         if (error?.response?.status === 404) {
@@ -62,7 +64,7 @@ function Input({ type, company }) {
         setLoading(false);
       }
     };
-  
+
     const updateMappingState = (data) => {
       setMappingData(data);
       setCollapsedSections(
@@ -72,10 +74,10 @@ function Input({ type, company }) {
         }, {})
       );
     };
-  
+
     fetchData();
   }, [type, company]);
-  
+
 
   useEffect(() => {
     if (mappingData) {
@@ -92,8 +94,27 @@ function Input({ type, company }) {
     }
   }, [mappingData]);
 
+  useEffect(() => {
+    if (isError === 'error') {
+      const input = document.querySelector(".url-input");
+      if (input && !document.querySelector('.error-message')) {
+        const message = document.createElement('p');
+        message.textContent = errorMessage;
+        input.insertAdjacentElement('afterend', message);
+        input.classList.add("error");
+        message.classList.add('error-message');
+        setTimeout(() => {
+          input.classList.remove("error");
+          message.remove();
+        }, 5000);
+      }
+    }
+    setIsError('no-error');
+  }, [isError, errorMessage]);
+
   const handleChange = useCallback((e, category, key, subKey = null) => {
     const { value } = e.target;
+
     setMappingData((prevMappingData) => {
       const newMappingData = { ...prevMappingData };
       if (subKey) {
@@ -120,6 +141,13 @@ function Input({ type, company }) {
   }, []);
 
   const handleUpdate = async () => {
+    if (type === "templates") {
+      if (!/\.(jpg|jpeg|png|webp|avif|gif|svg)(\?.*)?$/i.test(mappingData.images.ImageLink0.newImageLink)) {
+        handleError("Please enter a valid image URL");
+        throw isError;
+      }
+    }
+
     try {
       await updateMappingData(type, company, mappingData);
       if (type === "email" && replaceColor.length > 2) {
@@ -139,6 +167,7 @@ function Input({ type, company }) {
       window.location.reload();
     } catch (err) {
       console.error(err);
+      setIsError('error');
     }
   };
 
@@ -158,8 +187,22 @@ function Input({ type, company }) {
         link.click();
       }
     } catch (err) {
-      console.error("Error creating zip file:", err);
+      handleError("Please enter a valid URL");
     }
+  };
+
+  const handleError = (msg) => {
+    setIsError('error');
+
+    setCollapsedSections((prevState) => {
+      const updatedSections = Object.keys(prevState).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+      }, {});
+      return updatedSections;
+    });
+
+    setErrorMessage(msg);
   };
 
   const toggleCollapse = (category) => {
@@ -261,7 +304,16 @@ function Input({ type, company }) {
                   onChange={(e) => handleChange(e, category, key, valueKey)}
                   style={{ margin: 0 }}
                 />
-              ) : (
+              ) : category === 'images' ? (
+              <input
+                type="text"
+                value={data[key][valueKey] || ""}
+                placeholder="Image URL"
+                onChange={(e) => handleChange(e, category, key, valueKey)}
+                style={{ margin: 0 }}
+                className={`url-input`}
+              />
+            ) : (
                 <input
                   type="text"
                   value={data[key][valueKey] || ""}
