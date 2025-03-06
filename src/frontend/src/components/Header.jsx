@@ -1,7 +1,7 @@
 import "../css/body.css";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ company }) => {
+const Header = () => {
   return (
     <header>
       <div id="logo-body">

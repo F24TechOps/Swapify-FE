@@ -67,7 +67,7 @@ function App() {
 
   return (
     <Router>
-      <Header company={company} />
+      <Header />
       <div className="company-input">
         <div className="create-company-input">
           <button onClick={toggleCreateNewCompany}>
