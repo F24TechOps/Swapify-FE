@@ -45,6 +45,13 @@ header {
   margin: 0;
 }
 
+img#logo {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
 /* Navigation Styles */
 
 nav {
